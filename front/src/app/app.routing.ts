@@ -5,12 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import {HomeComponent} from "./home/home.component";
+import {LoginRouteGuard} from "./common/services/login/loginRouteGuard";
 
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'page-login', component: LoginComponent },
-  { path: 'page-home', component: HomeComponent },
+  { path: 'page-home', component: HomeComponent, canActivate: [LoginRouteGuard],},
   { path: '**', redirectTo: '' }
 ];
 

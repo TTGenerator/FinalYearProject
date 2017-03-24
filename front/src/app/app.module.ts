@@ -7,6 +7,8 @@ import { routing }  from './app.routing';
 
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
+import {LoginService} from "./common/services/login/loginService";
+import {LoginRouteGuard} from "./common/services/login/loginRouteGuard";
 
 @NgModule({
   imports: [
@@ -20,7 +22,7 @@ import {LoginComponent} from "./login/login.component";
     LoginComponent,
     HomeComponent
   ],
-  providers: [ ],
+  providers: [LoginService,LoginRouteGuard],
   bootstrap: [AppComponent]
 })
 
