@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>TTGenerator</title>
 
     <!-- Bootstrap -->
-    <link href="../../css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../../css/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="../../css/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../../vendors/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
@@ -31,14 +31,14 @@
             <form>
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input #username type="text" class="form-control" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input #password type="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <a class="btn btn-default submit" (click)="login(username.value, password.value)">Log in</a>
+                <a class="reset_pass" href="">Lost your password?</a>
               </div>
 
               <div class="clearfix"></div>
@@ -74,7 +74,7 @@
                 <input type="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
+                <a class="btn btn-default submit" href="">Submit</a>
               </div>
 
               <div class="clearfix"></div>
