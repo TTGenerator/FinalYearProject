@@ -5,6 +5,7 @@
 import {Component} from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginService} from "../common/services/login/loginService";
+import {LoaderService} from "../common/services/loader/loaderService";
 
 @Component({
   moduleId: module.id,
@@ -26,9 +27,16 @@ export class LoginComponent {
 
 
   message: string;
-  constructor(public LoginService: LoginService, public router: Router) {
+  constructor(public LoginService: LoginService, public router: Router,private loaderService: LoaderService) {
     this.setMessage();
   }
+  ngOnInit() {
+    //http call starts
+    this.loaderService.display(true);
+    //http call ends
+    this.loaderService.display(false);
+  }
+
   setMessage() {
     this.message = 'Logged ' + (this.LoginService.isLoggedIn ? 'in' : 'out');
   }
