@@ -1,6 +1,4 @@
-# angular2-spring
-This example shows how to do a paginated table with Angular 2 and Spring Boot ( RestController ) 
-
+# angular2-spring boot
 ## Installation
 
 ### The Back End
@@ -9,15 +7,14 @@ You'll need Maven 3+ and Java 8
 
 ### The Front End
 
-* `npm install -g angular-cli` to install angular 2 cli ( globally ) 
-* `npm install` to install Node packages
+* `npm install`
  
 ## Run
 
 ### The Back End
 
-* `mvn spring-boot:run` to start spring boot
+* `mvn spring-boot:run`
 
 ### The Front End
 
-* `ng serve`
+* `npm start`
