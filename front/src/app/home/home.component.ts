@@ -13,8 +13,10 @@ import {LoaderService} from "../common/services/loader/loaderService";
 })
 
 export class HomeComponent {
-
-  constructor(public LoginService: LoginService, private loaderService: LoaderService){}
+public username:string;
+  constructor(public LoginService: LoginService, private loaderService: LoaderService){
+    this.username = this.LoginService.getUsername();
+  }
   ngOnInit() {
     //http call starts
     this.loaderService.display(true);

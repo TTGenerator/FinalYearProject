@@ -12,12 +12,20 @@ import 'rxjs/add/operator/delay';
 export class LoginService {
   isLoggedIn: boolean = false;
   redirectUrl: string;
-
+  username:string;
   login(): Observable<boolean> {
     return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
   }
 
   logout(): void {
     this.isLoggedIn = false;
+  }
+
+  setUsername(username:string):void{
+    this.username= username;
+  }
+
+  getUsername():string{
+    return this.username;
   }
 }
