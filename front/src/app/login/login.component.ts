@@ -42,6 +42,7 @@ export class LoginComponent {
   }
 
   login(username:string, password:string) {
+    this.LoginService.setUsername(username);
     if(username== "e12132" && password=="e12132"||username== "e12117" && password=="e12117"||username== "e12333"&& password=="e12333"){
       this.message = 'Trying to log in ...';
       this.LoginService.login().subscribe(() => {
