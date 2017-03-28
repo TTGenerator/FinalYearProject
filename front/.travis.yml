@@ -1,20 +1,30 @@
-dist: trusty
-sudo: required
+sudo: false
+
 language: node_js
+
 node_js:
-  - "5"
-os:
-  - linux
-env:
-  global:
-    - DBUS_SESSION_BUS_ADDRESS=/dev/null
-    - DISPLAY=:99.0
-    - CHROME_BIN=chromium-browser
+  - "6"
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - npm config set spin false
+
 before_script:
-  - sh -e /etc/init.d/xvfb start
+  - npm i -g npm@4
+
 install:
-  - npm install
+  - yarn
+
 script:
-  - npm run lint
-  - npm run test:once
-  - npm run e2e
+  - yarn run build:ci
+
+notifications:
+  slack: akveo:q559HckfZMSyZRb803aiLcjH
