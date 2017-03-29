@@ -6,20 +6,30 @@ export const PAGES_MENU = [
         path: 'dashboard',
         data: {
           menu: {
-            title: 'Dashboard',
+            title: 'Home',
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
             order: 0
           }
+        },
+        children: [
+        {
+          path: ['/profile'],
+          data: {
+            menu: {
+              title: 'Profile'
+            }
+          }
         }
+      ]
       },
       {
-        path: '',
+        path: 'manage',
         data: {
           menu: {
-            title: 'Pages',
-            icon: 'ion-document',
+            title: 'Manage',
+            icon: 'ion-settings',
             selected: false,
             expanded: false,
             order: 650,
@@ -27,22 +37,78 @@ export const PAGES_MENU = [
         },
         children: [
           {
-            path: ['/login'],
+            path: ['/subjects'],
             data: {
               menu: {
-                title: 'Login'
+                title: 'Subjects'
               }
             }
           },
           {
-            path: ['/register'],
+            path: ['/rooms'],
             data: {
               menu: {
-                title: 'Register'
+                title: 'Rooms'
+              }
+            }
+          },
+          {
+            path: ['/lecturers'],
+            data: {
+              menu: {
+                title: 'Lecturers'
               }
             }
           }
         ]
+      },
+      {
+        path: 'generateTT',
+        data: {
+          menu: {
+            title: 'Generate TT',
+            icon: 'ion-gear-a',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        }
+      },
+      {
+        path: 'viewTT',
+        data: {
+          menu: {
+            title: 'View TT',
+            icon: 'ion-document',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        }
+      },
+      {
+        path: 'addPreferences',
+        data: {
+          menu: {
+            title: 'Add Preferences',
+            icon: 'ion-plus-round',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        }
+      },
+      {
+        path: 'mail',
+        data: {
+          menu: {
+            title: 'Mail',
+            icon: 'ion-email',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        }
       }
     ]
   }
