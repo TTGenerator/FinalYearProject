@@ -21,6 +21,7 @@ export const routes: Routes = [
     children: [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [LoginRouteGuard]},
       {path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',canActivate: [LoginRouteGuard]},
+      { path: 'manage', loadChildren: 'app/pages/manage/manage.module#ManageModule',canActivate: [LoginRouteGuard]}
 
     ]
   }

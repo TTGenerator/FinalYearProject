@@ -5,7 +5,8 @@ import {LoginRouteGuard} from "./services/login/loginRouteGuard";
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login'},
-  { path: 'pages/dashboard', redirectTo: 'pages/dashboard',canActivate: [LoginRouteGuard] }
+  { path: 'pages/dashboard', redirectTo: 'pages/dashboard',canActivate: [LoginRouteGuard] },
+  { path: 'pages/manage', redirectTo: 'pages/manage',canActivate: [LoginRouteGuard] }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

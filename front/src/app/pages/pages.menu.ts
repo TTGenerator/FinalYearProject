@@ -32,31 +32,15 @@ export const PAGES_MENU = [
             icon: 'ion-settings',
             selected: false,
             expanded: false,
-            order: 650,
+            order: 600,
           }
         },
         children: [
           {
-            path: ['/subjects'],
+            path: 'subjects',
             data: {
               menu: {
-                title: 'Subjects'
-              }
-            }
-          },
-          {
-            path: ['/rooms'],
-            data: {
-              menu: {
-                title: 'Rooms'
-              }
-            }
-          },
-          {
-            path: ['/lecturers'],
-            data: {
-              menu: {
-                title: 'Lecturers'
+                title: 'Subjects',
               }
             }
           }
