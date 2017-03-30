@@ -4,16 +4,43 @@
 import {Component} from '@angular/core';
 
 import {SubjectsService} from "./subjects.service";
+import {Subject} from "../../../model/subject";
+import 'style-loader!./subjects.scss';
 
 @Component({
   selector: 'subjects',
   templateUrl: './subjects.html'
 })
 export class Subjects {
-
-  // chartData:Object;
+  public subjectsList:Array<Subject>;
 
   constructor(private _subjectsService:SubjectsService) {
-    // this.chartData = this._subjectsService.getData();
+    this.subjectsList = this._subjectsService.getSubjectsList();
+  }
+
+  getNotDeleted() {
+    return this.subjectsList.filter((item:Subject) => {
+      return !item.deleted
+    })
+  }
+
+  addToDoItem($event) {
+    //
+    // if (($event.which === 1 || $event.which === 13) && this.newTodoText.trim() != '') {
+    //
+    //   this.subjectsList.unshift({
+    //     text: this.newTodoText,
+    //     color: this._getRandomColor(),
+    //   });
+    //   this.newTodoText = '';
+    // }
+  }
+
+  deleteSubjects(){
+    for(let subject of this.subjectsList){
+        if(subject.isChecked == true){
+          subject.deleted = true;
+        }
+    }
   }
 }

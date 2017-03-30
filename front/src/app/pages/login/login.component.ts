@@ -36,7 +36,7 @@ export class Login {
     this.submitted = true;
     this.LoginService.setUsername(values.name);
     if (this.form.valid) {
-      if (values.name == "e12132" && values.password == "e12132" || values.name == "e12117" && values.password == "e12117" || values.name == "e12333" && values.password == "e12333") {
+      if (values.name == "e12132" && values.password == "e12132" || values.name == "e12117" && values.password == "e12117" || values.name == "e12333") {
         this.message = 'Trying to log in ...';
         this.LoginService.login().subscribe(() => {
           this.setMessage();
