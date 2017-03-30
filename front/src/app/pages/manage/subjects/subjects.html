@@ -33,18 +33,22 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="form" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button class="close" aria-label="Close" (click)="staticModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">Static modal</h4>
+        <h4 class="modal-title">Add Subject</h4>
       </div>
       <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> or confirmation button to close modal.
+        <form>
+          <!--<div class="form-group">-->
+            <!--<label for="input01">Text</label>-->
+            <!--<input type="text" class="form-control" id="input01" placeholder="Text">-->
+          <!--</div>-->
+        </form>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary confirm-btn" (click)="staticModal.hide()">Save changes</button>
