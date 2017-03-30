@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-12">
+    <ba-card title="Room Manage" baCardClass="with-scroll">
+
+      <div class="task-todo-container">
+        <div class="clearfix">
+          <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="staticModal.show()"><i class="ion-plus-round"></i>Add
+            Room
+          </button>
+        </div>
+        <div>
+          <ul class="todo-list">
+            <li *ngFor="let item of getNotDeleted()" [ngClass]="{checked: item.isChecked, active: item.isActive}"
+                (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false">
+
+              <div class="blur-container">
+                <div class="blur-box"></div>
+              </div>
+              <i class="mark"></i>
+              <label class="todo-checkbox custom-checkbox custom-input-success">
+                <input type="checkbox" [(ngModel)]="item.isChecked">
+                <span class="cut-with-dots">{{ item.code }}</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix">
+        <button type="button" class="btn btn-danger btn-with-icon pull-right" (click)="deleteRooms()"><i class="ion-trash-a"></i>Delete
+        </button>
+      </div>
+    </ba-card>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="form" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Add Room</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!--<div class="form-group">-->
+            <!--<label for="input01">Text</label>-->
+            <!--<input type="text" class="form-control" id="input01" placeholder="Text">-->
+          <!--</div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary confirm-btn" (click)="staticModal.hide()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

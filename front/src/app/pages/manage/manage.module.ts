@@ -11,6 +11,8 @@ import {Manage} from "./manage.component";
 import {Subjects} from "./subjects/subjects.component";
 import {SubjectsService} from "./subjects/subjects.service";
 import {ModalModule} from "ng2-bootstrap";
+import {Rooms} from "./rooms/rooms.component";
+import {RoomsService} from "./rooms/rooms.service";
 
 @NgModule({
   imports: [
@@ -22,10 +24,12 @@ import {ModalModule} from "ng2-bootstrap";
   ],
   declarations: [
     Manage,
-    Subjects
+    Subjects,
+    Rooms
   ],
   providers: [
     SubjectsService,
+    RoomsService
   ]
 })
 export class ManageModule {}

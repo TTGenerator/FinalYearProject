@@ -4,13 +4,15 @@
 import { Routes, RouterModule }  from '@angular/router';
 import {Manage} from "./manage.component";
 import {Subjects} from "./subjects/subjects.component";
+import {Rooms} from "./rooms/rooms.component";
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',
     component: Manage,
     children: [
-      { path: 'subjects', component: Subjects }
+      { path: 'subjects', component: Subjects },
+      { path: 'rooms', component: Rooms }
     ]
   }
 ];

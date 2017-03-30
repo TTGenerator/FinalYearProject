@@ -43,6 +43,14 @@ export const PAGES_MENU = [
                 title: 'Subjects',
               }
             }
+          },
+          {
+            path: 'rooms',
+            data: {
+              menu: {
+                title: 'Rooms',
+              }
+            }
           }
         ]
       },

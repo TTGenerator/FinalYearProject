@@ -3,21 +3,21 @@
  */
 import {Component, ViewChild} from '@angular/core';
 
-import {SubjectsService} from "./subjects.service";
-import {Subject} from "../../../model/subject";
-import 'style-loader!./subjects.scss';
+import {RoomsService} from "./rooms.service";
+import {Room} from "../../../model/room";
+import 'style-loader!./rooms.scss';
 import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
-  selector: 'subjects',
+  selector: 'rooms',
   templateUrl: './rooms.html'
 })
-export class Subjects {
-  public subjectsList:Array<Subject>;
+export class Rooms {
+  public roomsList:Array<Room>;
   @ViewChild('childModal') childModal: ModalDirective;
 
-  constructor(private _subjectsService:SubjectsService) {
-    this.subjectsList = this._subjectsService.getSubjectsList();
+  constructor(private _roomsService:RoomsService) {
+    this.roomsList = this._roomsService.getRoomsList();
   }
   showChildModal(): void {
     this.childModal.show();
@@ -28,7 +28,7 @@ export class Subjects {
   }
 
   getNotDeleted() {
-    return this.subjectsList.filter((item:Subject) => {
+    return this.roomsList.filter((item:Room) => {
       return !item.deleted
     })
   }
@@ -37,7 +37,7 @@ export class Subjects {
     //
     // if (($event.which === 1 || $event.which === 13) && this.newTodoText.trim() != '') {
     //
-    //   this.subjectsList.unshift({
+    //   this.roomsList.unshift({
     //     text: this.newTodoText,
     //     color: this._getRandomColor(),
     //   });
@@ -45,10 +45,10 @@ export class Subjects {
     // }
   }
 
-  deleteSubjects(){
-    for(let subject of this.subjectsList){
-        if(subject.isChecked == true){
-          subject.deleted = true;
+  deleteRooms(){
+    for(let room of this.roomsList){
+        if(room.isChecked == true){
+          room.deleted = true;
         }
     }
   }
