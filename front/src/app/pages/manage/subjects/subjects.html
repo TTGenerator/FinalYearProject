@@ -4,7 +4,7 @@
 
       <div class="task-todo-container">
         <div class="clearfix">
-          <button type="button" class="btn btn-success btn-with-icon pull-right"><i class="ion-plus-round"></i>Add
+          <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="staticModal.show()"><i class="ion-plus-round"></i>Add
             Subject
           </button>
         </div>
@@ -32,4 +32,25 @@
     </ba-card>
   </div>
 </div>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Static modal</h4>
+      </div>
+      <div class="modal-body">
+        This is static modal, backdrop click will not close it.
+        Click <b>&times;</b> or confirmation button to close modal.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary confirm-btn" (click)="staticModal.hide()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 

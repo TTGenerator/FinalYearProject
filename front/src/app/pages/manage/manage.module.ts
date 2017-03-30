@@ -10,13 +10,15 @@ import {routing} from "./manage.routing";
 import {Manage} from "./manage.component";
 import {Subjects} from "./subjects/subjects.component";
 import {SubjectsService} from "./subjects/subjects.service";
+import {ModalModule} from "ng2-bootstrap";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
-    routing
+    routing,
+    ModalModule.forRoot(),
   ],
   declarations: [
     Manage,

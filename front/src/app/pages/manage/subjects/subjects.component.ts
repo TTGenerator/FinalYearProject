@@ -1,11 +1,12 @@
 /**
  * Created by jayani on 3/29/2017.
  */
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 
 import {SubjectsService} from "./subjects.service";
 import {Subject} from "../../../model/subject";
 import 'style-loader!./subjects.scss';
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'subjects',
@@ -13,9 +14,17 @@ import 'style-loader!./subjects.scss';
 })
 export class Subjects {
   public subjectsList:Array<Subject>;
+  @ViewChild('childModal') childModal: ModalDirective;
 
   constructor(private _subjectsService:SubjectsService) {
     this.subjectsList = this._subjectsService.getSubjectsList();
+  }
+  showChildModal(): void {
+    this.childModal.show();
+  }
+
+  hideChildModal(): void {
+    this.childModal.hide();
   }
 
   getNotDeleted() {
