@@ -10,9 +10,9 @@ import {routing} from "./manage.routing";
 import {Manage} from "./manage.component";
 import {Subjects} from "./subjects/subjects.component";
 import {SubjectsService} from "./subjects/subjects.service";
-import {ModalModule} from "ng2-bootstrap";
 import {Rooms} from "./rooms/rooms.component";
 import {RoomsService} from "./rooms/rooms.service";
+import {ModalModule} from "ng2-bs4-modal/module/ng2-bs4-modal.module";
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import {RoomsService} from "./rooms/rooms.service";
     FormsModule,
     NgaModule,
     routing,
-    ModalModule.forRoot(),
+    ModalModule,
   ],
   declarations: [
     Manage,

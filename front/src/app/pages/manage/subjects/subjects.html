@@ -4,7 +4,8 @@
 
       <div class="task-todo-container">
         <div class="clearfix">
-          <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="staticModal.show()"><i class="ion-plus-round"></i>Add
+          <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="validationModal.open()"><i
+            class="ion-plus-round"></i>Add
             Subject
           </button>
         </div>
@@ -26,35 +27,61 @@
         </div>
       </div>
       <div class="clearfix">
-        <button type="button" class="btn btn-danger btn-with-icon pull-right" (click)="deleteSubjects()"><i class="ion-trash-a"></i>Delete
+        <button type="button" class="btn btn-danger btn-with-icon pull-right" (click)="deleteSubjects()"><i
+          class="ion-trash-a"></i>Delete
         </button>
       </div>
     </ba-card>
   </div>
 </div>
 
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="form" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" aria-label="Close" (click)="staticModal.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Add Subject</h4>
+<modal [animation]="true" [keyboard]="true" [backdrop]="'static'" (onClose)="closed()" (onDismiss)="dismissed()"
+       (onOpen)="opened()" #validationModal>
+  <form #modalForm="ngForm">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Add Subject Details</h4>
+    </modal-header>
+    <modal-body>
+      <div class="form-group row">
+        <label style="color:#000000" for="code" class="col-sm-3 control-label">Subject Code</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000;" type="text" class="form-control" id="code">
+        </div>
       </div>
-      <div class="modal-body">
-        <form>
-          <!--<div class="form-group">-->
-            <!--<label for="input01">Text</label>-->
-            <!--<input type="text" class="form-control" id="input01" placeholder="Text">-->
-          <!--</div>-->
-        </form>
+      <div class="form-group row">
+        <label style="color:#000000" for="name" class="col-sm-3 control-label">Subject Name</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000;" type="text" class="form-control" id="name">
+        </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary confirm-btn" (click)="staticModal.hide()">Save changes</button>
+      <div class="form-group row">
+        <label style="color:#000000" for="teacher" class="col-sm-3 control-label">Teacher's name</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000;" type="text" class="form-control" id="teacher">
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
-
+      <div class="form-group row">
+        <label style="color:#000000" for="duration" class="col-sm-3 control-label">Time duration</label>
+        <div class="col-sm-7">
+          <input style="border: 1px solid #000000;" type="text" class="form-control" id="duration">
+        </div>
+        <div class="col-sm-1">
+          <span>hr</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label style="color:#000000" for="maxStudents" class="col-sm-3 control-label">Maximum number of Students</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000;" type="text" class="form-control" id="maxStudents">
+        </div>
+      </div>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel
+      </button>
+      <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="validationModal.close()">
+        Save
+      </button>
+    </modal-footer>
+  </form>
+</modal>

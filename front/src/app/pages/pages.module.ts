@@ -8,6 +8,7 @@ import { Pages } from './pages.component';
 import {LoginService} from "../services/login/loginService";
 import {LoginRouteGuard} from "../services/login/loginRouteGuard";
 
+
 @NgModule({
   imports: [CommonModule, NgaModule, routing],
   declarations: [Pages],

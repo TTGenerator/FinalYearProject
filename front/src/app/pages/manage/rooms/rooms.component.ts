@@ -6,7 +6,6 @@ import {Component, ViewChild} from '@angular/core';
 import {RoomsService} from "./rooms.service";
 import {Room} from "../../../model/room";
 import 'style-loader!./rooms.scss';
-import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'rooms',
@@ -14,17 +13,9 @@ import {ModalDirective} from "ng2-bootstrap";
 })
 export class Rooms {
   public roomsList:Array<Room>;
-  @ViewChild('childModal') childModal: ModalDirective;
 
   constructor(private _roomsService:RoomsService) {
     this.roomsList = this._roomsService.getRoomsList();
-  }
-  showChildModal(): void {
-    this.childModal.show();
-  }
-
-  hideChildModal(): void {
-    this.childModal.hide();
   }
 
   getNotDeleted() {
