@@ -10,7 +10,7 @@ import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'subjects',
-  templateUrl: './rooms.html'
+  templateUrl: './subjects.html'
 })
 export class Subjects {
   public subjectsList:Array<Subject>;
