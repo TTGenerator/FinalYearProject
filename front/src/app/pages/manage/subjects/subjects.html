@@ -11,18 +11,27 @@
         <div>
           <ul class="todo-list">
             <li *ngFor="let item of getNotDeleted()" [ngClass]="{checked: item.isChecked, active: item.isActive}"
-                (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false">
+                (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false" style="padding:6px">
 
               <div class="blur-container">
                 <div class="blur-box"></div>
               </div>
               <i class="mark"></i>
-                <label class="todo-checkbox custom-checkbox custom-input-success">
-                    <input type="checkbox" [(ngModel)]="item.isChecked">
-                    <span class="cut-with-dots">{{ item.code }}</span>
-                    <button type="button" class="btn btn-info btn-icon btn-sm" (click)="editSubject(item)"><i
-                      class="ion-edit"></i></button>
-                </label>
+                <div class="row">
+                  <div class="col-md-4" style="float:left;padding-top:7px">
+                  <label class="todo-checkbox custom-checkbox custom-input-success">
+                      <input type="checkbox" [(ngModel)]="item.isChecked">
+                      <span class="cut-with-dots">
+                        {{ item.code }}
+                      </span>
+                  </label>
+                  </div>
+                  <div class="col-md-8" style="float:left">
+                    <button type="button" class="btn btn-info btn-icon btn-sm" (click)="editSubject(item)">
+                          <i class="ion-edit"></i>
+                        </button>
+                  </div>
+                </div>
             </li>
           </ul>
         </div>
