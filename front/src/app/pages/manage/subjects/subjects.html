@@ -5,8 +5,7 @@
       <div class="task-todo-container">
         <div class="clearfix">
           <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="validationModal.open()"><i
-            class="ion-plus-round"></i>Add
-            Subject
+            class="ion-plus-round"></i>Add Subject
           </button>
         </div>
         <div>
@@ -18,10 +17,12 @@
                 <div class="blur-box"></div>
               </div>
               <i class="mark"></i>
-              <label class="todo-checkbox custom-checkbox custom-input-success">
-                <input type="checkbox" [(ngModel)]="item.isChecked">
-                <span class="cut-with-dots">{{ item.code }}</span>
-              </label>
+                <label class="todo-checkbox custom-checkbox custom-input-success">
+                    <input type="checkbox" [(ngModel)]="item.isChecked">
+                    <span class="cut-with-dots">{{ item.code }}</span>
+                    <button type="button" class="btn btn-info btn-icon btn-sm" (click)="editSubject(item)"><i
+                      class="ion-edit"></i></button>
+                </label>
             </li>
           </ul>
         </div>
@@ -45,25 +46,29 @@
       <div class="form-group row">
         <label style="color:#000000" for="code" class="col-sm-3 control-label">Subject Code</label>
         <div class="col-sm-8">
-          <input style="border: 1px solid #000000;" type="text" class="form-control" id="code">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="code" required
+                 [(ngModel)]="model.code" name="code" #code="ngModel">
         </div>
       </div>
       <div class="form-group row">
         <label style="color:#000000" for="name" class="col-sm-3 control-label">Subject Name</label>
         <div class="col-sm-8">
-          <input style="border: 1px solid #000000;" type="text" class="form-control" id="name">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="name" required
+                 [(ngModel)]="model.name" name="name" #name="ngModel">
         </div>
       </div>
       <div class="form-group row">
         <label style="color:#000000" for="teacher" class="col-sm-3 control-label">Teacher's name</label>
         <div class="col-sm-8">
-          <input style="border: 1px solid #000000;" type="text" class="form-control" id="teacher">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="teacher"
+                 required [(ngModel)]="model.teacher" name="teacher" #teacher="ngModel">
         </div>
       </div>
       <div class="form-group row">
         <label style="color:#000000" for="duration" class="col-sm-3 control-label">Time duration</label>
         <div class="col-sm-7">
-          <input style="border: 1px solid #000000;" type="text" class="form-control" id="duration">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="duration"
+                 required [(ngModel)]="model.duration" name="duration" #duration="ngModel">
         </div>
         <div class="col-sm-1">
           <span>hr</span>
@@ -72,13 +77,12 @@
       <div class="form-group row">
         <label style="color:#000000" for="maxStudents" class="col-sm-3 control-label">Maximum number of Students</label>
         <div class="col-sm-8">
-          <input style="border: 1px solid #000000;" type="text" class="form-control" id="maxStudents">
+          <input style="border: 1px solid #000000; color: #222222;" type="number" class="form-control" id="maxStudents"
+                 required [(ngModel)]="model.maxStudents" name="maxStudents" #maxStudents="ngModel">
         </div>
       </div>
     </modal-body>
     <modal-footer>
-      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel
-      </button>
       <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="validationModal.close()">
         Save
       </button>

@@ -18,13 +18,14 @@ import {FormGroup} from "@angular/forms";
 export class Subjects {
   public form: FormGroup;
   public subjectsList:Array<Subject>;
-  @ViewChild('modal')
+
+  @ViewChild('validationModal')
   modal: ModalComponent;
 
+  model : Subject = new SubjectModal();
   selected: string;
   output: string;
 
-  subject: Subject;
   index: number = 0;
 
   constructor(private _subjectsService:SubjectsService) {
@@ -33,35 +34,43 @@ export class Subjects {
 
   closed() {
     this.output = '(closed) ' + this.selected;
+    this.addToDoItem();
   }
 
   dismissed() {
     this.output = '(dismissed)';
+    this.model= new SubjectModal();
   }
 
   opened() {
     this.output = '(opened)';
+    console.log("opened");
+    console.log(this.modal);
   }
 
   open() {
     this.modal.open();
+    console.log("open");
   }
+
   getNotDeleted() {
     return this.subjectsList.filter((item:Subject) => {
       return !item.deleted
     })
   }
 
-  addToDoItem($event) {
-    //
-    // if (($event.which === 1 || $event.which === 13) && this.newTodoText.trim() != '') {
-    //
-    //   this.subjectsList.unshift({
-    //     text: this.newTodoText,
-    //     color: this._getRandomColor(),
-    //   });
-    //   this.newTodoText = '';
-    // }
+  addToDoItem() {
+    this.model.deleted=false;
+    this.model.isChecked=false;
+    this.model.isActive=false;
+    console.log(this.model);
+    for(let subject of this.subjectsList){
+      if(subject.code === this.model.code){
+        this.dismissed();
+      }
+    }
+    this.subjectsList.push(this.model);
+    this.model= new SubjectModal();
   }
 
   deleteSubjects(){
@@ -71,4 +80,22 @@ export class Subjects {
         }
     }
   }
+
+  editSubject(subject:Subject){
+    console.log(subject);
+    this.model=subject;
+    this.modal.open();
+    console.log(this.modal);
+  }
+}
+
+class SubjectModal implements Subject {
+  code: string;
+  name:string;
+  teacher:string;
+  duration:string;
+  maxStudents:number;
+  deleted:boolean;
+  isChecked:boolean;
+  isActive:boolean;
 }
