@@ -14,15 +14,15 @@ export const PAGES_MENU = [
           }
         },
         children: [
-        {
-          path: ['/profile'],
-          data: {
-            menu: {
-              title: 'Profile'
+          {
+            path: 'profile',
+            data: {
+              menu: {
+                title: 'Profile',
+              }
             }
           }
-        }
-      ]
+        ]
       },
       {
         path: 'manage',

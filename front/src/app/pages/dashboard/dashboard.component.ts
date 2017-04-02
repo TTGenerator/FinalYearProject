@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'dashboard',
   styleUrls: ['./dashboard.scss'],
-  templateUrl: './dashboard.html'
+  template: `<router-outlet></router-outlet>`
 })
 export class Dashboard {
 

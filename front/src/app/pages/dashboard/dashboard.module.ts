@@ -5,6 +5,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Dashboard } from './dashboard.component';
 import { routing }       from './dashboard.routing';
+import {Profile} from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { routing }       from './dashboard.routing';
     routing
   ],
   declarations: [
-    Dashboard
+    Dashboard,
+    Profile
   ],
   providers: []
 })
