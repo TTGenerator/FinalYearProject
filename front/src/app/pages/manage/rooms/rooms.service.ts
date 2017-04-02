@@ -2,46 +2,43 @@
  * Created by jayani on 3/29/2017.
  */
 import {Injectable} from '@angular/core';
+import {RoomCategory} from "../../../model/room-category";
 
 @Injectable()
 export class RoomsService {
   private _roomsList = [
     {
-      code: 'SR1',
-      name: '',
-      teacher: '',
-      duration: '2 hrs',
-      maxStudents: 60,
+      room_id: new Date(),
+      name:'SR1',
+      capacity: 50,
+      category: RoomCategory[RoomCategory.SR],
       deleted: false,
       isChecked: false,
       isActive: false
     },
     {
-      code: 'SR2',
-      name: '',
-      teacher: '',
-      duration: '3 hrs',
-      maxStudents: 64,
+      room_id: new Date(),
+      name:'DO1',
+      capacity: 750,
+      category: RoomCategory[RoomCategory.DO],
       deleted: false,
       isChecked: false,
       isActive: false
     },
     {
-      code: 'LR9',
-      name: '',
-      teacher: '',
-      duration: '2.5 hrs',
-      maxStudents: 57,
+      room_id: new Date(),
+      name:'LR21',
+      capacity: 75,
+      category: RoomCategory[RoomCategory.LR],
       deleted: false,
       isChecked: false,
       isActive: false
     },
     {
-      code: 'LR10',
-      name: '',
-      teacher: '',
-      duration: '1 hrs',
-      maxStudents: 65,
+      room_id: new Date(),
+      name:'Lab',
+      capacity: 50,
+      category: RoomCategory[RoomCategory.LAB],
       deleted: false,
       isChecked: false,
       isActive: false

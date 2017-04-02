@@ -1,14 +1,13 @@
-import {colorHelper} from "../theme/theme.constants";
+import {RoomCategory} from "./room-category";
 /**
  * Created by jayani on 3/30/2017.
  */
 export interface Room {
-  code: string;
+  room_id:Date;
   name:string;
-  teacher?:string;
-  duration?:string;
-  maxStudents:number;
-  deleted?:boolean;
+  capacity?:number;
+  category:string;
+  deleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }

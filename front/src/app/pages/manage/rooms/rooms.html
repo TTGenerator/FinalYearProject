@@ -4,34 +4,84 @@
 
       <div class="task-todo-container">
         <div class="clearfix">
-          <button type="button" class="btn btn-success btn-with-icon pull-right"><i class="ion-plus-round"></i>Add
-            Room
+          <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="validationModal.open()"><i
+            class="ion-plus-round"></i>Add Room
           </button>
         </div>
         <div>
           <ul class="todo-list">
             <li *ngFor="let item of getNotDeleted()" [ngClass]="{checked: item.isChecked, active: item.isActive}"
-                (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false">
+                (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false" style="padding:6px">
 
               <div class="blur-container">
                 <div class="blur-box"></div>
               </div>
               <i class="mark"></i>
-              <label class="todo-checkbox custom-checkbox custom-input-success">
-                <input type="checkbox" [(ngModel)]="item.isChecked">
-                <span class="cut-with-dots">{{ item.code }}</span>
-              </label>
+                <div class="row">
+                  <div class="col-md-4" style="float:left;padding-top:7px">
+                  <label class="todo-checkbox custom-checkbox custom-input-success">
+                      <input type="checkbox" [(ngModel)]="item.isChecked">
+                      <span class="cut-with-dots">
+                        {{ item.name }}
+                      </span>
+                  </label>
+                  </div>
+                  <div class="col-md-8" style="float:left">
+                    <button type="button" class="btn btn-info btn-icon btn-sm" (click)="editRoom(item)">
+                          <i class="ion-edit"></i>
+                        </button>
+                  </div>
+                </div>
             </li>
           </ul>
         </div>
       </div>
       <div class="clearfix">
-        <button type="button" class="btn btn-danger btn-with-icon pull-right" (click)="deleteRooms()"><i class="ion-trash-a"></i>Delete
+        <button type="button" class="btn btn-danger btn-with-icon pull-right" (click)="deleteRooms()"><i
+          class="ion-trash-a"></i>Delete
         </button>
       </div>
     </ba-card>
   </div>
 </div>
 
-
-
+<modal [animation]="true" [keyboard]="true" [backdrop]="'static'" (onClose)="closed()" (onDismiss)="dismissed()"
+       (onOpen)="opened()" #validationModal>
+  <form #modalForm="ngForm">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Add Room Details</h4>
+    </modal-header>
+    <modal-body>
+      <div class="form-group row">
+        <label style="color:#000000" for="name" class="col-sm-3 control-label">Room Name</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="name" required
+                 [(ngModel)]="model.name" name="name" #name="ngModel">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label style="color:#000000" for="capacity" class="col-sm-3 control-label">Room Capacity</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000; color: #222222;" type="number" class="form-control" id="capacity"
+                 required [(ngModel)]="model.capacity" name="capacity" #capacity="ngModel">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label style="color:#000000" for="category" class="col-sm-3 control-label">Room Category</label>
+        <div class="col-sm-7">
+          <!--<input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="category"-->
+                 <!--required [(ngModel)]="model.category" name="category" #category="ngModel">-->
+          <select (change)="parseValue($event.target.value)">
+            <option *ngFor="let name of options" id="category"
+                    [value]="name">{{name}}</option>
+          </select>
+        </div>
+      </div>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="validationModal.close()">
+        Save
+      </button>
+    </modal-footer>
+  </form>
+</modal>
