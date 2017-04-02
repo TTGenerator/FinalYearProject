@@ -7,6 +7,7 @@ import {Injectable} from '@angular/core';
 export class SubjectsService {
   private _subjectsList = [
     {
+      sub_id:new Date(),
       code: 'CO421',
       name: 'Final Year Project I',
       teacher: '',
@@ -17,6 +18,7 @@ export class SubjectsService {
       isActive: false
     },
     {
+      sub_id:new Date(),
       code: 'CO422',
       name: 'Professional Practices',
       teacher: '',
@@ -27,6 +29,7 @@ export class SubjectsService {
       isActive: false
     },
     {
+      sub_id:new Date(),
       code: 'CO423',
       name: 'Software Project Management',
       teacher: '',
@@ -37,6 +40,7 @@ export class SubjectsService {
       isActive: false
     },
     {
+      sub_id:new Date(),
       code: 'CO424',
       name: 'Information Systems Management',
       teacher: '',

@@ -25,7 +25,7 @@ export class Subjects {
   model : Subject = new SubjectModal();
   selected: string;
   output: string;
-
+  isEdit:boolean=false;
   index: number = 0;
 
   constructor(private _subjectsService:SubjectsService) {
@@ -39,6 +39,7 @@ export class Subjects {
 
   dismissed() {
     this.output = '(dismissed)';
+    this.isEdit=false;
     this.model= new SubjectModal();
   }
 
@@ -63,33 +64,48 @@ export class Subjects {
     this.model.deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
+    this.model.sub_id=new Date();
     console.log(this.model);
-    for(let subject of this.subjectsList){
-      if(subject.code === this.model.code){
-        this.dismissed();
+    if(this.isEdit==true){
+      for(let subject of this.subjectsList){
+        if(subject.sub_id === this.model.sub_id){
+          console.log("edit");
+          subject.code=this.model.code;
+          subject.name=this.model.name;
+          subject.teacher=this.model.teacher;
+          subject.duration=this.model.duration;
+          subject.maxStudents=this.model.maxStudents;
+          subject.deleted=this.model.deleted;
+          subject.isChecked=this.model.isChecked;
+          subject.isActive=this.model.isActive;
+          this.dismissed();
+        }
       }
+    }else {
+      console.log("after edit");
+      this.subjectsList.push(this.model);
+      this.model= new SubjectModal();
     }
-    this.subjectsList.push(this.model);
-    this.model= new SubjectModal();
   }
 
   deleteSubjects(){
     for(let subject of this.subjectsList){
-        if(subject.isChecked == true){
-          subject.deleted = true;
-        }
+      if(subject.isChecked == true){
+        subject.deleted = true;
+      }
     }
   }
 
   editSubject(subject:Subject){
+    this.isEdit=true;
     console.log(subject);
     this.model=subject;
     this.modal.open();
-    console.log(this.modal);
   }
 }
 
 class SubjectModal implements Subject {
+  sub_id:Date;
   code: string;
   name:string;
   teacher:string;
