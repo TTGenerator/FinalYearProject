@@ -10,7 +10,6 @@ import {ModalComponent} from "ng2-bs4-modal/components/modal";
 import {FormGroup} from "@angular/forms";
 import {RoomCategory} from "../../../model/room-category";
 
-
 @Component({
   selector: 'rooms',
   templateUrl: './rooms.html',
@@ -49,13 +48,10 @@ export class Rooms {
 
   opened() {
     this.output = '(opened)';
-    console.log("opened");
-    console.log(this.modal);
   }
 
   open() {
     this.modal.open();
-    console.log("open");
   }
 
   getNotDeleted() {
@@ -69,11 +65,9 @@ export class Rooms {
     this.model.isChecked=false;
     this.model.isActive=false;
     this.model.room_id=new Date();
-    console.log(this.model);
     if(this.isEdit==true){
       for(let room of this.roomsList){
         if(room.room_id === this.model.room_id){
-          console.log("edit");
           room.name=this.model.name;
           room.capacity=this.model.capacity;
           room.category=this.model.category;
@@ -84,10 +78,10 @@ export class Rooms {
         }
       }
     }else {
-      console.log("after edit");
       this.roomsList.push(this.model);
       this.model= new RoomModal();
     }
+
   }
 
   deleteRooms(){
@@ -100,16 +94,10 @@ export class Rooms {
 
   editRoom(room:Room){
     this.isEdit=true;
-    console.log(room);
     this.model=room;
     this.modal.open();
   }
 
-  parseValue(value : string) {
-    this.model.category=value;
-    // this.myValue = AgentStatus[value];
-    // this.isOffline = this.myValue == AgentStatus.offline;
-  }
 }
 
 class RoomModal implements Room {

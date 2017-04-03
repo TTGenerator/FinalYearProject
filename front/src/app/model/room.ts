@@ -1,4 +1,3 @@
-import {RoomCategory} from "./room-category";
 /**
  * Created by jayani on 3/30/2017.
  */
