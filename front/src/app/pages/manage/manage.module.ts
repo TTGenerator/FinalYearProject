@@ -12,6 +12,8 @@ import {Subjects} from "./subjects/subjects.component";
 import {SubjectsService} from "./subjects/subjects.service";
 import {Rooms} from "./rooms/rooms.component";
 import {RoomsService} from "./rooms/rooms.service";
+import {Lecturers} from "./lecturers/lecturers.component";
+import {LecturersService} from "./lecturers/lecturers.service";
 import {ModalModule} from "ng2-bs4-modal/module/ng2-bs4-modal.module";
 
 @NgModule({
@@ -25,11 +27,13 @@ import {ModalModule} from "ng2-bs4-modal/module/ng2-bs4-modal.module";
   declarations: [
     Manage,
     Subjects,
-    Rooms
+    Rooms,
+    Lecturers
   ],
   providers: [
     SubjectsService,
-    RoomsService
+    RoomsService,
+    LecturersService
   ]
 })
 export class ManageModule {}
