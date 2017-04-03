@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-md-12">
+    <ba-card title="Lecturer Manage" baCardClass="with-scroll">
+
+      <div class="task-todo-container">
+        <div class="clearfix">
+          <button type="button" class="btn btn-success btn-with-icon pull-right" (click)="validationModal.open()"><i
+            class="ion-plus-round"></i>Add Lecturer
+          </button>
+        </div>
+        <div>
+          <ul class="todo-list">
+            <li *ngFor="let item of getNotDeleted()" [ngClass]="{checked: item.isChecked, active: item.isActive}"
+                (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false" style="padding:6px">
+
+              <div class="blur-container">
+                <div class="blur-box"></div>
+              </div>
+              <i class="mark"></i>
+              <div class="row">
+                <div class="col-md-4" style="float:left;padding-top:7px">
+                  <label class="todo-checkbox custom-checkbox custom-input-success">
+                    <input type="checkbox" [(ngModel)]="item.isChecked">
+                    <span class="cut-with-dots"> {{ item.name }} </span>
+                  </label>
+                </div>
+                <div class="col-md-8" style="float:left">
+                  <button type="button" class="btn btn-info btn-icon btn-sm" (click)="editLecturer(item)">
+                    <i class="ion-edit"></i>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix">
+        <button type="button" class="btn btn-danger btn-with-icon pull-right" (click)="deleteLecturers()"><i
+          class="ion-trash-a"></i>Delete
+        </button>
+      </div>
+    </ba-card>
+  </div>
+</div>
+
+
+<modal [animation]="true" [keyboard]="true" [backdrop]="'static'" (onClose)="closed()" (onDismiss)="dismissed()"
+       (onOpen)="opened()" #validationModal>
+  <form #modalForm="ngForm">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Add Lecturer Details</h4>
+    </modal-header>
+    <modal-body>
+
+      <div class="form-group row">
+        <label style="color:#000000" for="id" class="col-sm-3 control-label">Lecturer ID</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="id" required
+                 [(ngModel)]="model.id" name="id" #code="ngModel">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label style="color:#000000" for="name" class="col-sm-3 control-label">Lecturer Name</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="name" required
+                 [(ngModel)]="model.name" name="name" #code="ngModel">
+        </div>
+      </div>
+
+      <div class="form-group row">
+      <label style="color:#000000" for="deptID" class="col-sm-3 control-label">Department ID</label>
+      <div class="col-sm-8">
+        <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="deptID" required
+               [(ngModel)]="model.deptID" name="deptID" #code="ngModel">
+      </div>
+    </div>
+
+      <div class="form-group row">
+        <label style="color:#000000" for="coursesCodes" class="col-sm-3 control-label">Course Codes</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="coursesCodes" required
+                 [(ngModel)]="model.coursesCodes" name="coursesCodes" #code="ngModel">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label style="color:#000000" for="email" class="col-sm-3 control-label">Email</label>
+        <div class="col-sm-8">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="email" required
+                 [(ngModel)]="model.email" name="email" #code="ngModel">
+        </div>
+      </div>
+
+
+
+
+
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="validationModal.close()">
+        Save
+      </button>
+    </modal-footer>
+  </form>
+</modal>

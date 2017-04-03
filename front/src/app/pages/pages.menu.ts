@@ -37,6 +37,14 @@ export const PAGES_MENU = [
         },
         children: [
           {
+            path: 'lecturers',
+            data: {
+              menu: {
+                title: 'Lecturers',
+              }
+            }
+          },
+          {
             path: 'subjects',
             data: {
               menu: {
