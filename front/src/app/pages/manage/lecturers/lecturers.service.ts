@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 export class LecturersService {
   private _lecturersList = [
     {
-      id: 'CO01',
+      id:new Date(),
       name:'Dr.Roshan G Ragel',
       deptID:'CO',
       coursesCodes:'CO221 CO222',
@@ -17,7 +17,7 @@ export class LecturersService {
       isActive: false
     },
     {
-      id: 'CO02',
+      id: new Date(),
       name:'Dr.Dhammika Elkaduwe',
       deptID:'CO',
       coursesCodes:'CO223 CO224',
@@ -27,7 +27,7 @@ export class LecturersService {
       isActive: false
     },
     {
-      id: 'CO03',
+      id: new Date(),
       name:'Mr.Sampath Deegalla',
       deptID:'CO',
       coursesCodes:'CO322 CO225',
@@ -37,7 +37,7 @@ export class LecturersService {
       isActive: false
     },
     {
-      id: 'CO04',
+      id: new Date(),
       name:'Dr.Suneth Namal Karunarathna',
       deptID:'CO',
       coursesCodes:'CO226 CO421',

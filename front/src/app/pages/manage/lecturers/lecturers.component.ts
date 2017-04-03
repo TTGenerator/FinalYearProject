@@ -28,6 +28,7 @@ export class Lecturers {
   output: string;
 
   index: number = 0;
+  isEdit:boolean=false;
 
   constructor(private _LecturersService:LecturersService) {
     this.LecturersList = this._LecturersService.getLecturersList();
@@ -40,6 +41,7 @@ export class Lecturers {
 
   dismissed() {
     this.output = '(dismissed)';
+    this.isEdit=false;
     this.model= new LecturerModal();
   }
 
@@ -64,14 +66,32 @@ export class Lecturers {
     this.model.deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    console.log(this.model);
-    for(let Lecturer of this.LecturersList){
-      if(Lecturer.id === this.model.id){
-        this.dismissed();
+    this.model.id=new Date();
+    if(this.isEdit==true){
+      for(let subject of this.LecturersList){
+        if(subject.id === this.model.id){
+          console.log("edit");
+          subject.name=this.model.name;
+          subject.deptID=this.model.deptID;
+          subject.coursesCodes=this.model.coursesCodes;
+          subject.email=this.model.email;
+          subject.deleted=this.model.deleted;
+          subject.isChecked=this.model.isChecked;
+          subject.isActive=this.model.isActive;
+          subject.deleted=this.model.deleted;
+          subject.isChecked=this.model.isChecked;
+          subject.isActive=this.model.isActive;
+          this.dismissed();
+        }
       }
+    }else {
+      console.log("after edit");
+      this.LecturersList.push(this.model);
+      this.model= new LecturerModal();
     }
-    this.LecturersList.push(this.model);
-    this.model= new LecturerModal();
+
+
+
   }
 
   deleteLecturers(){
@@ -83,7 +103,7 @@ export class Lecturers {
   }
 
   editLecturer(Lecturer:Lecturer){
-    console.log(Lecturer);
+    this.isEdit=true;
     this.model=Lecturer;
     this.modal.open();
     console.log(this.modal);
@@ -91,7 +111,7 @@ export class Lecturers {
 }
 
 class LecturerModal implements Lecturer {
-  id: string;
+  id: Date;
   name:string;
   deptID:string;
   coursesCodes:string;
