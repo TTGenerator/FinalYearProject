@@ -55,6 +55,9 @@ $card-header-font-size: 16px;
   > .card-body {
     padding: 15px 22px;
     height: 100%;
+    background: #ffffff;
+    color:#001333;
+    border: solid 1px #001333;
   }
   > .card-header {
     color: $default-text;
@@ -68,19 +71,18 @@ $card-header-font-size: 16px;
 
 .card-header, .card-footer {
   color: $content-text;
-  border-bottom: $bootstrap-panel-header-border;
   height: $card-title-height;
   font-size: $card-header-font-size;
   $vertical-padding: ($card-title-height - $card-header-font-size) / 2;
   padding: $vertical-padding 22px;
-  background-color: $bootstrap-panel-header-bg;
+  background-color: #001333;
+  font-weight: bold;
 }
 
 .card-title {
   font-weight: $font-normal;
   font-size: $card-header-font-size;
   text-transform: uppercase;
-  opacity: 0.9;
   color: $content-text;
 }
 
