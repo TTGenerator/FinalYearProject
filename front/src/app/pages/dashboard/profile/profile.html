@@ -5,32 +5,34 @@
       <div class="col-md-2">
         <img src="/assets/img/app/profile/Nasta.png" style="width: 100%;border: 1px solid #001333; border-radius: 10px">
       </div>
-      <div class="col-md-10">
+      <div class="col-md-10" *ngIf="user.user_role == 'STUDENT'">
         <table>
           <tr>
-            <th style="padding: 5px"><b>Name :</b> </th>
-            <th style="padding: 5px">Illesinghe M.M </th>
-          </tr>
-          <tr>
             <th style="padding: 5px"><b>Reg No :</b> </th>
-            <th style="padding: 5px">E/12/132</th>
+            <th style="padding: 5px">{{user.user_name}}</th>
           </tr>
           <tr>
             <th style="padding: 5px"><b>E-mail Address :</b> </th>
-            <th style="padding: 5px">mayuri2illesinghe@gmail.com</th>
+            <th style="padding: 5px">{{user.user_name}}@pdn.ac.lk</th>
           </tr>
           <tr>
             <th style="padding: 5px"><b>Courses :</b> </th>
             <th style="padding: 5px">CO421 CO422 CO423 CO424</th>
           </tr>
         </table>
-        <!--<p> Illesinghe M.M</p>
-        <p><b>Reg No :</b>  E/12/132</p>
-        <p><b>E-mail Address :</b> mayuri2illesinghe@gmail.com</p>
-        <p><b>Courses :</b>  CO421 CO422 CO423 CO424</p>-->
-
       </div>
-
+      <div class="col-md-10" *ngIf="user.user_role == 'ADMIN' || user.user_role == 'STAFF'">
+        <table>
+          <tr>
+            <th style="padding: 5px"><b>Name :</b> </th>
+            <th style="padding: 5px">{{user.user_name}}</th>
+          </tr>
+          <tr>
+            <th style="padding: 5px"><b>E-mail Address :</b> </th>
+            <th style="padding: 5px">{{user.user_name}}@pdn.ac.lk</th>
+          </tr>
+        </table>
+      </div>
     </ba-card>
   </div>
 </div>

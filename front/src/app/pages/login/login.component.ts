@@ -4,6 +4,7 @@ import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/form
 import 'style-loader!./login.scss';
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login/loginService";
+import {User} from "../../model/user";
 
 @Component({
   selector: 'login',
@@ -19,7 +20,7 @@ export class Login {
 
   constructor(fb: FormBuilder, public router: Router, public LoginService: LoginService) {
     this.form = fb.group({
-      'name': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'name': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
 
@@ -34,9 +35,10 @@ export class Login {
 
   public onSubmit(values: any): void {
     this.submitted = true;
-    this.LoginService.setUsername(values.name);
     if (this.form.valid) {
-      if (values.name == "e12132" && values.password == "e12132" || values.name == "e12117" && values.password == "e12117" || values.name == "e12333"  ) {
+      if (values.password == this.LoginService.getPasswordByUsername(values.name)) {
+        this.LoginService.setUser(values.name);
+        console.log(this.LoginService.getUser());
         this.message = 'Trying to log in ...';
         this.LoginService.login().subscribe(() => {
           this.setMessage();
@@ -56,3 +58,5 @@ export class Login {
     this.setMessage();
   }
 }
+
+
