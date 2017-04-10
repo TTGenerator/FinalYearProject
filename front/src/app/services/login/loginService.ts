@@ -16,6 +16,7 @@ export class LoginService {
   redirectUrl: string;
   username: string;
   user: User = new UserModel();
+  public incorrectUsername:boolean = false;
   private _usersList = [
     {
       user_name: "e12333",
@@ -84,6 +85,8 @@ export class LoginService {
         return user.password;
       }
     }
+    this.incorrectUsername = true;
+
   }
 
   getUserRoleByeUsername(user_name: string): string {

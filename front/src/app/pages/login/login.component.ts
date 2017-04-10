@@ -16,6 +16,8 @@ export class Login {
   public name: AbstractControl;
   public password: AbstractControl;
   public submitted: boolean = false;
+  incorrectUsername:boolean;
+  incorrectPassword:boolean=false;
   message: string;
 
   constructor(fb: FormBuilder, public router: Router, public LoginService: LoginService) {
@@ -23,7 +25,7 @@ export class Login {
       'name': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
-
+    this.incorrectUsername=this.LoginService.incorrectUsername;
     this.name = this.form.controls['name'];
     this.password = this.form.controls['password'];
     this.setMessage();
@@ -48,6 +50,10 @@ export class Login {
           }
         });
       } else {
+        this.incorrectUsername=this.LoginService.incorrectUsername;
+        if(!this.incorrectUsername){
+          this.incorrectPassword= true;
+        }
         this.router.navigate(['/login'])
       }
     }
