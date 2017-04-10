@@ -9,13 +9,14 @@
 
         <div class="col-sm-10">
           <input [formControl]="name" type="text" class="form-control" id="inputName3" placeholder="Full Name">
+          <div class="alert alert-danger" *ngIf="(!name.valid && name.touched)|| incorrectUsername">Please add correct username !</div>
         </div>
       </div>
       <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
         <div class="col-sm-10">
           <input [formControl]="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+          <div class="alert alert-danger" *ngIf="(!password.valid && password.touched)|| incorrectPassword">Please add correct password !</div>
         </div>
       </div>
       <div class="form-group row">
