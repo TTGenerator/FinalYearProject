@@ -4,7 +4,7 @@
 
 import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 
-import {LecturersService} from "./lecturers.service";
+import {LecturersService} from "../../../services/manage/lecturers/lecturers.service";
 import {Lecturer} from "../../../model/Lecturer";
 import 'style-loader!./Lecturers.scss';
 import {ModalComponent} from "ng2-bs4-modal/components/modal";

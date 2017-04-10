@@ -3,11 +3,11 @@
  */
 import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 
-import {SubjectsService} from "./subjects.service";
 import {Subject} from "../../../model/subject";
 import 'style-loader!./subjects.scss';
 import {ModalComponent} from "ng2-bs4-modal/components/modal";
 import {FormGroup} from "@angular/forms";
+import {SubjectsService} from "../../../services/manage/subjects/subjects.service";
 
 
 @Component({

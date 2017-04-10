@@ -9,12 +9,12 @@ import { NgaModule } from '../../theme/nga.module';
 import {routing} from "./manage.routing";
 import {Manage} from "./manage.component";
 import {Subjects} from "./subjects/subjects.component";
-import {SubjectsService} from "./subjects/subjects.service";
 import {Rooms} from "./rooms/rooms.component";
-import {RoomsService} from "./rooms/rooms.service";
+import {RoomsService} from "../../services/manage/rooms/rooms.service";
 import {Lecturers} from "./lecturers/lecturers.component";
-import {LecturersService} from "./lecturers/lecturers.service";
+import {LecturersService} from "../../services/manage/lecturers/lecturers.service";
 import {ModalModule} from "ng2-bs4-modal/module/ng2-bs4-modal.module";
+import {SubjectsService} from "../../services/manage/subjects/subjects.service";
 
 @NgModule({
   imports: [

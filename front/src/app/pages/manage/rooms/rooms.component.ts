@@ -3,7 +3,7 @@
  */
 import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 
-import {RoomsService} from "./rooms.service";
+import {RoomsService} from "../../../services/manage/rooms/rooms.service";
 import {Room} from "../../../model/room";
 import 'style-loader!./rooms.scss';
 import {ModalComponent} from "ng2-bs4-modal/components/modal";
