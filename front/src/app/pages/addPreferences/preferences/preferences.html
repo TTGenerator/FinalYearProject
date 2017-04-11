@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-12">
+    <ba-card title="Lecturer Preferences" baCardClass="with-scroll">
+
+      <div>
+        <form action="">
+          <input type="radio" [(ngModel)]="model.sex"  name="sex" value="male">Male<br>
+          <input type="radio" [(ngModel)]="model.sex"  name="sex" value="female">Female
+        </form>
+
+        <input type="button" value="select male" (click)="model.sex='male'">
+        <input type="button" value="select female" (click)="model.sex='female'">
+        <div>Selected Radio: {{model.sex}}</div>
+      </div>
+
+
+
+    </ba-card>
+  </div>
+</div>
+
