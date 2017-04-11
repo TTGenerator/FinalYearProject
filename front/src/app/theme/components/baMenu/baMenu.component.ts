@@ -1,11 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Router, NavigationEnd} from '@angular/router';
+import {Subscription} from 'rxjs/Rx';
 
-import { BaMenuService } from '../../services';
-import { GlobalState } from '../../../global.state';
+import {BaMenuService} from '../../services';
+import {GlobalState} from '../../../global.state';
 
 import 'style-loader!./baMenu.scss';
+import {LoginService} from "../../../services/login/loginService";
 
 @Component({
   selector: 'ba-menu',
@@ -26,7 +27,7 @@ export class BaMenu {
   protected _onRouteChange: Subscription;
   public outOfArea: number = -200;
 
-  constructor(private _router: Router, private _service: BaMenuService, private _state: GlobalState) {
+  constructor(private _router: Router, private _service: BaMenuService, private _state: GlobalState, private LoginService:LoginService) {
   }
 
   public updateMenu(newMenuItems) {
@@ -83,5 +84,11 @@ export class BaMenu {
     }
 
     return false;
+  }
+
+  isAuthorized():any[]{
+    return this.menuItems.filter((item:any) => {
+      return ((item.route.data.authorizedRoles == this.LoginService.getUserRole())|| item.route.data.authorizedRoles === undefined)
+    })
   }
 }

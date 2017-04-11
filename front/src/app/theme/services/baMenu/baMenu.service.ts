@@ -10,6 +10,7 @@ export class BaMenuService {
 
   protected _currentMenuItem = {};
   public manageUserRole;
+  public convertedRoutes;
 
   constructor(private _router:Router) { }
 
@@ -20,6 +21,7 @@ export class BaMenuService {
    */
   public updateMenuByRoutes(routes: Routes) {
     let convertedRoutes = this.convertRoutesToMenus(_.cloneDeep(routes));
+    this.convertedRoutes = this.convertRoutesToMenus(_.cloneDeep(routes));
     this.manageUserRole=convertedRoutes[1].route.data.authorizedRoles;
     this.menuItems.next(convertedRoutes);
   }
@@ -126,4 +128,6 @@ export class BaMenuService {
     object.selected = this._router.isActive(this._router.createUrlTree(object.route.paths), object.pathMatch === 'full');
     return object;
   }
+
+
 }
