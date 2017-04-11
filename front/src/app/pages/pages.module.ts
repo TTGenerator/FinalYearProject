@@ -7,6 +7,7 @@ import { NgaModule } from '../theme/nga.module';
 import { Pages } from './pages.component';
 import {LoginService} from "../services/login/loginService";
 import {LoginRouteGuard} from "../services/login/loginRouteGuard";
+import {ManageRouteGuard} from "../services/manage/manageRouteGuard";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {LoginRouteGuard} from "../services/login/loginRouteGuard";
   declarations: [Pages],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     LoginService,
-    LoginRouteGuard
+    LoginRouteGuard,
+    ManageRouteGuard
   ]
 })
 export class PagesModule {

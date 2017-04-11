@@ -9,6 +9,7 @@ export class BaMenuService {
   menuItems = new BehaviorSubject<any[]>([]);
 
   protected _currentMenuItem = {};
+  public manageUserRole;
 
   constructor(private _router:Router) { }
 
@@ -19,6 +20,7 @@ export class BaMenuService {
    */
   public updateMenuByRoutes(routes: Routes) {
     let convertedRoutes = this.convertRoutesToMenus(_.cloneDeep(routes));
+    this.manageUserRole=convertedRoutes[1].route.data.authorizedRoles;
     this.menuItems.next(convertedRoutes);
   }
 

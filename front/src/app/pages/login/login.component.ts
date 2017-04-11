@@ -63,6 +63,13 @@ export class Login {
     this.LoginService.logout();
     this.setMessage();
   }
+
+//   var isAuthorized = function(authorizedRoles) {
+//   if (!angular.isArray(authorizedRoles)) {
+//     authorizedRoles = [authorizedRoles];
+//   }
+//   return (isAuthenticated && authorizedRoles.indexOf(role) !== -1);
+// };
 }
 
 

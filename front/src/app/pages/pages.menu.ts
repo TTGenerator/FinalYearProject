@@ -1,3 +1,4 @@
+import {UserRole} from "../model/user-role";
 export const PAGES_MENU = [
   {
     path: 'pages',
@@ -33,7 +34,8 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 600,
-          }
+          },
+          authorizedRoles: UserRole[UserRole.ADMIN]
         },
         children: [
           {
