@@ -73,7 +73,8 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 650,
-          }
+          },
+          authorizedRoles: UserRole[UserRole.ADMIN]
         }
       },
       {
@@ -97,7 +98,8 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 650,
-          }
+          },
+          authorizedRoles: UserRole[UserRole.STAFF]
         }
       },
       {
