@@ -48,25 +48,23 @@ public class Timetable {
     }
 
 
-    private HashMap<Integer, Group> getGroups() {
+    public HashMap<Integer, Group> getGroups() {
         return this.groups;
     }
 
-    private HashMap<Integer, Timeslot> getTimeslots() {
+    public HashMap<Integer, Timeslot> getTimeslots() {
         return this.timeslots;
     }
 
-    private HashMap<Integer, Course> getCourses() {
+    public HashMap<Integer, Course> getCourses() {
         return this.courses;
     }
 
-    private HashMap<Integer, Professor> getProfessors() {
+    public HashMap<Integer, Professor> getProfessors() {
         return this.professors;
     }
 
-    public HashMap<Integer, Room> getRooms() {
-        return this.rooms;
-    }
+    public HashMap<Integer, Room> getRooms() { return this.rooms; }
     /**
      * Add new room
      *

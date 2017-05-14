@@ -34,30 +34,22 @@ import org.codehaus.jackson.map.ObjectMapper;
 @RequestMapping(value = "/api/timetable")
 public class TimetableTabu{
 
-    int numClasses;
-    int numTimeSlots;
+    public int numClassRooms;
+    public int numTimeSlots;
+    public int[][] initialSolutionMatrix;
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
         // Get a Timetable object with all the available information.
         Timetable timetable = initializeTimetable();
+        System.out.println(this.numClassRooms);
+        System.out.println(this.numTimeSlots);
 
-//        ObjectMapper mapper = new ObjectMapper();
-//        try {
-//            //Object to JSON in file
-//            mapper.writeValue(new File("E://FYP/output.txt"), timetable);
-//            // Initialize our objects
-//        }catch (JsonGenerationException e) {
-//            e.printStackTrace();
-//        }catch (JsonMappingException e) {
-//            e.printStackTrace();
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
+        // Initialize object
+        createTimetableMatrix();
     }
 
 
-    private static Timetable initializeTimetable() {
+    public Timetable initializeTimetable() {
         // Create timetable
         Timetable timetable = new Timetable();
 
@@ -109,6 +101,15 @@ public class TimetableTabu{
         timetable.addGroup(8, 18, new int[]{2, 6});
         timetable.addGroup(9, 24, new int[]{1, 6});
         timetable.addGroup(10, 25, new int[]{3, 4});
+
+        this.numClassRooms = timetable.getRooms().size();
+        this.numTimeSlots = timetable.getTimeslots().size();
         return timetable;
+    }
+
+    public void createTimetableMatrix(){
+        int row = this.numClassRooms;
+        int column = this.numTimeSlots;
+        this.initialSolutionMatrix = new int[row][column];
     }
 }
