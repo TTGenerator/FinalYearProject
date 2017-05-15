@@ -27,6 +27,8 @@ import java.util.*;
 @CrossOrigin
 @RequestMapping(value = "/api/genetic")
 public class TimetableGenetic {
+    public String jsonArray;
+
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
         // Get a Timetable object with all the available information.
@@ -47,8 +49,6 @@ public class TimetableGenetic {
         // Start evolution loop
         while (ga.isTerminationConditionMet(generation, 1000) == false
                 && ga.isTerminationConditionMet(population) == false) {
-//            // Print fitness
-//            System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
 
             // Apply crossover
             population = ga.crossoverPopulation(population);
@@ -65,17 +65,11 @@ public class TimetableGenetic {
 
         // Print fitness
         timetable.createClasses(population.getFittest(0));
-//        System.out.println();
-//        System.out.println("Solution found in " + generation + " generations");
-//        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
-//        System.out.println("Clashes: " + timetable.calcClashes());
-//
-//        // Print classes
-//        System.out.println();
+
         net.mzouabi.ng2.server.dto.genetic.Class classes[] = timetable.getClasses();
 
         Gson gson = new Gson();
-        String jsonArray = gson.toJson(classes);
+        this.jsonArray = gson.toJson(classes);
 
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -152,5 +146,17 @@ public class TimetableGenetic {
         timetable.addGroup(9, 24, new int[]{1, 6});
         timetable.addGroup(10, 25, new int[]{3, 4});
         return timetable;
+    }
+
+    @RequestMapping(value = "/getTimetable", method = RequestMethod.GET)
+    public String getTimetable() {
+        mainmethod();
+        String timetable;
+        timetable = this.jsonArray;
+        try {
+            return timetable;
+        } catch (Exception e) {
+            return "failed";
+        }
     }
 }

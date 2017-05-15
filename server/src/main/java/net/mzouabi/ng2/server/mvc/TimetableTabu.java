@@ -1,6 +1,7 @@
 /**
  * Created by jayani on 5/14/2017.
  */
+
 package net.mzouabi.ng2.server.mvc;
 
 import org.slf4j.Logger;
@@ -128,7 +129,6 @@ public class TimetableTabu{
             JSONParser parser = new JSONParser();
             Object  initialArray;
             initialArray = parser.parse(new FileReader("E://FYP/JSON.txt"));
-
             System.out.println(initialArray);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -137,7 +137,5 @@ public class TimetableTabu{
         }catch (ClassCastException e) {
             e.printStackTrace();
         }
-
-
     }
 }
