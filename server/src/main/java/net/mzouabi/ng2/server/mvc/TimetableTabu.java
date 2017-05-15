@@ -29,6 +29,13 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/api/timetable")
@@ -46,6 +53,9 @@ public class TimetableTabu{
 
         // Initialize object
         createTimetableMatrix();
+
+        //Initial solution
+        createInitialSolution();
     }
 
 
@@ -111,5 +121,23 @@ public class TimetableTabu{
         int row = this.numClassRooms;
         int column = this.numTimeSlots;
         this.initialSolutionMatrix = new int[row][column];
+    }
+
+    public void createInitialSolution(){
+        try {
+            JSONParser parser = new JSONParser();
+            Object  initialArray;
+            initialArray = parser.parse(new FileReader("E://FYP/JSON.txt"));
+
+            System.out.println(initialArray);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
