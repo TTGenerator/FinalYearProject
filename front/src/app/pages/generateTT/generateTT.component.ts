@@ -4,13 +4,14 @@
 import {Component} from '@angular/core';
 import {GeneticTimetableService} from "../../services/genetic/GeneticTimetable.service";
 import {HTTPAppService} from "../../services/HttpApp.service";
+import {ClassType} from "../../model/classType";
 
 @Component({
   selector: 'generateTT',
   templateUrl: './generateTT.html'
 })
 export class GenerateTT {
-  public Timetable:Object;
+  public Timetable:ClassType[];
   constructor(private _httpService : HTTPAppService, private _geneticTimetableService: GeneticTimetableService) {
     this.loadTimetable();
   }
@@ -18,7 +19,8 @@ export class GenerateTT {
   loadTimetable() {
     this._geneticTimetableService.getTimetable().subscribe(
       data => {
-        console.log(data.text());
+        this.Timetable = data.json();
+        console.log(this.Timetable);
       }
     );
   }

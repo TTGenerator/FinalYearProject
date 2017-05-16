@@ -28,7 +28,7 @@ import java.util.*;
 @RequestMapping(value = "/api/genetic")
 public class TimetableGenetic {
     public String jsonArray;
-
+    public ClassType[] classArray;
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
         // Get a Timetable object with all the available information.
@@ -66,8 +66,9 @@ public class TimetableGenetic {
         // Print fitness
         timetable.createClasses(population.getFittest(0));
 
-        net.mzouabi.ng2.server.dto.genetic.Class classes[] = timetable.getClasses();
-
+        ClassType classes[] = timetable.getClasses();
+        System.out.println(classes.getClass().getName());
+        this.classArray = timetable.getClasses();
         Gson gson = new Gson();
         this.jsonArray = gson.toJson(classes);
 
@@ -149,14 +150,16 @@ public class TimetableGenetic {
     }
 
     @RequestMapping(value = "/getTimetable", method = RequestMethod.GET)
-    public String getTimetable() {
+    public ClassType[] getTimetable() {
         mainmethod();
-        String timetable;
-        timetable = this.jsonArray;
+        ClassType[] timetable= null;
+////        timetable = this.jsonArray;
         try {
+            timetable = this.classArray;
             return timetable;
         } catch (Exception e) {
-            return "failed";
+            return timetable;
         }
+
     }
 }

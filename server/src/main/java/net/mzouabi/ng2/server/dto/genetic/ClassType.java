@@ -5,7 +5,7 @@ package net.mzouabi.ng2.server.dto.genetic;
 /**
  * A simple class abstraction -- basically a container for class, group, module, professor, timeslot, and room IDs
  */
-public class Class {
+public class ClassType {
     private final int classId;
     private final int groupId;
     private final int moduleId;
@@ -14,13 +14,13 @@ public class Class {
     private int roomId;
 
     /**
-     * Initialize new Class
+     * Initialize new ClassType
      *
      * @param classId
      * @param groupId
      * @param moduleId
      */
-    public Class(int classId, int groupId, int moduleId) {
+    public ClassType(int classId, int groupId, int moduleId) {
         this.classId = classId;
         this.moduleId = moduleId;
         this.groupId = groupId;
@@ -58,7 +58,7 @@ public class Class {
      *
      * @return classId
      */
-    public int getClassId() {
+    public int getClassTypeId() {
         return this.classId;
     }
 

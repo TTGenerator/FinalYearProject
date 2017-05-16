@@ -15,13 +15,13 @@ import java.util.HashMap;
  * The most important methods in this class are createClasses and calcClashes.
  * <p>
  * The createClasses method accepts an Individual (really, a chromosome),
- * unpacks its chromosome, and creates Class objects from the genetic
- * information. Class objects are lightweight; they're just containers for
+ * unpacks its chromosome, and creates ClassType objects from the genetic
+ * information. ClassType objects are lightweight; they're just containers for
  * information with getters and setters, but it's more convenient to work with
  * them than with the chromosome directly.
  * <p>
  * The calcClashes method is used by GeneticAlgorithm.calcFitness, and requires
- * that createClasses has been run first. calcClashes looks at the Class objects
+ * that createClasses has been run first. calcClashes looks at the ClassType objects
  * created by createClasses, and figures out how many hard constraints have been
  * violated.
  */
@@ -32,7 +32,7 @@ public class Timetable {
     private final HashMap<Integer, Module> modules;
     private final HashMap<Integer, Group> groups;
     private final HashMap<Integer, Timeslot> timeslots;
-    private Class classes[];
+    private ClassType classes[];
 
     private int numClasses = 0;
 
@@ -142,19 +142,19 @@ public class Timetable {
      * Create classes using individual's chromosome
      * <p>
      * One of the two important methods in this class; given a chromosome,
-     * unpack it and turn it into an array of Class (with a capital C) objects.
-     * These Class objects will later be evaluated by the calcClashes method,
+     * unpack it and turn it into an array of ClassType (with a capital C) objects.
+     * These ClassType objects will later be evaluated by the calcClashes method,
      * which will loop through the Classes and calculate the number of
      * conflicting timeslots, rooms, professors, etc.
      * <p>
      * While this method is important, it's not really difficult or confusing.
-     * Just loop through the chromosome and create Class objects and store them.
+     * Just loop through the chromosome and create ClassType objects and store them.
      *
      * @param individual
      */
     public void createClasses(Individual individual) {
         // Init classes
-        Class classes[] = new Class[this.getNumClasses()];
+        ClassType classes[] = new ClassType[this.getNumClasses()];
 
         // Get individual's chromosome
         int chromosome[] = individual.getChromosome();
@@ -164,7 +164,7 @@ public class Timetable {
         for (Group group : this.getGroupsAsArray()) {
             int moduleIds[] = group.getModuleIds();
             for (int moduleId : moduleIds) {
-                classes[classIndex] = new Class(classIndex, group.getGroupId(), moduleId);
+                classes[classIndex] = new ClassType(classIndex, group.getGroupId(), moduleId);
 
                 // Add timeslot
                 classes[classIndex].addTimeslot(chromosome[chromosomePos]);
@@ -289,7 +289,7 @@ public class Timetable {
      *
      * @return classes
      */
-    public Class[] getClasses() {
+    public ClassType[] getClasses() {
         return this.classes;
     }
 
@@ -338,7 +338,7 @@ public class Timetable {
     public int calcClashes() {
         int clashes = 0;
 
-        for (Class classA : this.classes) {
+        for (ClassType classA : this.classes) {
             // Check room capacity
             int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
@@ -348,18 +348,18 @@ public class Timetable {
             }
 
             // Check if room is taken
-            for (Class classB : this.classes) {
+            for (ClassType classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId() && classA.getTimeslotId() == classB.getTimeslotId()
-                        && classA.getClassId() != classB.getClassId()) {
+                        && classA.getClassTypeId() != classB.getClassTypeId()) {
                     clashes++;
                     break;
                 }
             }
 
             // Check if professor is available
-            for (Class classB : this.classes) {
+            for (ClassType classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId()
-                        && classA.getClassId() != classB.getClassId()) {
+                        && classA.getClassTypeId() != classB.getClassTypeId()) {
                     clashes++;
                     break;
                 }
