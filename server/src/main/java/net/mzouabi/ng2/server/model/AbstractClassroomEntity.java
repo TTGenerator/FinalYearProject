@@ -6,6 +6,9 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 import java.io.Serializable;
 
+/**
+ * Created by Jayani on 05/30/17.
+ */
 @MappedSuperclass
 public class AbstractClassroomEntity implements Serializable {
 

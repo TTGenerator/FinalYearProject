@@ -7,6 +7,10 @@ import net.mzouabi.ng2.server.model.QClassroom;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * Created by Jayani on 05/30/17.
+ */
+
 public class ClassroomRepositoryImpl implements ClassroomRepositoryCustom {
 
     @PersistenceContext

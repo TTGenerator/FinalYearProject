@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * Created by Jayani on 05/30/17.
+ */
+
 @Entity
 public class Classroom extends AbstractClassroomEntity {
 
