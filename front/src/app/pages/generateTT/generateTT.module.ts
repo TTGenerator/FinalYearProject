@@ -6,6 +6,7 @@ import {GenerateTT} from "./generateTT.component";
 import {routing} from "./generateTT.routing";
 import {HTTPAppService} from "../../services/HttpApp.service";
 import {GeneticTimetableService} from "../../services/genetic/GeneticTimetable.service";
+import {BasicTablesService} from "../../services/generateTT/basicTables.service";
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {GeneticTimetableService} from "../../services/genetic/GeneticTimetable.s
   ],
   providers: [
     HTTPAppService,
-    GeneticTimetableService
+    GeneticTimetableService,
+    BasicTablesService
   ]
 })
 export class GenerateTTModule {}

@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="row">
+  <div class="col-md-12">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <ba-card title="Time Table" baCardClass="with-scroll">
+            <div class="horizontal-scroll">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>Time</th>
+                  <th class="align-right">Monday</th>
+                  <th class="align-right">Tuesday</th>
+                  <th class="align-right">Wednesday</th>
+                  <th class="align-right">Thursday</th>
+                  <th class="align-right">Friday</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of metricsTableData">
+                  <!--<td><img src="{{ ( item.image | baAppPicture )}}" width="20" height="20"></td>-->
+                  <!--<td ngClass="nowrap">{{ item.browser }}</td>-->
+                  <!--<td class="align-right">{{ item.visits }}</td>-->
+                  <!--<td class="align-right">{{ item.purchases }}</td>-->
+                  <!--<td class="align-right">{{ item.percent }}</td>-->
+                  <td class="align-right">8.00-8.55</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
 
-</body>
-</html>
+          </ba-card>
+        </div>
+      </div>
+  </div>
+</div>
+

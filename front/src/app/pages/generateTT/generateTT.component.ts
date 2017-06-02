@@ -5,15 +5,20 @@ import {Component} from '@angular/core';
 import {GeneticTimetableService} from "../../services/genetic/GeneticTimetable.service";
 import {HTTPAppService} from "../../services/HttpApp.service";
 import {ClassType} from "../../model/classType";
+import {BasicTablesService} from "../../services/generateTT/basicTables.service";
 
 @Component({
   selector: 'generateTT',
   templateUrl: './generateTT.html'
 })
 export class GenerateTT {
+
+  metricsTableData:Array<any>;
   public Timetable:ClassType[];
-  constructor(private _httpService : HTTPAppService, private _geneticTimetableService: GeneticTimetableService) {
+
+  constructor(private _basicTablesService: BasicTablesService, private _httpService : HTTPAppService, private _geneticTimetableService: GeneticTimetableService) {
     this.loadTimetable();
+    this.metricsTableData = this.Timetable;
   }
 
   loadTimetable() {
