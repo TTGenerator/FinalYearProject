@@ -28,11 +28,17 @@ public class ClassroomController {
     @Inject
     ClassroomService classroomService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/getAllClassrooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<ClassroomDTO>> findAllClassroom(Pageable pageable, HttpServletRequest req) {
         Page<ClassroomDTO> page = classroomService.findClassrooms(pageable);
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
-}
 
+    @RequestMapping(value = "/getClassroomByID/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClassroomDTO> getClassroomByID(@PathVariable String id, HttpServletRequest req) {
+        ClassroomDTO classroom = classroomService.getClassroomByID(id);
+        return new ResponseEntity<>(classroom, HttpStatus.OK);
+    }
+
+}
 

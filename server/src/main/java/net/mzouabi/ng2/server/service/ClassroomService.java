@@ -13,12 +13,6 @@ public interface ClassroomService {
 
     Page<ClassroomDTO> findClassrooms(Pageable pageable);
 
-//    ClassroomDTO getClassroom(String id);
-//
-//    void updateClassroom(ClassroomDTO classroomDTO);
-//
-//    void saveClassroom(ClassroomDTO classroomDTO);
-//
-//    void deleteClassroom(String id);
+    ClassroomDTO getClassroomByID(String id);
 
 }

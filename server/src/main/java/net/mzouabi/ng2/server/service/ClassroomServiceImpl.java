@@ -33,30 +33,9 @@ public class ClassroomServiceImpl implements ClassroomService {
         return classroomRepository.findAll(pageable).map(classroom -> classroomMapper.toDTO(classroom));
     }
 
-//    @Override
-//    public ClassroomDTO getClassroom(String id) {
-//        Classroom classroom = classroomRepository.getOne(id);
-//        if (classroom == null) {
-//            return null;
-//        } else {
-//            return classroomMapper.toDTO(classroom);
-//        }
-//    }
-//
-//    @Override
-//    public void updateClassroom(ClassroomDTO classroomDTO) {
-//        Classroom classroom = classroomRepository.findOne(classroomDTO.getRoomId());
-//        classroomMapper.mapToEntity(classroomDTO, classroom);
-//    }
-//
-//    @Override
-//    public void saveClassroom(ClassroomDTO classroomDTO) {
-//        Classroom classroom = classroomMapper.toEntity(classroomDTO);
-//        classroomRepository.save(classroom);
-//    }
-//
-//    @Override
-//    public void deleteClassroom(String id) {
-//        classroomRepository.delete(id);
-//    }
+    @Override
+    public ClassroomDTO getClassroomByID(String id) {
+        return classroomMapper.toDTO(classroomRepository.getOne(id));
+    }
+
 }
