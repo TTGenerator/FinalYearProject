@@ -45,6 +45,7 @@ export class Rooms {
     this.options = options.slice(options.length / 2);
   }
 
+
   closed() {
     this.output = '(closed) ' + this.selected;
     this.addToDoItem();
@@ -79,7 +80,7 @@ export class Rooms {
     this.model.isDeleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    this.model.roomId=new Date();
+    this.model.roomId  = Guid.newGuid();
     if(this.isEdit==true){
       for(let room of this.roomsList){
         if(room.roomId === this.model.roomId){
@@ -89,11 +90,13 @@ export class Rooms {
           room.isDeleted=this.model.isDeleted;
           room.isChecked=this.model.isChecked;
           room.isActive=this.model.isActive;
+          this._roomsService.updateClassRoom(room);
           this.dismissed();
         }
       }
     }else {
       this.roomsList.push(this.model);
+      this._roomsService.addClassRoom(this.model);
       this.model= new RoomModal();
     }
 
@@ -103,6 +106,7 @@ export class Rooms {
     for(let room of this.roomsList){
       if(room.isChecked == true){
         room.isDeleted = true;
+        this._roomsService.deleteClassRoomByID(room.roomId);
       }
     }
   }
@@ -116,7 +120,7 @@ export class Rooms {
 }
 
 class RoomModal implements Room {
-  roomId:Date;
+  roomId:string;
   roomName:string;
   capacity?:number;
   roomCategory:string;
@@ -124,3 +128,14 @@ class RoomModal implements Room {
   isChecked:boolean;
   isActive:boolean;
 }
+
+class Guid {
+  static newGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+    });
+  }
+}
+
+

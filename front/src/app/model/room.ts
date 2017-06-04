@@ -2,7 +2,7 @@
  * Created by jayani on 3/30/2017.
  */
 export interface Room {
-  roomId:Date;
+  roomId:string;
   roomName:string;
   capacity?:number;
   roomCategory:string;
