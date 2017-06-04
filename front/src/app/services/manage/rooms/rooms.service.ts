@@ -3,50 +3,51 @@
  */
 import {Injectable} from '@angular/core';
 import {RoomCategory} from "../../../model/room-category";
+import {Observable} from "rxjs/Observable";
+import {Http, Headers, Request, Response, URLSearchParams, RequestOptions} from "@angular/http";
+import "rxjs/add/operator/map";
+
+// Statics
+import "rxjs/add/observable/throw";
+
+// Operators
+import "rxjs/add/operator/catch";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/switchMap";
+import "rxjs/add/operator/toPromise";
+import {HTTPAppService} from "../../HttpApp.service";
+import {Room} from "../../../model/room";
+
 
 @Injectable()
-export class RoomsService {
-  private _roomsList = [
-    {
-      room_id: new Date(),
-      name:'SR1',
-      capacity: 50,
-      category: RoomCategory[RoomCategory.SR],
-      deleted: false,
-      isChecked: false,
-      isActive: false
-    },
-    {
-      room_id: new Date(),
-      name:'DO1',
-      capacity: 750,
-      category: RoomCategory[RoomCategory.DO],
-      deleted: false,
-      isChecked: false,
-      isActive: false
-    },
-    {
-      room_id: new Date(),
-      name:'LR21',
-      capacity: 75,
-      category: RoomCategory[RoomCategory.LR],
-      deleted: false,
-      isChecked: false,
-      isActive: false
-    },
-    {
-      room_id: new Date(),
-      name:'Lab',
-      capacity: 50,
-      category: RoomCategory[RoomCategory.LAB],
-      deleted: false,
-      isChecked: false,
-      isActive: false
-    }
-  ];
+export class RoomsService extends HTTPAppService {
+
+  constructor(public _http: Http) {
+    super(_http);
+  }
 
   getRoomsList() {
-    return this._roomsList;
+    return this._http.get("http://localhost:8080/api/classroom/getAllClassrooms");
+  }
+
+  deleteClassRoomByID(roomID:String){
+    console.log(roomID);
+    return this._http.delete("http://localhost:8080/api/classroom/updateClassRoom/{roomID}")
+  }
+
+  addClassRoom(room:Room){
+    console.log(room);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this._http.post("http://localhost:8080/api/classroom/getAllClassrooms", room, options)
+  }
+
+  updateClassRoom(room:Room) {
+    console.log(room);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this._http.post("http://localhost:8080/api/classroom/updateClassRoom", room, options)
   }
 }
 

@@ -60,7 +60,6 @@
             <column name="room_name" type="VARCHAR(50)"></column>
             <column name="room_category" type="VARCHAR(50)"></column>
             <column name="capacity" type="BIGINT(50)"></column>
-            <column name="is_active" type="BOOLEAN"></column>
             <column name="is_deleted" type="BOOLEAN"></column>
         </createTable>
 
@@ -119,26 +118,26 @@
             INSERT INTO Admin VALUES ('admin4', 'admin4@pdn.ac.lk');
             INSERT INTO Admin VALUES ('admin5', 'admin5@pdn.ac.lk');
 
-            INSERT INTO Classroom VALUES ('r2', 'room02', 'lecturehall', 150, true, false);
-            INSERT INTO Classroom VALUES ('r3', 'room03', 'lecturehall', 150, true, false);
-            INSERT INTO Classroom VALUES ('r7', 'room07', 'lecturehall', 300, true, false);
-            INSERT INTO Classroom VALUES ('r8', 'room08', 'lecturehall', 300, true, false);
-            INSERT INTO Classroom VALUES ('r9', 'room09', 'lecturehall', 320, true, false);
-            INSERT INTO Classroom VALUES ('r10', 'room10', 'lecturehall', 320, true, false);
-            INSERT INTO Classroom VALUES ('r11', 'room11', 'lecturehall', 320, true, false);
-            INSERT INTO Classroom VALUES ('r12', 'room12', 'lecturehall', 105, true, false);
-            INSERT INTO Classroom VALUES ('r13', 'room13', 'lecturehall', 44, true, false);
-            INSERT INTO Classroom VALUES ('r14', 'room14', 'lecturehall', 80, true, false);
-            INSERT INTO Classroom VALUES ('r15', 'room15', 'lecturehall', 45, true, false);
-            INSERT INTO Classroom VALUES ('r16', 'room16', 'lecturehall', 45, true, false);
-            INSERT INTO Classroom VALUES ('r17', 'room17', 'lecturehall', 45, true, false);
-            INSERT INTO Classroom VALUES ('r18', 'room18', 'lecturehall', 62, true, false);
-            INSERT INTO Classroom VALUES ('r19', 'room19', 'lecturehall', 105, true, false);
-            INSERT INTO Classroom VALUES ('r20', 'room20', 'lecturehall', 37, true, false);
-            INSERT INTO Classroom VALUES ('r21', 'room21', 'lecturehall', 104, true, false);
-            INSERT INTO Classroom VALUES ('r23', 'room23', 'lecturehall', 150, false, false);
-            INSERT INTO Classroom VALUES ('do1', 'drawing1', 'drawingoffice', 200, true, false);
-            INSERT INTO Classroom VALUES ('do2', 'drawing2', 'drawingoffice', 200, true, false);
+            INSERT INTO Classroom VALUES ('r2', 'room02', 'lecturehall', 150, false);
+            INSERT INTO Classroom VALUES ('r3', 'room03', 'lecturehall', 150, false);
+            INSERT INTO Classroom VALUES ('r7', 'room07', 'lecturehall', 300, false);
+            INSERT INTO Classroom VALUES ('r8', 'room08', 'lecturehall', 300, false);
+            INSERT INTO Classroom VALUES ('r9', 'room09', 'lecturehall', 320, false);
+            INSERT INTO Classroom VALUES ('r10', 'room10', 'lecturehall', 320, false);
+            INSERT INTO Classroom VALUES ('r11', 'room11', 'lecturehall', 320, false);
+            INSERT INTO Classroom VALUES ('r12', 'room12', 'lecturehall', 105, false);
+            INSERT INTO Classroom VALUES ('r13', 'room13', 'lecturehall', 44, false);
+            INSERT INTO Classroom VALUES ('r14', 'room14', 'lecturehall', 80, false);
+            INSERT INTO Classroom VALUES ('r15', 'room15', 'lecturehall', 45, false);
+            INSERT INTO Classroom VALUES ('r16', 'room16', 'lecturehall', 45, false);
+            INSERT INTO Classroom VALUES ('r17', 'room17', 'lecturehall', 45, false);
+            INSERT INTO Classroom VALUES ('r18', 'room18', 'lecturehall', 62, false);
+            INSERT INTO Classroom VALUES ('r19', 'room19', 'lecturehall', 105, false);
+            INSERT INTO Classroom VALUES ('r20', 'room20', 'lecturehall', 37, false);
+            INSERT INTO Classroom VALUES ('r21', 'room21', 'lecturehall', 104, false);
+            INSERT INTO Classroom VALUES ('r23', 'room23', 'lecturehall', 150, false);
+            INSERT INTO Classroom VALUES ('do1', 'drawing1', 'drawingoffice', 200, false);
+            INSERT INTO Classroom VALUES ('do2', 'drawing2', 'drawingoffice', 200, false);
 
             INSERT INTO Departments VALUES ('d1', 'Chemical and Process Engineering');
             INSERT INTO Departments VALUES ('d2', 'Civil Engineering');

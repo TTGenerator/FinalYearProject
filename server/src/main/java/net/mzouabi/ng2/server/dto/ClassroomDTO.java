@@ -15,8 +15,6 @@ public class ClassroomDTO extends AbstractClassroomDTO {
 
     private int capacity;
 
-    private boolean is_active;
-
     private boolean is_deleted;
 
     public String getRoomId() {
@@ -45,11 +43,8 @@ public class ClassroomDTO extends AbstractClassroomDTO {
 
     public void setCapacity(int capacity) { this.capacity = capacity; }
 
-    public boolean getIsActive() { return is_active; }
-
-    public void setIsActive(boolean is_active) { this.is_active = is_active; }
-
     public boolean getIsDeleted() { return is_deleted; }
 
     public void setIsDeleted(boolean is_deleted) { this.is_deleted = is_deleted; }
+
 }

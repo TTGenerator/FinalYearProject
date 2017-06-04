@@ -2,11 +2,11 @@
  * Created by jayani on 3/30/2017.
  */
 export interface Room {
-  room_id:Date;
-  name:string;
+  roomId:string;
+  roomName:string;
   capacity?:number;
-  category:string;
-  deleted:boolean;
+  roomCategory:string;
+  isDeleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }
