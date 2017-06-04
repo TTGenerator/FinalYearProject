@@ -19,6 +19,8 @@ public class ClassroomDTO extends AbstractClassroomDTO {
 
     private boolean is_deleted;
 
+    private boolean is_checked;
+
     public String getRoomId() {
         return room_id;
     }
@@ -52,4 +54,8 @@ public class ClassroomDTO extends AbstractClassroomDTO {
     public boolean getIsDeleted() { return is_deleted; }
 
     public void setIsDeleted(boolean is_deleted) { this.is_deleted = is_deleted; }
+
+    public boolean getIsChecked() { return is_checked; }
+
+    public void setIsChecked(boolean is_checked) { this.is_checked = is_checked; }
 }

@@ -30,7 +30,13 @@ export class Rooms {
   index: number = 0;
 
   constructor(private _roomsService:RoomsService) {
-    this.roomsList = this._roomsService.getRoomsList();
+    this._roomsService.getRoomsList().subscribe(
+      data => {
+        this.roomsList = data.json();
+        console.log(this.roomsList);
+      }
+    );
+
     var options = Object.keys(RoomCategory);
     this.options = options.slice(options.length / 2);
   }
@@ -55,23 +61,28 @@ export class Rooms {
   }
 
   getNotDeleted() {
+    console.log(this.roomsList);
+    if (this.roomsList ==null) {
+        return null;
+    }
+
     return this.roomsList.filter((item:Room) => {
-      return !item.deleted
-    })
+      return !item.isDeleted;
+    });
   }
 
   addToDoItem() {
-    this.model.deleted=false;
+    this.model.isDeleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    this.model.room_id=new Date();
+    this.model.roomId=new Date();
     if(this.isEdit==true){
       for(let room of this.roomsList){
-        if(room.room_id === this.model.room_id){
-          room.name=this.model.name;
+        if(room.roomId === this.model.roomId){
+          room.roomName=this.model.roomName;
           room.capacity=this.model.capacity;
-          room.category=this.model.category;
-          room.deleted=this.model.deleted;
+          room.roomCategory=this.model.roomCategory;
+          room.isDeleted=this.model.isDeleted;
           room.isChecked=this.model.isChecked;
           room.isActive=this.model.isActive;
           this.dismissed();
@@ -87,7 +98,7 @@ export class Rooms {
   deleteRooms(){
     for(let room of this.roomsList){
       if(room.isChecked == true){
-        room.deleted = true;
+        room.isDeleted = true;
       }
     }
   }
@@ -101,11 +112,11 @@ export class Rooms {
 }
 
 class RoomModal implements Room {
-  room_id:Date;
-  name:string;
+  roomId:Date;
+  roomName:string;
   capacity?:number;
-  category:string;
-  deleted:boolean;
+  roomCategory:string;
+  isDeleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }
