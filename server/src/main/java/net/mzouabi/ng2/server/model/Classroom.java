@@ -21,11 +21,7 @@ public class Classroom extends AbstractClassroomEntity {
 
     int capacity;
 
-    boolean is_active;
-
     boolean is_deleted;
-
-    boolean is_checked;
 
     public String getRoomId() {
         return room_id;
@@ -53,15 +49,8 @@ public class Classroom extends AbstractClassroomEntity {
 
     public void setCapacity(int capacity) { this.capacity = capacity; }
 
-    public boolean getIsActive() { return is_active; }
-
-    public void setIsActive(boolean is_active) { this.is_active = is_active; }
-
     public boolean getIsDeleted() { return is_deleted; }
 
     public void setIsDeleted(boolean is_deleted) { this.is_deleted = is_deleted; }
 
-    public boolean getIsChecked() { return is_checked; }
-
-    public void setIsChecked(boolean is_checked) { this.is_checked = is_checked; }
 }

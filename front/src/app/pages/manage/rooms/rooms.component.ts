@@ -26,7 +26,7 @@ export class Rooms {
   model : Room = new RoomModal();
   selected: string;
   output: string;
-  isEdit:boolean=false;
+  isEdit:boolean = false;
   index: number = 0;
 
   constructor(private _roomsService:RoomsService) {
@@ -34,6 +34,10 @@ export class Rooms {
       data => {
         this.roomsList = data.json();
         console.log(this.roomsList);
+        for(let room of this.roomsList){
+          room.isChecked = false;
+          room.isActive = false;
+        };
       }
     );
 
