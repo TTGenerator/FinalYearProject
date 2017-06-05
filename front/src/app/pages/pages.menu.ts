@@ -90,7 +90,7 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'addPreferences',
+        path: 'lecturerPreferences',
         data: {
           menu: {
             title: 'Add Preferences',

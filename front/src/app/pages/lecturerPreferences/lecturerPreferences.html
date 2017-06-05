@@ -1,0 +1,162 @@
+<div class="widgets">
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <ba-card title="Add Lecturer Preferences" baCardClass="with-scroll">
+        <div class="row">
+
+            <!--<ba-card >-->
+
+              <div>
+
+                <div class="blur-container">
+                  <div class="blur-box"></div>
+                </div>
+                <style>
+                  table, th, td{
+                    padding: 15px;
+                  }
+                </style>
+
+                <table>
+
+                  <tr>
+                    <td>
+                      Lecturer ID
+                    </td>
+
+                    <td>
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <div class="col-sm-8">
+                            <input type="email" class="form-control" id="input01" placeholder="Lecturer ID">
+                          </div>
+                        </div>
+                      </form>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>
+                      Need White Board?
+                    </td>
+
+                    <td>
+                      <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                          <input type="radio" name="WhiteBoardOptions" id="WhiteBoardYes" value="WhiteBoardYes">
+                          <span>Yes</span>
+                        </label>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                          <input type="radio" name="WhiteBoardOptions" id="WhiteBoardNo" value="WhiteBoardNo">
+                          <span>No</span>
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>
+                      Need Multimedia Facilities?
+                    </td>
+
+                    <td>
+                      <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                          <input type="radio" name="MultimediaOptions" id="MultimediaYes" value="MultimediaYes">
+                          <span>Yes</span>
+                        </label>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                          <input type="radio" name="MultimediaOptions" id="MultimediaNo" value="MultimediaNo">
+                          <span>No</span>
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>
+                      Need Air Condition lecture hall?
+                    </td>
+
+                    <td>
+                      <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                          <input type="radio" name="ACOptions" id="ACYes" value="ACYes">
+                          <span>Yes</span>
+                        </label>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                          <input type="radio" name="ACOptions" id="ACNo" value="ACNo">
+                          <span>No</span>
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+
+                </table>
+
+                <tr>
+                  <td>
+                    Preferred Day
+                  </td>
+
+                  <td>
+                    <div class="checkbox">
+                      <ba-multi-checkbox [(ngModel)]="checkboxModel" [propertiesMapping]="checkboxPropertiesMapping"></ba-multi-checkbox>
+                    </div>
+                  </td>
+                </tr>
+
+
+
+                <tr>
+                  <td>
+                    Preferred Time
+                  </td>
+
+                  <td>
+                    <div class="checkbox">
+                      <ba-multi-checkbox [(ngModel)]="checkboxTimeModel" [propertiesMapping]="checkboxTimePropertiesMapping"></ba-multi-checkbox>
+                    </div>
+                  </td>
+                </tr>
+
+              </div>
+
+
+
+              <!--<div class="clearfix">-->
+                <!--<button type="button" class="btn btn-primary btn-with-icon pull-right" [disabled]="!modalForm.valid" (click)="validationModal.close()">-->
+                  <!--Save-->
+                <!--</button>-->
+              <!--</div>-->
+            <!--</ba-card>-->
+          </div>
+
+
+      </ba-card>
+
+    </div>
+  </div>
+
+</div>

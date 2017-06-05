@@ -8,6 +8,7 @@ import {ManageRouteGuard} from "../services/manage/manageRouteGuard";
 // export function loadChildren(path) { return System.import(path); };
 
 export const routes: Routes = [
+
   {
     path: 'login',
     loadChildren: 'app/pages/login/login.module#LoginModule'
@@ -23,7 +24,9 @@ export const routes: Routes = [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [LoginRouteGuard]},
       {path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',canActivate: [LoginRouteGuard]},
       {path: 'manage', loadChildren: 'app/pages/manage/manage.module#ManageModule',canActivate: [LoginRouteGuard,ManageRouteGuard]},
-      {path: 'generateTT', loadChildren: 'app/pages/generateTT/generateTT.module#GenerateTTModule',canActivate: [LoginRouteGuard,ManageRouteGuard]}
+      {path: 'generateTT', loadChildren: 'app/pages/generateTT/generateTT.module#GenerateTTModule',canActivate: [LoginRouteGuard,ManageRouteGuard]},
+      {path: 'lecturerPreferences', loadChildren: 'app/pages/lecturerPreferences/lecturerPreferences.module#LecturerPreferencesModule',canActivate: [LoginRouteGuard,ManageRouteGuard]}
+
 
     ]
   }

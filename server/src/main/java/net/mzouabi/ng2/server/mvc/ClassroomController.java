@@ -39,6 +39,12 @@ public class ClassroomController {
         ClassroomDTO classroom = classroomService.getClassroomByID(id);
         return new ResponseEntity<>(classroom, HttpStatus.OK);
     }
+/*
+    @RequestMapping(value= "/DeleteClassroomByID/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<ClassroomDTO> DeleteClassroomByID(@PathVariable String id) {
+        //articleService.removeArticle(articleId);
+    }
+ */
 
 }
 

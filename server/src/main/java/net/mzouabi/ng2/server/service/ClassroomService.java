@@ -15,4 +15,6 @@ public interface ClassroomService {
 
     ClassroomDTO getClassroomByID(String id);
 
+    //void deleteClassroomByID(String id);
+
 }

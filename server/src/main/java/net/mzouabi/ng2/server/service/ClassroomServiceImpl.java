@@ -37,5 +37,10 @@ public class ClassroomServiceImpl implements ClassroomService {
     public ClassroomDTO getClassroomByID(String id) {
         return classroomMapper.toDTO(classroomRepository.getOne(id));
     }
-
+    /*
+    @Override
+    public void deleteClassroomByID(String id) {
+        //articleDao.removeArticle(id);
+    }
+    */
 }
