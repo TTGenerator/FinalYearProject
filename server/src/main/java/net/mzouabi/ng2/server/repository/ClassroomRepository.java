@@ -1,10 +1,12 @@
 package net.mzouabi.ng2.server.repository;
-
-import net.mzouabi.ng2.server.model.Classroom;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 /**
- * Created by Jayani on 05/30/17.
+ * Created by Jayani on 06/05/17.
  */
 
-public interface ClassroomRepository extends JpaRepository<Classroom, String>, ClassroomRepositoryCustom {}
+import org.springframework.data.repository.CrudRepository;
+import net.mzouabi.ng2.server.model.Classroom;
+
+
+public interface ClassroomRepository extends CrudRepository<Classroom, String> {
+
+}

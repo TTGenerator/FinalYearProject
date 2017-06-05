@@ -31,23 +31,59 @@ export class RoomsService extends HTTPAppService {
     return this._http.get("http://localhost:8080/api/classroom/getAllClassrooms");
   }
 
-  deleteClassRoomByID(roomID:String){
-    console.log(roomID);
-    return this._http.delete("http://localhost:8080/api/classroom/updateClassRoom/{roomID}")
+  deleteClassRoomByID(roomID:string){
+    let data = new URLSearchParams();
+    data.append('room_id', roomID);
+    this._http
+      .post('http://localhost:8080/api/classroom/deleteClassRoomByID', data)
+      .subscribe(data => {
+        alert('deleted successfully');
+      }, error => {
+        console.log(error.json());
+      });
   }
 
   addClassRoom(room:Room){
-    console.log(room);
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
-    return this._http.post("http://localhost:8080/api/classroom/getAllClassrooms", room, options)
+    let data = new URLSearchParams();
+    data.append('room_id', room.roomId);
+    data.append('room_name', room.roomName);
+    data.append('room_category', room.roomCategory);
+    data.append('capacity', (room.capacity).toString());
+    if(room.isDeleted){
+      data.append('is_deleted', "T");
+    }else{
+      data.append('is_deleted', "F");
+    }
+
+    this._http
+      .post('http://localhost:8080/api/classroom/addClassRoom', data)
+      .subscribe(data => {
+        alert('added successfully');
+      }, error => {
+        console.log(error.json());
+      });
   }
 
   updateClassRoom(room:Room) {
     console.log(room);
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
-    return this._http.post("http://localhost:8080/api/classroom/updateClassRoom", room, options)
+    let data = new URLSearchParams();
+    data.append('room_id', room.roomId);
+    data.append('room_name', room.roomName);
+    data.append('room_category', room.roomCategory);
+    data.append('capacity', (room.capacity).toString());
+    if(room.isDeleted){
+      data.append('is_deleted', "T");
+    }else{
+      data.append('is_deleted', "F");
+    }
+
+    this._http
+      .post('http://localhost:8080/api/classroom/updateClassRoom', data)
+      .subscribe(data => {
+        alert('updated successfully');
+      }, error => {
+        console.log(error.json());
+      });
   }
 }
 
