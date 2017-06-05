@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS Students ;
 DROP TABLE IF EXISTS Admin ;
 DROP TABLE IF EXISTS Courses ;
 DROP TABLE IF EXISTS Lecturers ;
-DROP TABLE IF EXISTS Classrooms ;
+DROP TABLE IF EXISTS Classroom ;
 DROP TABLE IF EXISTS Departments ;
 
 CREATE TABLE Departments (
@@ -57,7 +57,7 @@ CREATE TABLE Courses (
 	FOREIGN KEY (lecturer_id) REFERENCES Lecturers(lecturer_id)
 );
 
-CREATE TABLE Classrooms (
+CREATE TABLE Classroom (
   room_id VARCHAR(50)NOT NULL,
 	room_name VARCHAR(50),
 	room_category VARCHAR(50),
