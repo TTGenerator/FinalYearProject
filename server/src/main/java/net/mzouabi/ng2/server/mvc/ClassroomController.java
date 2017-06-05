@@ -2,6 +2,7 @@ package net.mzouabi.ng2.server.mvc;
 
 import net.mzouabi.ng2.server.dto.ClassroomDTO;
 import net.mzouabi.ng2.server.service.ClassroomService;
+import net.mzouabi.ng2.server.model.Classroom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
 /**
  * Created by Jayani on 05/30/17.
  */
@@ -29,9 +31,9 @@ public class ClassroomController {
     ClassroomService classroomService;
 
     @RequestMapping(value = "/getAllClassrooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<ClassroomDTO>> findAllClassroom(Pageable pageable, HttpServletRequest req) {
-        Page<ClassroomDTO> page = classroomService.findClassrooms(pageable);
-        return new ResponseEntity<>(page, HttpStatus.OK);
+    public ResponseEntity<List<Classroom>> findAllClassroom(Pageable pageable, HttpServletRequest req) {
+        List<Classroom> classroom = classroomService.findClassrooms(pageable);
+        return new ResponseEntity<>(classroom, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getClassroomByID/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,6 +47,21 @@ public class ClassroomController {
         //articleService.removeArticle(articleId);
     }
  */
+
+    @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void addClassRoom(@RequestBody ClassroomDTO classroomDTO) {
+        classroomService.addClassRoom(classroomDTO);
+    }
+
+    @RequestMapping(value = "/updateClassRoom", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updateClassRoom(@RequestBody ClassroomDTO classroomDTO) {
+        classroomService.updateClassRoom(classroomDTO);
+    }
+
+    @RequestMapping(value = "/deleteClassRoomByID/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteClassRoomByID(@PathVariable String id) {
+        classroomService.deleteClassRoomByID(id);
+    }
 
 }
 

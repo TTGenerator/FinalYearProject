@@ -64,7 +64,7 @@ ul.todo-list {
       }
       label.todo-checkbox > span {
         &:before {
-          color: white;
+          color: #000;
           content: '\f10c';
           margin-right: 20px;
           transition: margin-right 0.1s ease-out;
@@ -167,7 +167,7 @@ label.todo-checkbox {
         label.todo-checkbox > span {
           &:before {
             position: absolute;
-            color: $content-text;
+            color: #000;
             content: '\f10c';
             float: none;
             margin-right: 6px;
@@ -203,7 +203,7 @@ label.todo-checkbox {
 
     .modal-header {
       border: none;
-      background: #094cb7;
+      background: #001333;;
       color: #ffffff;
       padding: 8px;
       height: 42px;

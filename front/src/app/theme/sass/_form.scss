@@ -613,9 +613,9 @@ label.custom-checkbox {
   padding-left: 0;
   margin-bottom: 0;
   & > input {
-    height: 0;
+    height: 20px;
     z-index: -100 !important;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     &:checked {
       & + span {
@@ -627,10 +627,10 @@ label.custom-checkbox {
     }
     &:disabled {
       & + span {
-        color: $disabled;
+        color: #000;
         cursor: not-allowed;
         &:before {
-          border-color: $disabled !important;
+          border-color: #000 !important;
           cursor: not-allowed;
         }
       }

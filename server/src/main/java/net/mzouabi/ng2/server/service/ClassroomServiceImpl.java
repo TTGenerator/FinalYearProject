@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 /**
  * Created by Jayani on 05/30/17.
  */
@@ -29,18 +30,39 @@ public class ClassroomServiceImpl implements ClassroomService {
     ClassroomMapper classroomMapper;
 
     @Override
-    public Page<ClassroomDTO> findClassrooms(Pageable pageable) {
-        return classroomRepository.findAll(pageable).map(classroom -> classroomMapper.toDTO(classroom));
+    public List<Classroom> findClassrooms(Pageable pageable) {
+        List<Classroom> classroomDTO = classroomRepository.findAll();
+        return classroomDTO;
     }
 
     @Override
     public ClassroomDTO getClassroomByID(String id) {
         return classroomMapper.toDTO(classroomRepository.getOne(id));
     }
+<<<<<<< HEAD
     /*
     @Override
     public void deleteClassroomByID(String id) {
         //articleDao.removeArticle(id);
     }
     */
+=======
+
+    @Override
+    public void updateClassRoom(ClassroomDTO classroomDTO) {
+        Classroom classroom = classroomRepository.findOne(classroomDTO.getRoomId());
+        classroomMapper.mapToEntity(classroomDTO, classroom);
+    }
+
+    @Override
+    public void addClassRoom(ClassroomDTO classroomDTO) {
+        Classroom classroom = classroomMapper.toEntity(classroomDTO);
+        classroomRepository.save(classroom);
+    }
+
+    @Override
+    public void deleteClassRoomByID(String id) {
+        classroomRepository.delete(id);
+    }
+>>>>>>> cb7af5c05017432d428b3dad165eca07f0bfd3db
 }

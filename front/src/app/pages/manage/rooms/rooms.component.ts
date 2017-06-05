@@ -26,14 +26,25 @@ export class Rooms {
   model : Room = new RoomModal();
   selected: string;
   output: string;
-  isEdit:boolean=false;
+  isEdit:boolean = false;
   index: number = 0;
 
   constructor(private _roomsService:RoomsService) {
-    this.roomsList = this._roomsService.getRoomsList();
+    this._roomsService.getRoomsList().subscribe(
+      data => {
+        this.roomsList = data.json();
+        console.log(this.roomsList);
+        for(let room of this.roomsList){
+          room.isChecked = false;
+          room.isActive = false;
+        };
+      }
+    );
+
     var options = Object.keys(RoomCategory);
     this.options = options.slice(options.length / 2);
   }
+
 
   closed() {
     this.output = '(closed) ' + this.selected;
@@ -55,30 +66,37 @@ export class Rooms {
   }
 
   getNotDeleted() {
+    console.log(this.roomsList);
+    if (this.roomsList ==null) {
+        return null;
+    }
+
     return this.roomsList.filter((item:Room) => {
-      return !item.deleted
-    })
+      return !item.isDeleted;
+    });
   }
 
   addToDoItem() {
-    this.model.deleted=false;
+    this.model.isDeleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    this.model.room_id=new Date();
+    this.model.roomId  = Guid.newGuid();
     if(this.isEdit==true){
       for(let room of this.roomsList){
-        if(room.room_id === this.model.room_id){
-          room.name=this.model.name;
+        if(room.roomId === this.model.roomId){
+          room.roomName=this.model.roomName;
           room.capacity=this.model.capacity;
-          room.category=this.model.category;
-          room.deleted=this.model.deleted;
+          room.roomCategory=this.model.roomCategory;
+          room.isDeleted=this.model.isDeleted;
           room.isChecked=this.model.isChecked;
           room.isActive=this.model.isActive;
+          this._roomsService.updateClassRoom(room);
           this.dismissed();
         }
       }
     }else {
       this.roomsList.push(this.model);
+      this._roomsService.addClassRoom(this.model);
       this.model= new RoomModal();
     }
 
@@ -87,7 +105,8 @@ export class Rooms {
   deleteRooms(){
     for(let room of this.roomsList){
       if(room.isChecked == true){
-        room.deleted = true;
+        room.isDeleted = true;
+        this._roomsService.deleteClassRoomByID(room.roomId);
       }
     }
   }
@@ -101,11 +120,22 @@ export class Rooms {
 }
 
 class RoomModal implements Room {
-  room_id:Date;
-  name:string;
+  roomId:string;
+  roomName:string;
   capacity?:number;
-  category:string;
-  deleted:boolean;
+  roomCategory:string;
+  isDeleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }
+
+class Guid {
+  static newGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+    });
+  }
+}
+
+

@@ -1,4 +1,5 @@
 @import '../../../theme/sass/conf/conf';
+@import "../../../theme/components/baCheckbox/baCheckbox";
 
 input.task-todo {
   margin-bottom: 8px;
@@ -64,7 +65,7 @@ ul.todo-list {
       }
       label.todo-checkbox > span {
         &:before {
-          color: white;
+          color: #000;
           content: '\f10c';
           margin-right: 20px;
           transition: margin-right 0.1s ease-out;
@@ -167,7 +168,7 @@ label.todo-checkbox {
         label.todo-checkbox > span {
           &:before {
             position: absolute;
-            color: $content-text;
+            color:#000;
             content: '\f10c';
             float: none;
             margin-right: 6px;
