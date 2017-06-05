@@ -1,51 +1,47 @@
 package net.mzouabi.ng2.server.model;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.Date;
-
 /**
- * Created by Jayani on 05/30/17.
+ * Created by Jayani on 06/05/17.
  */
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
-public class Classroom extends AbstractClassroomEntity {
+@Table(name = "Classroom")
+public class Classroom {
 
-    private static final long serialVersionUID = -6321180910534044216L;
+    @Id
+    @Column(name = "room_id")
+    public String room_id;
 
-    String room_id;
+    @Column(name = "room_name")
+    public String room_name;
 
-    String room_name;
+    @Column(name = "room_category")
+    public String room_category;
 
-    String room_category;
+    @Column(name = "capacity")
+    public int capacity;
 
-    int capacity;
+    @Column(name = "is_deleted")
+    public boolean is_deleted;
 
-    boolean is_deleted;
+    public String getRoomId() { return room_id; }
 
-    public String getRoomId() {
-        return room_id;
-    }
+    public void setRoomId(String room_id) { this.room_id = room_id; }
 
-    public void setRoomId(String room_id) {
-        this.room_id = room_id;
-    }
-
-    public String getRoomName() {
-        return room_name;
-    }
+    public String getRoomName() { return room_name; }
 
     public void setRoomName(String room_name) { this.room_name = room_name; }
 
-    public String getRoomCategory() {
-        return room_category;
-    }
+    public String getRoomCategory() { return room_category; }
 
     public void setRoomCategory(String room_category) { this.room_category = room_category; }
 
-    public int getCapacity() {
-        return capacity;
-    }
+    public int getCapacity() { return capacity;}
 
     public void setCapacity(int capacity) { this.capacity = capacity; }
 
