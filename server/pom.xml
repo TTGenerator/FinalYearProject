@@ -5,7 +5,7 @@
 
 	<groupId>com.addapps</groupId>
 	<artifactId>server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>server</name>
 	<description>TTGenerator web app Auth Service</description>
@@ -25,6 +25,16 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zuul</artifactId>
@@ -150,6 +160,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-war-plugin</artifactId>-->
+				<!--<version>3.0.0</version>-->
+				<!--<configuration>-->
+					<!--<webappDirectory>E:/apache-tomcat-9.0.0.M8/webapps/FinalYearProject</webappDirectory>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
 		</plugins>
 	</build>
 </project>
