@@ -45,14 +45,14 @@ public class ClassroomController {
 
         System.out.println("get success");
         Classroom newClassroom = new Classroom();
-        newClassroom.setRoomId(room_id);
-        newClassroom.setRoomName(room_name);
-        newClassroom.setRoomCategory(room_category);
+        newClassroom.setRoom_id(room_id);
+        newClassroom.setRoom_name(room_name);
+        newClassroom.setRoom_category(room_category);
         newClassroom.setCapacity(Integer.parseInt(capacity));
         if(is_deleted=="T"){
-            newClassroom.setIsDeleted(true);
+            newClassroom.setIs_deleted(true);
         }else{
-            newClassroom.setIsDeleted(false);
+            newClassroom.setIs_deleted(false);
         }
 
         classroomRepository.save(newClassroom);
@@ -81,13 +81,13 @@ public class ClassroomController {
         Classroom classroom = null;
         classroom = classroomRepository.findOne(room_id);
         if(classroom != null){
-            classroom.setRoomName(room_name);
-            classroom.setRoomCategory(room_category);
+            classroom.setRoom_name(room_name);
+            classroom.setRoom_category(room_category);
             classroom.setCapacity(Integer.parseInt(capacity));
             if(is_deleted=="T"){
-                classroom.setIsDeleted(true);
+                classroom.setIs_deleted(true);
             }else{
-                classroom.setIsDeleted(false);
+                classroom.setIs_deleted(false);
             }
 
             classroomRepository.save(classroom);
