@@ -1,4 +1,4 @@
-import {UserRole} from "../model/user-role";
+import {Role} from "../model/user-role";
 export const PAGES_MENU = [
   {
     path: 'pages',
@@ -35,7 +35,7 @@ export const PAGES_MENU = [
             expanded: false,
             order: 600,
           },
-          authorizedRoles: UserRole[UserRole.ADMIN]
+          authorizedRoles: Role[Role.ADMIN]
         },
         children: [
           {
@@ -74,7 +74,7 @@ export const PAGES_MENU = [
             expanded: false,
             order: 650,
           },
-          authorizedRoles: UserRole[UserRole.ADMIN]
+          authorizedRoles: Role[Role.ADMIN]
         }
       },
       {
@@ -99,7 +99,7 @@ export const PAGES_MENU = [
             expanded: false,
             order: 650,
           },
-          authorizedRoles: UserRole[UserRole.STAFF]
+          authorizedRoles: Role[Role.STAFF]
         }
       },
       {

@@ -5,15 +5,15 @@
       <div class="col-md-2">
         <img src="/assets/img/app/profile/Nasta.png" style="width: 100%;border: 1px solid #001333; border-radius: 10px">
       </div>
-      <div class="col-md-10" *ngIf="user.user_role == 'STUDENT'">
+      <div class="col-md-10" *ngIf="user.role == 'STUDENT'">
         <table>
           <tr>
             <th style="padding: 5px"><b>Reg No :</b> </th>
-            <th style="padding: 5px">{{user.user_name}}</th>
+            <th style="padding: 5px">{{user.name}}</th>
           </tr>
           <tr>
             <th style="padding: 5px"><b>E-mail Address :</b> </th>
-            <th style="padding: 5px">{{user.user_name}}@pdn.ac.lk</th>
+            <th style="padding: 5px">{{user.name}}@pdn.ac.lk</th>
           </tr>
           <tr>
             <th style="padding: 5px"><b>Courses :</b> </th>
@@ -21,15 +21,15 @@
           </tr>
         </table>
       </div>
-      <div class="col-md-10" *ngIf="user.user_role == 'ADMIN' || user.user_role == 'STAFF'">
+      <div class="col-md-10" *ngIf="user.role == 'ADMIN' || user.role == 'STAFF'">
         <table>
           <tr>
             <th style="padding: 5px"><b>Name :</b> </th>
-            <th style="padding: 5px">{{user.user_name}}</th>
+            <th style="padding: 5px">{{user.name}}</th>
           </tr>
           <tr>
             <th style="padding: 5px"><b>E-mail Address :</b> </th>
-            <th style="padding: 5px">{{user.user_name}}@pdn.ac.lk</th>
+            <th style="padding: 5px">{{user.name}}@pdn.ac.lk</th>
           </tr>
         </table>
       </div>

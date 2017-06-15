@@ -1,49 +1,38 @@
 /**
- * Created by jayani on 3/24/2017.
+ * Created by jayani on 6/14/2017.
  */
 import {Injectable} from '@angular/core';
+import {Observable} from "rxjs/Observable";
+import {Http, Headers, Request, Response, URLSearchParams, RequestOptions} from "@angular/http";
+import "rxjs/add/operator/map";
 
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
-import {UserRole} from "../../model/user-role";
+// Statics
+import "rxjs/add/observable/throw";
+
+// Operators
+import "rxjs/add/operator/catch";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/switchMap";
+import "rxjs/add/operator/toPromise";
+import {HTTPAppService} from "../HttpApp.service";
 import {User} from "../../model/user";
 
+
 @Injectable()
-export class LoginService {
+export class LoginService extends HTTPAppService {
   isLoggedIn: boolean = false;
   redirectUrl: string;
   username: string;
   user: User = new UserModel();
   public incorrectUsername:boolean = false;
-  private _usersList = [
-    {
-      user_name: "e12333",
-      password: "e12333",
-      user_role: UserRole[UserRole.STUDENT]
-    },
-    {
-      user_name: "e12132",
-      password: "e12132",
-      user_role: UserRole[UserRole.STUDENT]
-    },
-    {
-      user_name: "e12117",
-      password: "e12117",
-      user_role: UserRole[UserRole.STUDENT]
-    },
-    {
-      user_name: "admin",
-      password: "admin123",
-      user_role: UserRole[UserRole.ADMIN]
-    },
-    {
-      user_name: "staff",
-      password: "staff123",
-      user_role: UserRole[UserRole.STAFF]
-    }
-  ];
+  private _usersList;
+
+  constructor(public _http: Http) {
+    super(_http);
+    this._usersList = this._http.get("http://localhost:8080/api/userRole/getAllUsers");
+
+  }
 
   login(): Observable<boolean> {
     return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
@@ -54,21 +43,21 @@ export class LoginService {
   }
 
   getUsername(): string {
-    return this.user.user_name;
+    return this.user.name;
   }
 
   getPassword(): string {
     return this.user.password;
   }
 
-  getUserRole(): string {
-    return this.user.user_role;
+  getRole(): string {
+    return this.user.role;
   }
 
-  setUser(user_name: string) {
+  setUser(name: string) {
     let userlist = this.getUsersList();
     for (let user of userlist) {
-      if (user.user_name == user_name) {
+      if (user.name == name) {
         this.user = user;
       }
     }
@@ -78,10 +67,10 @@ export class LoginService {
     return this.user;
   }
 
-  getPasswordByUsername(user_name: string): string {
+  getPasswordByUsername(name: string): string {
     let userlist = this.getUsersList();
     for (let user of userlist) {
-      if (user.user_name == user_name) {
+      if (user.name == name) {
         return user.password;
       }
     }
@@ -89,11 +78,11 @@ export class LoginService {
 
   }
 
-  getUserRoleByeUsername(user_name: string): string {
+  getRoleByeUsername(name: string): string {
     let userlist = this.getUsersList();
     for (let user of userlist) {
-      if (user.user_name == user_name) {
-        return user.user_role;
+      if (user.name == name) {
+        return user.role;
       }
     }
   }
@@ -101,9 +90,12 @@ export class LoginService {
   getUsersList() {
     return this._usersList;
   }
+
 }
+
 class UserModel implements User {
-  user_name: string;
+  name: string;
   password: string;
-  user_role: string;
+  role: string;
 }
+

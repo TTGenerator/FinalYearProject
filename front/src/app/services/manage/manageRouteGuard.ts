@@ -9,7 +9,7 @@ import {BaMenuService} from "../../theme/services/baMenu/baMenu.service";
 @Injectable()
 export class ManageRouteGuard implements CanActivate {
   public route: any;
-  public activeUserRole;
+  public activeRole;
 
   constructor(private LoginService: LoginService, private router: Router, private BaMenuService: BaMenuService) {
   }
@@ -23,26 +23,26 @@ export class ManageRouteGuard implements CanActivate {
   isAuthorized(url: string): boolean {
     switch (this.route.routeConfig.path) {
       case "dashboard":
-        this.activeUserRole = this.BaMenuService.dashboardUserRole;
+        this.activeRole = this.BaMenuService.dashboardRole;
         break;
       case "manage":
-        this.activeUserRole = this.BaMenuService.manageUserRole;
+        this.activeRole = this.BaMenuService.manageRole;
         break;
       case "generateTT":
-        this.activeUserRole = this.BaMenuService.generateTTUserRole;
+        this.activeRole = this.BaMenuService.generateTTRole;
         break;
       case "viewTT":
-        this.activeUserRole = this.BaMenuService.viewTTUserRole;
+        this.activeRole = this.BaMenuService.viewTTRole;
         break;
       case "addPreferences":
-        this.activeUserRole = this.BaMenuService.addPreferencesUserRole;
+        this.activeRole = this.BaMenuService.addPreferencesRole;
         break;
       case "mail":
-        this.activeUserRole = this.BaMenuService.mailUserRole;
+        this.activeRole = this.BaMenuService.mailRole;
         break;
     }
-    let user_role = this.LoginService.getUserRole();
-    if (this.activeUserRole == user_role) {
+    let role = this.LoginService.getRole();
+    if (this.activeRole == role) {
       return true;
     }
     this.LoginService.redirectUrl = url;

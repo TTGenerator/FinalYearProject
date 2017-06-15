@@ -9,12 +9,12 @@ export class BaMenuService {
   menuItems = new BehaviorSubject<any[]>([]);
 
   protected _currentMenuItem = {};
-  public dashboardUserRole;
-  public manageUserRole;
-  public generateTTUserRole;
-  public viewTTUserRole;
-  public mailUserRole;
-  public addPreferencesUserRole;
+  public dashboardRole;
+  public manageRole;
+  public generateTTRole;
+  public viewTTRole;
+  public mailRole;
+  public addPreferencesRole;
   public convertedRoutes;
 
   constructor(private _router: Router) {
@@ -31,22 +31,22 @@ export class BaMenuService {
     for (let item of convertedRoutes) {
       switch (item.route.path) {
         case "dashboard":
-          this.dashboardUserRole = item.route.data.authorizedRoles;
+          this.dashboardRole = item.route.data.authorizedRoles;
           break;
         case "manage":
-          this.manageUserRole = item.route.data.authorizedRoles;
+          this.manageRole = item.route.data.authorizedRoles;
           break;
         case "generateTT":
-          this.generateTTUserRole = item.route.data.authorizedRoles;
+          this.generateTTRole = item.route.data.authorizedRoles;
           break;
         case "viewTT":
-          this.viewTTUserRole = item.route.data.authorizedRoles;
+          this.viewTTRole = item.route.data.authorizedRoles;
           break;
         case "addPreferences":
-          this.addPreferencesUserRole = item.route.data.authorizedRoles;
+          this.addPreferencesRole = item.route.data.authorizedRoles;
           break;
         case "mail":
-          this.mailUserRole = item.route.data.authorizedRoles;
+          this.mailRole = item.route.data.authorizedRoles;
           break;
       }
     }

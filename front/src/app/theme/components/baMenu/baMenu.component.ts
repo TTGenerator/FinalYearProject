@@ -88,7 +88,7 @@ export class BaMenu {
 
   isAuthorized():any[]{
     return this.menuItems.filter((item:any) => {
-      return ((item.route.data.authorizedRoles == this.LoginService.getUserRole())|| item.route.data.authorizedRoles === undefined)
+      return ((item.route.data.authorizedRoles == this.LoginService.getRole())|| item.route.data.authorizedRoles === undefined)
     })
   }
 }
