@@ -25,13 +25,12 @@ export class LoginService extends HTTPAppService {
   redirectUrl: string;
   username: string;
   user: User = new UserModel();
+  tempUser: User = new UserModel();
+  checkResult:boolean;
   public incorrectUsername:boolean = false;
-  private _usersList;
 
   constructor(public _http: Http) {
     super(_http);
-    this._usersList = this._http.get("http://localhost:8080/api/userRole/getAllUsers");
-
   }
 
   login(): Observable<boolean> {
@@ -54,43 +53,55 @@ export class LoginService extends HTTPAppService {
     return this.user.role;
   }
 
-  setUser(name: string) {
-    let userlist = this.getUsersList();
-    for (let user of userlist) {
-      if (user.name == name) {
-        this.user = user;
-      }
-    }
+  setUser() {
+        this.user = this.tempUser;
   }
 
   getUser(): User {
     return this.user;
   }
 
-  getPasswordByUsername(name: string): string {
-    let userlist = this.getUsersList();
-    for (let user of userlist) {
-      if (user.name == name) {
-        return user.password;
-      }
-    }
-    this.incorrectUsername = true;
-
+  getUserByUsername(name:string){
+    let data = new URLSearchParams();
+    data.append('name', name);
+    this._http
+      .post('http://localhost:8080/api/userRole/getUserByUsername', data)
+      .subscribe(data => {
+        //console.log("successfully");
+        this.tempUser = data.json();
+      }, error => {
+        console.log(error.json());
+      });
   }
 
-  getRoleByeUsername(name: string): string {
-    let userlist = this.getUsersList();
-    for (let user of userlist) {
-      if (user.name == name) {
-        return user.role;
-      }
-    }
-  }
+  checkUser(name:string, password:string){
+    let data = new URLSearchParams();
+    data.append('name', name);
+    data.append('password', password);
 
-  getUsersList() {
-    return this._usersList;
-  }
+    this._http
+      .post('http://localhost:8080/api/userRole/checkUser', data)
+      .subscribe(data => {
+        this.checkResult = data.json();
+        if(!this.checkResult){
+          this.incorrectUsername = true;
+        }
+      }, error => {
+        console.log(error.json());
+      });
+    this.getUserByUsername(name);
+    this.setUser();
+    return this.checkResult;
 
+    // console.log(this.tempUser);
+    // if(this.user!= null && password == this.tempUser.password){
+    //   this.setUser();
+    //   return true;
+    // }else {
+    //   this.incorrectUsername = true;
+    //   return false;
+    // }
+  }
 }
 
 class UserModel implements User {

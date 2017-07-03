@@ -35,4 +35,28 @@ public class RoleController {
         return userRoleRepository.findAll();
     }
 
+    @RequestMapping(value = "/getUserByUsername", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Role getUserByUsername(@RequestParam("name") String name) {
+        Role resultUser = null;
+        resultUser = userRoleRepository.findOne(name);
+        return resultUser;
+    }
+
+    @RequestMapping(value = "/checkUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public boolean checkUser(
+            @RequestParam("name") String name,
+            @RequestParam("password") String password) {
+        Role resultUser = null;
+        resultUser = userRoleRepository.findOne(name);
+        System.out.println(password);
+        System.out.println(resultUser.password);
+        if(password.equals(resultUser.password)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

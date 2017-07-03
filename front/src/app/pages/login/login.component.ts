@@ -35,11 +35,35 @@ export class Login {
     this.message = 'Logged ' + (this.LoginService.isLoggedIn ? 'in' : 'out');
   }
 
+  // public onSubmit(values: any): void {
+  //   this.submitted = true;
+  //   if (this.form.valid) {
+  //     this.LoginService.getUserByUsername(values.name);
+  //     if (values.password == this.LoginService.getPasswordByUsername(values.name)) {
+  //       this.LoginService.setUser(values.name);
+  //       console.log(this.LoginService.getUser());
+  //       this.message = 'Trying to log in ...';
+  //       this.LoginService.login().subscribe(() => {
+  //         this.setMessage();
+  //         if (this.LoginService.isLoggedIn) {
+  //           let redirect = this.LoginService.redirectUrl ? this.LoginService.redirectUrl : '/pages/dashboard';
+  //           this.router.navigate([redirect]);
+  //         }
+  //       });
+  //     } else {
+  //       this.incorrectUsername=this.LoginService.incorrectUsername;
+  //       if(!this.incorrectUsername){
+  //         this.incorrectPassword= true;
+  //       }
+  //       this.router.navigate(['/login'])
+  //     }
+  //   }
+  // }
+
   public onSubmit(values: any): void {
     this.submitted = true;
     if (this.form.valid) {
-      if (values.password == this.LoginService.getPasswordByUsername(values.name)) {
-        this.LoginService.setUser(values.name);
+      if (this.LoginService.checkUser(values.name, values.password)) {
         console.log(this.LoginService.getUser());
         this.message = 'Trying to log in ...';
         this.LoginService.login().subscribe(() => {
@@ -50,6 +74,7 @@ export class Login {
           }
         });
       } else {
+        console.log(this.LoginService.checkUser(values.name, values.password));
         this.incorrectUsername=this.LoginService.incorrectUsername;
         if(!this.incorrectUsername){
           this.incorrectPassword= true;
@@ -58,6 +83,7 @@ export class Login {
       }
     }
   }
+
 
   logout() {
     this.LoginService.logout();
