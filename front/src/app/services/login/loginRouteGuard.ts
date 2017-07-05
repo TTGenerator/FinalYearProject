@@ -19,7 +19,7 @@ export class LoginRouteGuard implements CanActivate {
   checkLogin(url: string): boolean {
     if (this.LoginService.isLoggedIn) { return true; }
     this.LoginService.redirectUrl = url;
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
     return false;
   }
 }

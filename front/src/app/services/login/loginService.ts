@@ -95,22 +95,22 @@ export class LoginService extends HTTPAppService {
         console.log(this.checkResult)
         if(!this.checkResult.valid || data.status == 500){
           this.incorrectUsername = true;
-          return true;
         } else {
-          //  this.getUserByUsername(name);
-          //   this.setUser();
+          this.isLoggedIn = true;
           this.user = this.checkResult.data;
-            let redirect = this.redirectUrl ? this.redirectUrl : '/pages/dashboard';
-            this.router.navigate([redirect]);
+          let redirect = this.redirectUrl ? this.redirectUrl : '/pages/dashboard';
+          this.router.navigate([redirect]);
         }
       }, error => {
         this.incorrectUsername = true;
         console.log(error.json());
-        return false;
       });
 
-      return true;
   }
+
+returnTrue(){
+  return true;
+}
 }
 
 class UserModel implements User {

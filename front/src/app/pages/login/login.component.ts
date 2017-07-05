@@ -70,7 +70,7 @@ export class Login {
       //   })
 
       console.log("=======",values.name, values.password);
-      this.incorrectPassword = this.LoginService.checkUser(values.name, values.password);
+      this.LoginService.checkUser(values.name, values.password);
       // if (this.LoginService.checkUser(values.name, values.password)) {
       //   console.log(this.LoginService.getUser());
       //   this.message = 'Trying to log in ...';
