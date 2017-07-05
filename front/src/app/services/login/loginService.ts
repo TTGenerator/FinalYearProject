@@ -97,8 +97,9 @@ export class LoginService extends HTTPAppService {
           this.incorrectUsername = true;
           return true;
         } else {
-           this.getUserByUsername(name);
-            this.setUser();
+          //  this.getUserByUsername(name);
+          //   this.setUser();
+          this.user = this.checkResult.data;
             let redirect = this.redirectUrl ? this.redirectUrl : '/pages/dashboard';
             this.router.navigate([redirect]);
         }
