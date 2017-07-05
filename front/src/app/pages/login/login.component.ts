@@ -63,24 +63,32 @@ export class Login {
   public onSubmit(values: any): void {
     this.submitted = true;
     if (this.form.valid) {
-      if (this.LoginService.checkUser(values.name, values.password)) {
-        console.log(this.LoginService.getUser());
-        this.message = 'Trying to log in ...';
-        this.LoginService.login().subscribe(() => {
-          this.setMessage();
-          if (this.LoginService.isLoggedIn) {
-            let redirect = this.LoginService.redirectUrl ? this.LoginService.redirectUrl : '/pages/dashboard';
-            this.router.navigate([redirect]);
-          }
-        });
-      } else {
-        console.log(this.LoginService.checkUser(values.name, values.password));
-        this.incorrectUsername=this.LoginService.incorrectUsername;
-        if(!this.incorrectUsername){
-          this.incorrectPassword= true;
-        }
-        this.router.navigate(['/login'])
-      }
+
+      // this.LoginService.checkIsValidUser(values.name, values.password)
+      //   .subscribe(data => {
+      //     console.log("------>>>>>",data)
+      //   })
+
+      console.log("=======",values.name, values.password);
+      this.incorrectPassword = this.LoginService.checkUser(values.name, values.password);
+      // if (this.LoginService.checkUser(values.name, values.password)) {
+      //   console.log(this.LoginService.getUser());
+      //   this.message = 'Trying to log in ...';
+      //   this.LoginService.login().subscribe(() => {
+      //     this.setMessage();
+      //     if (this.LoginService.isLoggedIn) {
+      //       let redirect = this.LoginService.redirectUrl ? this.LoginService.redirectUrl : '/pages/dashboard';
+      //       this.router.navigate([redirect]);
+      //     }
+      //   });
+      // } else {
+      //   console.log(this.LoginService.checkUser(values.name, values.password));
+      //   this.incorrectUsername=this.LoginService.incorrectUsername;
+      //   if(!this.incorrectUsername){
+      //     this.incorrectPassword= true;
+      //   }
+      //   this.router.navigate(['/login'])
+      // }
     }
   }
 

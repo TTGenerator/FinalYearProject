@@ -34,11 +34,11 @@ INSERT INTO Departments VALUES ('d6', 'Engineering Mathematics');
 INSERT INTO Departments VALUES ('d7', 'Mechanical Engineering');
 INSERT INTO Departments VALUES ('d8', 'Production and Manufacturing Engineering');
 
-INSERT INTO Role VALUES ('admin', 'ADMIN', 'admin123');
-INSERT INTO Role VALUES ('staff', 'STAFF', 'staff123');
-INSERT INTO Role VALUES ('e12333', 'STUDENT', 'e12333');
-INSERT INTO Role VALUES ('e12132', 'STUDENT', 'e12132');
-INSERT INTO Role VALUES ('e12117', 'STUDENT', 'e12117');
+INSERT INTO role VALUES ('admin', 'ADMIN', 'admin123');
+INSERT INTO role VALUES ('staff', 'STAFF', 'staff123');
+INSERT INTO role VALUES ('e12333', 'STUDENT', 'e12333');
+INSERT INTO role VALUES ('e12132', 'STUDENT', 'e12132');
+INSERT INTO role VALUES ('e12117', 'STUDENT', 'e12117');
 
 INSERT INTO RoomFacility VALUES ('r2', false, true, false);
 INSERT INTO RoomFacility VALUES ('r3', false, true, false);

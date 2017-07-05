@@ -3,6 +3,7 @@ package net.mzouabi.ng2.server.mvc;
  * Created by Jayani on 06/05/17.
  */
 
+import net.mzouabi.ng2.server.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,20 +44,24 @@ public class RoleController {
         return resultUser;
     }
 
-    @RequestMapping(value = "/checkUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/checkUser/{name}/{password}", method = RequestMethod.GET)
     @ResponseBody
-    public boolean checkUser(
-            @RequestParam("name") String name,
-            @RequestParam("password") String password) {
+    public Response checkUser(
+            @PathVariable("name") String name,
+            @PathVariable("password") String password) {
+        Response response = new Response();
+
+        response.setMessage("user invalid");
         Role resultUser = null;
+        boolean isValiedUser = false;
         resultUser = userRoleRepository.findOne(name);
-        System.out.println(password);
-        System.out.println(resultUser.password);
         if(password.equals(resultUser.password)){
-            return true;
-        }else{
-            return false;
+            isValiedUser = true;
+            response.setMessage("user valid");
+            response.setData(resultUser);
         }
+        response.setValid(isValiedUser);
+        return response;
     }
 
 }

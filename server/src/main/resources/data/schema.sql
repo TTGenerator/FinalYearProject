@@ -1,12 +1,13 @@
--- DROP DATABASE TTGenerator;
--- CREATE DATABASE TTGenerator;
--- drop user admin@localhost;
--- flush privileges;
--- create user admin@localhost identified by 'admin123';
--- grant all on TTGenerator.* to 'admin'@'localhost';
--- flush privileges;
+--  DROP DATABASE TTGenerator;
+--  CREATE DATABASE TTGenerator;
+--  drop user admin@localhost;
+--  flush privileges;
+--  create user admin@localhost identified by 'admin123';
+--  grant all on TTGenerator.* to 'admin'@'localhost';
+--  flush privileges;
 
 DROP TABLE IF EXISTS LecturerPreferences ;
+DROP TABLE IF EXISTS role ;
 DROP TABLE IF EXISTS Role ;
 DROP TABLE IF EXISTS RoomFacility ;
 DROP TABLE IF EXISTS Students ;
@@ -76,7 +77,7 @@ CREATE TABLE LecturerPreferences (
 	PRIMARY KEY(lecturer_id)
 );
 
-CREATE TABLE Role (
+CREATE TABLE role (
 	name VARCHAR(50)NOT NULL,
   role VARCHAR(50),
 	password VARCHAR(50),

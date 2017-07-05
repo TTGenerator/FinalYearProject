@@ -20,10 +20,10 @@ export const routes: Routes = [
     path: 'pages',
     component: Pages,
     children: [
-      {path: '', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [LoginRouteGuard]},
-      {path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',canActivate: [LoginRouteGuard]},
-      {path: 'manage', loadChildren: 'app/pages/manage/manage.module#ManageModule',canActivate: [LoginRouteGuard,ManageRouteGuard]},
-      {path: 'generateTT', loadChildren: 'app/pages/generateTT/generateTT.module#GenerateTTModule',canActivate: [LoginRouteGuard,ManageRouteGuard]}
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule'},
+      {path: 'manage', loadChildren: 'app/pages/manage/manage.module#ManageModule'},
+      {path: 'generateTT', loadChildren: 'app/pages/generateTT/generateTT.module#GenerateTTModule'}
 
     ]
   }

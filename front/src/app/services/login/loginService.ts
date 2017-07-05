@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Http, Headers, Request, Response, URLSearchParams, RequestOptions} from "@angular/http";
 import "rxjs/add/operator/map";
+import {Router} from "@angular/router";
 
 // Statics
 import "rxjs/add/observable/throw";
@@ -26,10 +27,10 @@ export class LoginService extends HTTPAppService {
   username: string;
   user: User = new UserModel();
   tempUser: User = new UserModel();
-  checkResult:boolean;
+  checkResult:any;
   public incorrectUsername:boolean = false;
 
-  constructor(public _http: Http) {
+  constructor(public _http: Http, public router: Router) {
     super(_http);
   }
 
@@ -74,33 +75,40 @@ export class LoginService extends HTTPAppService {
       });
   }
 
+  checkIsValidUser(name:string, password:string){
+    return Observable.of(this._http.get('http://localhost:8080/api/userRole/checkUser/'+name+'/'+password));
+  }
+
+  setValidUser(user: User){
+    this.user = user
+  }
+
   checkUser(name:string, password:string){
     let data = new URLSearchParams();
     data.append('name', name);
     data.append('password', password);
 
     this._http
-      .post('http://localhost:8080/api/userRole/checkUser', data)
+      .get('http://localhost:8080/api/userRole/checkUser/'+name+'/'+password)
       .subscribe(data => {
         this.checkResult = data.json();
-        if(!this.checkResult){
+        console.log(this.checkResult)
+        if(!this.checkResult.valid || data.status == 500){
           this.incorrectUsername = true;
+          return true;
+        } else {
+           this.getUserByUsername(name);
+            this.setUser();
+            let redirect = this.redirectUrl ? this.redirectUrl : '/pages/dashboard';
+            this.router.navigate([redirect]);
         }
       }, error => {
+        this.incorrectUsername = true;
         console.log(error.json());
+        return false;
       });
-    this.getUserByUsername(name);
-    this.setUser();
-    return this.checkResult;
 
-    // console.log(this.tempUser);
-    // if(this.user!= null && password == this.tempUser.password){
-    //   this.setUser();
-    //   return true;
-    // }else {
-    //   this.incorrectUsername = true;
-    //   return false;
-    // }
+      return true;
   }
 }
 
