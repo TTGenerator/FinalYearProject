@@ -42,7 +42,7 @@ export class BaMenuService {
         case "viewTT":
           this.viewTTRole = item.route.data.authorizedRoles;
           break;
-        case "addPreferences":
+        case "lecturerPreferences":
           this.addPreferencesRole = item.route.data.authorizedRoles;
           break;
         case "mail":
@@ -50,7 +50,6 @@ export class BaMenuService {
           break;
       }
     }
-
     this.menuItems.next(convertedRoutes);
   }
 

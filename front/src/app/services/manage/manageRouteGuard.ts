@@ -34,7 +34,7 @@ export class ManageRouteGuard implements CanActivate {
       case "viewTT":
         this.activeRole = this.BaMenuService.viewTTRole;
         break;
-      case "addPreferences":
+      case "lecturerPreferences":
         this.activeRole = this.BaMenuService.addPreferencesRole;
         break;
       case "mail":

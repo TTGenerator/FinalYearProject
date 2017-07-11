@@ -33,6 +33,12 @@ public class ClassroomController {
     public Iterable<Classroom> findAllClassroom() {
         return classroomRepository.findAll();
     }
+/*
+    @RequestMapping(value= "/DeleteClassroomByID/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<ClassroomDTO> DeleteClassroomByID(@PathVariable String id) {
+        //articleService.removeArticle(articleId);
+    }
+ */
 
     @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
