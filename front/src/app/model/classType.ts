@@ -8,6 +8,6 @@ export interface ClassType {
   moduleId:number;
   professorId:number;
   timeslotId:number;
-  roomId:number;
+  room_id:number;
 
 }

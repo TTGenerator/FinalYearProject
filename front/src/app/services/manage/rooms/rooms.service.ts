@@ -45,11 +45,11 @@ export class RoomsService extends HTTPAppService {
 
   addClassRoom(room:Room){
     let data = new URLSearchParams();
-    data.append('room_id', room.roomId);
-    data.append('room_name', room.roomName);
-    data.append('room_category', room.roomCategory);
+    data.append('room_id', room.room_id);
+    data.append('room_name', room.room_name);
+    data.append('room_category', room.room_category);
     data.append('capacity', (room.capacity).toString());
-    if(room.isDeleted){
+    if(room.is_deleted){
       data.append('is_deleted', "T");
     }else{
       data.append('is_deleted', "F");
@@ -67,11 +67,11 @@ export class RoomsService extends HTTPAppService {
   updateClassRoom(room:Room) {
     console.log(room);
     let data = new URLSearchParams();
-    data.append('room_id', room.roomId);
-    data.append('room_name', room.roomName);
-    data.append('room_category', room.roomCategory);
+    data.append('room_id', room.room_id);
+    data.append('room_name', room.room_name);
+    data.append('room_category', room.room_category);
     data.append('capacity', (room.capacity).toString());
-    if(room.isDeleted){
+    if(room.is_deleted){
       data.append('is_deleted', "T");
     }else{
       data.append('is_deleted', "F");
