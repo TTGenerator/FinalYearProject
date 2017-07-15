@@ -17,7 +17,7 @@ public class TimeslotDTO {
      * @param timeslotId The ID for this timeslot
      * @param timeslot   The timeslot being initalized
      */
-    public Timeslot(int timeslotId, String timeslot) {
+    public TimeslotDTO(int timeslotId, String timeslot) {
         this.timeslotId = timeslotId;
         this.timeslot = timeslot;
     }

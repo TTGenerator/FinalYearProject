@@ -15,7 +15,7 @@ public class Classroom {
 
     @Id
     @Column(name = "room_id")
-    public String room_id;
+    public int room_id;
 
     @Column(name = "room_name")
     public String room_name;
@@ -29,9 +29,9 @@ public class Classroom {
     @Column(name = "is_deleted")
     public boolean is_deleted;
 
-    public String getRoom_id() { return room_id; }
+    public int getRoom_id() { return room_id; }
 
-    public void setRoom_id(String room_id) { this.room_id = room_id; }
+    public void setRoom_id(int room_id) { this.room_id = room_id; }
 
     public String getRoom_name() { return room_name; }
 

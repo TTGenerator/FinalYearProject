@@ -43,7 +43,7 @@ public class ClassroomController {
     @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void addClassRoom(
-            @RequestParam("room_id") String room_id,
+            @RequestParam("room_id") int room_id,
             @RequestParam("room_name") String room_name,
             @RequestParam("room_category") String room_category,
             @RequestParam("capacity") String capacity,
@@ -66,9 +66,9 @@ public class ClassroomController {
 
     @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void deleteClassRoomByID(@RequestParam("room_id") String room_id) {
+    public void deleteClassRoomByID(@RequestParam("room_id") int room_id) {
         Classroom resultClassroom = null;
-        resultClassroom = classroomRepository.findOne(room_id);
+        resultClassroom = classroomRepository.findOne(Integer.toString(room_id));
         if(resultClassroom != null){
             classroomRepository.delete(resultClassroom);
         }else{
@@ -78,14 +78,14 @@ public class ClassroomController {
 
     @RequestMapping(value = "/updateClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void updateClassRoom(@RequestParam("room_id") String room_id,
+    public void updateClassRoom(@RequestParam("room_id") int room_id,
                                 @RequestParam("room_name") String room_name,
                                 @RequestParam("room_category") String room_category,
                                 @RequestParam("capacity") String capacity,
                                 @RequestParam("is_deleted") String is_deleted) {
 
         Classroom classroom = null;
-        classroom = classroomRepository.findOne(room_id);
+        classroom = classroomRepository.findOne(Integer.toString(room_id));
         if(classroom != null){
             classroom.setRoom_name(room_name);
             classroom.setRoom_category(room_category);

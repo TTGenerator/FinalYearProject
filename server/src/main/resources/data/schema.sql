@@ -15,52 +15,54 @@ DROP TABLE IF EXISTS Courses ;
 DROP TABLE IF EXISTS Lecturers ;
 DROP TABLE IF EXISTS Classroom ;
 DROP TABLE IF EXISTS Departments ;
+DROP TABLE IF EXISTS timeslots ;
 
 CREATE TABLE Departments (
-  dept_id VARCHAR(50)NOT NULL,
+  dept_id int NOT NULL,
 	dept_name VARCHAR(50),
 	PRIMARY KEY(dept_id)
 );
 
 CREATE TABLE Students (
-  student_id VARCHAR(10)NOT NULL,
+  student_id int NOT NULL,
   student_name VARCHAR(50),
   batch_id VARCHAR(10),
-  dept_id VARCHAR(10),
+  dept_id int,
 	student_email VARCHAR(40),
 	PRIMARY KEY(student_id),
 	FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
 );
 
 CREATE TABLE Admin (
-  admin_id VARCHAR(10)NOT NULL,
+  admin_id int NOT NULL,
 	admin_email VARCHAR(40),
 	PRIMARY KEY(admin_id)
 );
 
 CREATE TABLE Lecturers (
-  lecturer_id VARCHAR(50)NOT NULL,
+  lecturer_id int NOT NULL,
 	lecturer_name VARCHAR(100),
 	lecturer_email VARCHAR(40),
-	dept_id VARCHAR(50),
+	dept_id int,
 	has_preferences BOOLEAN,
 	PRIMARY KEY(lecturer_id),
 	FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
 );
 
 CREATE TABLE Courses (
+  course_id int NOT NULL,
   course_code VARCHAR(10)NOT NULL,
 	course_name VARCHAR(25),
 	duration NUMERIC(10) ,
 	is_deleted BOOLEAN,
-	lecturer_id VARCHAR(50),
+	lecturer_id int,
 	max_students INTEGER(10),
   PRIMARY KEY(course_code),
 	FOREIGN KEY (lecturer_id) REFERENCES Lecturers(lecturer_id)
 );
 
 CREATE TABLE Classroom (
-  room_id VARCHAR(50)NOT NULL,
+  room_id int NOT NULL,
 	room_name VARCHAR(50),
 	room_category VARCHAR(50),
 	capacity NUMERIC(50),
@@ -69,7 +71,7 @@ CREATE TABLE Classroom (
 );
 
 CREATE TABLE LecturerPreferences (
-  lecturer_id VARCHAR(50)NOT NULL,
+  lecturer_id int NOT NULL,
 	is_ac BOOLEAN,
 	has_multimedia BOOLEAN,
 	has_whiteboard BOOLEAN,
@@ -84,9 +86,15 @@ CREATE TABLE role (
 );
 
 CREATE TABLE RoomFacility (
-  room_id VARCHAR(50)NOT NULL,
+  room_id int NOT NULL,
 	is_ac BOOLEAN,
 	has_multimedia BOOLEAN,
 	has_whiteboard BOOLEAN,
 	PRIMARY KEY(room_id)
+);
+
+CREATE TABLE timeslots (
+  timeslot_id int NOT NULL,
+	timeslot VARCHAR(50),
+	PRIMARY KEY(timeslot_id)
 );

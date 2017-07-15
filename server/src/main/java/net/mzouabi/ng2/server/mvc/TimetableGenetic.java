@@ -4,6 +4,8 @@
 package net.mzouabi.ng2.server.mvc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -20,7 +22,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.IOException;
+
 import net.mzouabi.ng2.server.dto.genetic.*;
+import net.mzouabi.ng2.server.repository.*;
+import net.mzouabi.ng2.server.model.*;
+
 import java.util.*;
 
 @RestController
@@ -29,11 +35,34 @@ import java.util.*;
 public class TimetableGenetic {
     public String jsonArray;
     public ClassType[] classArray;
+
+    @Autowired
+    private ClassroomRepository classroomRepository;
+
+    @Autowired
+    private TimeslotRepository timeslotRepository;
+
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
         // Get a Timetable object with all the available information.
-        Timetable timetable = initializeTimetable();
+        Timetable timetable = new Timetable();
 
+        Iterable<Classroom> classrooms = classroomRepository.findAll();
+        List<Classroom> classroomList = new ArrayList<>();
+        classrooms.forEach(classroomList::add);
+
+        for(Classroom room : classroomList){
+            timetable.addRoom(room.getRoom_id(), room.getRoom_name(), room.getCapacity());
+        }
+
+        Iterable<Timeslot> timeslots = timeslotRepository.findAll();
+        List<Timeslot> timeslotList = new ArrayList<>();
+        timeslots.forEach(timeslotList::add);
+
+        for(Timeslot slot : timeslotList){
+            System.out.println(slot.getTimeslot());
+            timetable.addTimeslot(slot.getTimeslot_id(), slot.getTimeslot());
+        }
         // Initialize GA
         GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.9, 2, 5);
 
@@ -75,7 +104,7 @@ public class TimetableGenetic {
         ObjectMapper mapper = new ObjectMapper();
         try {
             //Object to JSON in file
-            mapper.writeValue(new File("E://FYP/output.txt"), jsonArray);
+            mapper.writeValue(new File("F://FYP/output.txt"), jsonArray);
             // Initialize our objects
         }catch (JsonGenerationException e) {
             e.printStackTrace();
@@ -99,6 +128,7 @@ public class TimetableGenetic {
         Timetable timetable = new Timetable();
 
         // Set up rooms
+        /*
         timetable.addRoom(1, "A1", 15);
         timetable.addRoom(2, "B1", 30);
         timetable.addRoom(4, "D1", 20);
@@ -119,7 +149,7 @@ public class TimetableGenetic {
         timetable.addTimeslot(12, "Thu 13:00 - 15:00");
         timetable.addTimeslot(13, "Fri 9:00 - 11:00");
         timetable.addTimeslot(14, "Fri 11:00 - 13:00");
-        timetable.addTimeslot(15, "Fri 13:00 - 15:00");
+        timetable.addTimeslot(15, "Fri 13:00 - 15:00");*/
 
         // Set up professors
         timetable.addProfessor(1, "Dr P Smith");
