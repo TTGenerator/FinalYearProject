@@ -7,7 +7,7 @@ package net.mzouabi.ng2.server.dto.genetic;
  *
  * @author bkanber
  */
-public class Timeslot {
+public class TimeslotDTO {
     private final int timeslotId;
     private final String timeslot;
 
