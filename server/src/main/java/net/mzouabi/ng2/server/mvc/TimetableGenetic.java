@@ -85,8 +85,13 @@ public class TimetableGenetic {
         courses.forEach(courseList::add);
 
         for(Course course : courseList){
-            System.out.println(course.getCourse_name());
-            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), new int[]{1, 2});
+            ArrayList<CourseLecturerMap> courseLecturerMapArrayList = courseLecturerMapRepository.findByCourseId(course.getCourse_id());
+            int[] lectureArray = new int[courseLecturerMapArrayList.size()];
+            for(int i= 0 ; i<courseLecturerMapArrayList.size() ; i++){
+                lectureArray[i] = courseLecturerMapArrayList.get(i).getLecturer_id();
+                System.out.println(lectureArray[i]);
+            }
+            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), lectureArray);
         }
 
         // Initialize GA
@@ -181,7 +186,7 @@ public class TimetableGenetic {
         timetable.addProfessor(1, "Dr P Smith");
         timetable.addProfessor(2, "Mrs E Mitchell");
         timetable.addProfessor(3, "Dr R Williams");
-        timetable.addProfessor(4, "Mr A Thompson");*/
+        timetable.addProfessor(4, "Mr A Thompson");
 
         // Set up modules and define the professors that teach them
         timetable.addModule(1, "cs1", "Computer Science", new int[]{1, 2});
@@ -189,7 +194,7 @@ public class TimetableGenetic {
         timetable.addModule(3, "ma1", "Maths", new int[]{1, 2});
         timetable.addModule(4, "ph1", "Physics", new int[]{3, 4});
         timetable.addModule(5, "hi1", "History", new int[]{4});
-        timetable.addModule(6, "dr1", "Drama", new int[]{1, 4});
+        timetable.addModule(6, "dr1", "Drama", new int[]{1, 4});*/
 
         // Set up student groups and the modules they take.
         timetable.addGroup(1, 10, new int[]{1, 3, 4});

@@ -57,13 +57,13 @@ INSERT INTO Courses VALUES (4, 'GP110', 'Engineering Mechanics', '2', false, 400
 INSERT INTO Courses VALUES (5, 'GP112', 'Engineering Measurements', '2', false, 400);
 INSERT INTO Courses VALUES (6, 'GP114', 'Engineering Drawing', '2',  false, 400);
 
-INSERT INTO CourseLecturerMap VALUES (1,1);
-INSERT INTO CourseLecturerMap VALUES (1,2);
-INSERT INTO CourseLecturerMap VALUES (2,3);
-INSERT INTO CourseLecturerMap VALUES (3,4);
-INSERT INTO CourseLecturerMap VALUES (4,4);
-INSERT INTO CourseLecturerMap VALUES (5,5);
-INSERT INTO CourseLecturerMap VALUES (6,3);
+INSERT INTO CourseLecturerMap VALUES (1,1,1);
+INSERT INTO CourseLecturerMap VALUES (2,1,2);
+INSERT INTO CourseLecturerMap VALUES (3,2,3);
+INSERT INTO CourseLecturerMap VALUES (4,3,4);
+INSERT INTO CourseLecturerMap VALUES (5,4,4);
+INSERT INTO CourseLecturerMap VALUES (6,1,5);
+INSERT INTO CourseLecturerMap VALUES (7,6,3);
 
 INSERT INTO timeslots VALUES (1, 'Mon 8:00 - 8:55');
 INSERT INTO timeslots VALUES (2, 'Mon 8:55 - 9:50');

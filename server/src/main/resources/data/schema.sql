@@ -16,7 +16,9 @@ DROP TABLE IF EXISTS Lecturers ;
 DROP TABLE IF EXISTS Classroom ;
 DROP TABLE IF EXISTS Departments ;
 DROP TABLE IF EXISTS timeslots ;
-DROP TABLE IF EXISTS CourseLecturerMap;
+DROP TABLE IF EXISTS CourseLecturerMap ;
+DROP TABLE IF EXISTS Groups ;
+DROP TABLE IF EXISTS GroupCourseMap ; 
 
 CREATE TABLE Departments (
   	dept_id int NOT NULL,
@@ -99,6 +101,21 @@ CREATE TABLE timeslots (
 );
 
 CREATE TABLE CourseLecturerMap (
+	id int NOT NULL,
   course_id int NOT NULL,
-  lecturer_id int NOT NULL
+  lecturer_id int NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE GroupCourseMapG (
+	id int NOT NULL,
+  group_id int NOT NULL,
+  course_id int NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE Groups (
+	group_id int NOT NULL,
+  group_capacity int NOT NULL,
+  PRIMARY KEY(group_id)
 );
