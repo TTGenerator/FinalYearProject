@@ -1,6 +1,6 @@
 package net.mzouabi.ng2.server.controllers;
 
-import net.mzouabi.ng2.server.model.Response;
+import net.mzouabi.ng2.server.util.Response;
 import net.mzouabi.ng2.server.model.Role;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -20,17 +20,16 @@ public interface RoleController {
   @RequestMapping(value = "/getAllUsers",
     method = RequestMethod.GET,
     produces = MediaType.APPLICATION_JSON_VALUE)
-  Iterable<Role> findAllUsers();
+  Response findAllUsers();
 
   @ResponseBody
   @RequestMapping(value = "/checkUser/{name}/{password}",
     method = RequestMethod.GET)
-  Response checkUser(@PathVariable(Constants.NAME) String name,
-                     @PathVariable(Constants.PASSWORD) String password);
+  Response checkUser(String name, String password);
 
   @ResponseBody
   @RequestMapping(value = "/getUserByUsername",
     method = RequestMethod.POST,
     produces = MediaType.APPLICATION_JSON_VALUE)
-  Role getUserByUsername(@RequestParam(Constants.NAME) String name);
+  Role getUserByUsername(String name);
 }

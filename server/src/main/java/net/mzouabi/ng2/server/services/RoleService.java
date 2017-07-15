@@ -1,6 +1,6 @@
 package net.mzouabi.ng2.server.services;
 
-import net.mzouabi.ng2.server.model.Response;
+import net.mzouabi.ng2.server.util.Response;
 import net.mzouabi.ng2.server.model.Role;
 import net.mzouabi.ng2.server.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

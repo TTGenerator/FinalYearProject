@@ -4,12 +4,11 @@ package net.mzouabi.ng2.server.model;
  */
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+//@Data
 @Entity
 @Table(name = "CLASS_ROOM")
 public class Classroom {

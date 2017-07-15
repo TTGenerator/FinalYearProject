@@ -1,7 +1,7 @@
-package net.mzouabi.ng2.server.model;
+package net.mzouabi.ng2.server.util;
 
 /**
- * Created by Jayani on 7/4/17.
+ * Created by jayani on 7/4/17.
  */
 public class Response<T> {
   public String getMessage() {

@@ -4,8 +4,9 @@ package net.mzouabi.ng2.server.mvc;
  */
 
 import net.mzouabi.ng2.server.controllers.RoleController;
-import net.mzouabi.ng2.server.model.Response;
+import net.mzouabi.ng2.server.util.Response;
 import net.mzouabi.ng2.server.services.RoleService;
+import net.mzouabi.ng2.server.util.ResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,9 @@ public class RoleControllerImpl implements RoleController {
   @Autowired
   private RoleService roleService;
 
-  public Iterable<Role> findAllUsers() {
-    return roleService.findAll();
+  public Response findAllUsers() {
+    return ResponseBuilder.create().withData(roleService.findAll()).withMessage("get All Data from DB").get();
+//    return roleService.findAll();
   }
 
   public Role getUserByUsername(@RequestParam(Constants.NAME) String name) {
