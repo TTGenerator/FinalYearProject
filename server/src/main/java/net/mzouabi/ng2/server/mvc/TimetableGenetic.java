@@ -42,6 +42,9 @@ public class TimetableGenetic {
     @Autowired
     private TimeslotRepository timeslotRepository;
 
+    @Autowired
+    private LecturerRepository lecturerRepository;
+
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
         // Get a Timetable object with all the available information.
@@ -60,8 +63,16 @@ public class TimetableGenetic {
         timeslots.forEach(timeslotList::add);
 
         for(Timeslot slot : timeslotList){
-            System.out.println(slot.getTimeslot());
             timetable.addTimeslot(slot.getTimeslot_id(), slot.getTimeslot());
+        }
+
+        Iterable<Lecturer> lecturers = lecturerRepository.findAll();
+        List<Lecturer> lecturerList = new ArrayList<>();
+        lecturers.forEach(lecturerList::add);
+
+        for(Lecturer lect : lecturerList){
+            System.out.println(lect.getLecturer_name());
+            timetable.addTimeslot(lect.getLecturer_id(), lect.getLecturer_name());
         }
         // Initialize GA
         GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.9, 2, 5);
