@@ -45,6 +45,12 @@ public class TimetableGenetic {
     @Autowired
     private LecturerRepository lecturerRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private CourseLecturerMapRepository courseLecturerMapRepository;
+
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
         // Get a Timetable object with all the available information.
@@ -71,9 +77,18 @@ public class TimetableGenetic {
         lecturers.forEach(lecturerList::add);
 
         for(Lecturer lect : lecturerList){
-            System.out.println(lect.getLecturer_name());
-            timetable.addTimeslot(lect.getLecturer_id(), lect.getLecturer_name());
+            timetable.addProfessor(lect.getLecturer_id(), lect.getLecturer_name());
         }
+
+        Iterable<Course> courses = courseRepository.findAll();
+        List<Course> courseList = new ArrayList<>();
+        courses.forEach(courseList::add);
+
+        for(Course course : courseList){
+            System.out.println(course.getCourse_name());
+            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), new int[]{1, 2});
+        }
+
         // Initialize GA
         GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.9, 2, 5);
 
@@ -160,13 +175,13 @@ public class TimetableGenetic {
         timetable.addTimeslot(12, "Thu 13:00 - 15:00");
         timetable.addTimeslot(13, "Fri 9:00 - 11:00");
         timetable.addTimeslot(14, "Fri 11:00 - 13:00");
-        timetable.addTimeslot(15, "Fri 13:00 - 15:00");*/
+        timetable.addTimeslot(15, "Fri 13:00 - 15:00");
 
         // Set up professors
         timetable.addProfessor(1, "Dr P Smith");
         timetable.addProfessor(2, "Mrs E Mitchell");
         timetable.addProfessor(3, "Dr R Williams");
-        timetable.addProfessor(4, "Mr A Thompson");
+        timetable.addProfessor(4, "Mr A Thompson");*/
 
         // Set up modules and define the professors that teach them
         timetable.addModule(1, "cs1", "Computer Science", new int[]{1, 2});

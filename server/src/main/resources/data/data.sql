@@ -50,12 +50,20 @@ INSERT INTO Lecturers VALUES (4, 'lecturer4', 'lecturer4@pdn.ac.lk', 1, true);
 INSERT INTO Lecturers VALUES (5, 'lecturer5', 'lecturer5@pdn.ac.lk', 1, true);
 INSERT INTO Lecturers VALUES (6, 'lecturer6', 'lecturer6@pdn.ac.lk', 1, true);
 
-INSERT INTO Courses VALUES (1, 'GP101', 'English1', '2', false, 1, 400);
-INSERT INTO Courses VALUES (2, 'GP103', 'Mathematics1', '2',false, 2, 400);
-INSERT INTO Courses VALUES (3, 'GP109', 'Material Science', '2',  false, 3, 400);
-INSERT INTO Courses VALUES (4, 'GP110', 'Engineering Mechanics', '2', false, 4, 400);
-INSERT INTO Courses VALUES (5, 'GP112', 'Engineering Measurements', '2', false, 5, 400);
-INSERT INTO Courses VALUES (6, 'GP114', 'Engineering Drawing', '2',  false, 6, 400);
+INSERT INTO Courses VALUES (1, 'GP101', 'English1', '2', false, 400);
+INSERT INTO Courses VALUES (2, 'GP103', 'Mathematics1', '2',false, 400);
+INSERT INTO Courses VALUES (3, 'GP109', 'Material Science', '2',  false, 400);
+INSERT INTO Courses VALUES (4, 'GP110', 'Engineering Mechanics', '2', false, 400);
+INSERT INTO Courses VALUES (5, 'GP112', 'Engineering Measurements', '2', false, 400);
+INSERT INTO Courses VALUES (6, 'GP114', 'Engineering Drawing', '2',  false, 400);
+
+INSERT INTO CourseLecturerMap VALUES (1,1);
+INSERT INTO CourseLecturerMap VALUES (1,2);
+INSERT INTO CourseLecturerMap VALUES (2,3);
+INSERT INTO CourseLecturerMap VALUES (3,4);
+INSERT INTO CourseLecturerMap VALUES (4,4);
+INSERT INTO CourseLecturerMap VALUES (5,5);
+INSERT INTO CourseLecturerMap VALUES (6,3);
 
 INSERT INTO timeslots VALUES (1, 'Mon 8:00 - 8:55');
 INSERT INTO timeslots VALUES (2, 'Mon 8:55 - 9:50');

@@ -27,13 +27,13 @@ public class Lecturer {
     public int dept_id;
 
     @Column(name = "has_preferences")
-    public boolean has_preferences;
+    public int has_preferences;
 
-    public boolean isHas_preferences() {
+    public int getHas_preferences() {
         return has_preferences;
     }
 
-    public void setHas_preferences(boolean has_preferences) {
+    public void setHas_preferences(int has_preferences) {
         this.has_preferences = has_preferences;
     }
 

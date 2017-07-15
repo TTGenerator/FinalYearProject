@@ -16,9 +16,10 @@ DROP TABLE IF EXISTS Lecturers ;
 DROP TABLE IF EXISTS Classroom ;
 DROP TABLE IF EXISTS Departments ;
 DROP TABLE IF EXISTS timeslots ;
+DROP TABLE IF EXISTS CourseLecturerMap;
 
 CREATE TABLE Departments (
-  dept_id int NOT NULL,
+  	dept_id int NOT NULL,
 	dept_name VARCHAR(50),
 	PRIMARY KEY(dept_id)
 );
@@ -55,10 +56,8 @@ CREATE TABLE Courses (
 	course_name VARCHAR(25),
 	duration NUMERIC(10) ,
 	is_deleted BOOLEAN,
-	lecturer_id int,
 	max_students INTEGER(10),
-  PRIMARY KEY(course_code),
-	FOREIGN KEY (lecturer_id) REFERENCES Lecturers(lecturer_id)
+  PRIMARY KEY(course_id)
 );
 
 CREATE TABLE Classroom (
@@ -97,4 +96,9 @@ CREATE TABLE timeslots (
   timeslot_id int NOT NULL,
 	timeslot VARCHAR(50),
 	PRIMARY KEY(timeslot_id)
+);
+
+CREATE TABLE CourseLecturerMap (
+  course_id int NOT NULL,
+  lecturer_id int NOT NULL
 );
