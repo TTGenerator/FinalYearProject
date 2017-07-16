@@ -23,7 +23,7 @@ public interface RoleController {
   Response findAllUsers();
 
   @ResponseBody
-  @RequestMapping(value = "/checkUser/{name}/{password}",
+  @RequestMapping(value = "/checkUser/{" + Constants.NAME + "}/{" + Constants.PASSWORD + "}",
     method = RequestMethod.GET)
   Response checkUser(String name, String password);
 

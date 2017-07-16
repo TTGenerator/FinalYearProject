@@ -3,70 +3,42 @@ package net.mzouabi.ng2.server.model;
  * Created by Jayani on 06/05/17.
  */
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//@Data
+@Data
 @Entity
-@Table(name = "CLASS_ROOM")
+@Table(name = "CLASSROOM")
 public class Classroom {
 
   @Id
   @Column(name = "room_id")
-  public String room_id;
+  public String roomId;
 
   @Column(name = "room_name")
-  public String room_name;
+  public String roomName;
 
   @Column(name = "room_category")
-  public String room_category;
+  public String roomCategory;
 
   @Column(name = "capacity")
   public int capacity;
 
   @Column(name = "is_deleted")
-  public boolean is_deleted;
+  public boolean deleted;
 
-  public String getRoom_id() {
-    return room_id;
-  }
-
-  public void setRoom_id(String room_id) {
-    this.room_id = room_id;
-  }
-
-  public String getRoom_name() {
-    return room_name;
-  }
-
-  public void setRoom_name(String room_name) {
-    this.room_name = room_name;
-  }
-
-  public String getRoom_category() {
-    return room_category;
-  }
-
-  public void setRoom_category(String room_category) {
-    this.room_category = room_category;
-  }
-
-  public int getCapacity() {
-    return capacity;
-  }
-
-  public void setCapacity(int capacity) {
+  public Classroom(String roomId, String roomName, String roomCategory, int capacity, boolean deleted) {
+    this.roomId = roomId;
+    this.roomName = roomName;
+    this.roomCategory = roomCategory;
     this.capacity = capacity;
+    this.deleted = deleted;
   }
 
-  public boolean getIs_deleted() {
-    return is_deleted;
+  public Classroom() {
   }
-
-  public void setIs_deleted(boolean is_deleted) {
-    this.is_deleted = is_deleted;
-  }
-
 }
