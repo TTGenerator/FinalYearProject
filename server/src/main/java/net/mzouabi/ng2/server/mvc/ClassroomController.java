@@ -36,13 +36,18 @@ public class ClassroomController {
         if (is_deleted == "T") {
             deleted = true;
         }
-        Classroom newClassroom = new Classroom(Integer.parseInt(room_id), room_name, room_category, Integer.parseInt(capacity), deleted);
+        Classroom newClassroom = new Classroom();
+        newClassroom.setRoom_id(Integer.parseInt(room_id));
+        newClassroom.setRoom_name(room_name);
+        newClassroom.setRoom_category(room_category);
+        newClassroom.setCapacity(Integer.parseInt(capacity));
+        newClassroom.setIs_deleted(deleted);
         classroomRepository.save(newClassroom);
     }
-    /*
+
     @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void deleteClassRoomByID(@RequestParam("room_id") int room_id) {
+    public void deleteClassRoomByID(@RequestParam("room_id") String room_id) {
         Classroom resultClassroom = null;
         resultClassroom = classroomRepository.findOne(room_id);
         if (resultClassroom != null) {
@@ -50,7 +55,7 @@ public class ClassroomController {
         } else {
             System.out.println("NULL");
         }
-    }*/
+    }
 
     @RequestMapping(value = "/updateClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -65,7 +70,12 @@ public class ClassroomController {
             if (is_deleted == "T") {
                 deleted = true;
             }
-            Classroom newClassroom = new Classroom(Integer.parseInt(room_id), room_name, room_category, Integer.parseInt(capacity), deleted);
+            Classroom newClassroom = new Classroom();
+            newClassroom.setRoom_id(Integer.parseInt(room_id));
+            newClassroom.setRoom_name(room_name);
+            newClassroom.setRoom_category(room_category);
+            newClassroom.setCapacity(Integer.parseInt(capacity));
+            newClassroom.setIs_deleted(deleted);
             classroomRepository.save(newClassroom);
         } else {
             System.out.println("NULL");
