@@ -53,7 +53,7 @@ public class TimetableGenetic {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
-        // Get a Timetable object with all the available information.
+
         Timetable timetable = new Timetable();
 
         Iterable<Classroom> classrooms = classroomRepository.findAll();
@@ -89,13 +89,14 @@ public class TimetableGenetic {
             int[] lectureArray = new int[courseLecturerMapArrayList.size()];
             for(int i= 0 ; i<courseLecturerMapArrayList.size() ; i++){
                 lectureArray[i] = courseLecturerMapArrayList.get(i).getLecturer_id();
-                System.out.println(lectureArray[i]);
             }
             timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), lectureArray);
         }
 
+        timetable = initializeTimetable(timetable);
+
         // Initialize GA
-        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.9, 2, 5);
+        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.1, 0.9, 2, 5);
 
         // Initialize population
         Population population = ga.initPopulation(timetable);
@@ -154,13 +155,13 @@ public class TimetableGenetic {
      *
      * @return
      */
-    private static Timetable initializeTimetable() {
+    private static Timetable initializeTimetable(Timetable timetable) {
         // Create timetable
-        Timetable timetable = new Timetable();
+        //Timetable timetable = new Timetable();
 
         // Set up rooms
-        /*
-        timetable.addRoom(1, "A1", 15);
+
+        /*timetable.addRoom(1, "A1", 15);
         timetable.addRoom(2, "B1", 30);
         timetable.addRoom(4, "D1", 20);
         timetable.addRoom(5, "F1", 25);

@@ -107,7 +107,7 @@ CREATE TABLE CourseLecturerMap (
   PRIMARY KEY(id)
 );
 
-CREATE TABLE GroupCourseMapG (
+/*CREATE TABLE GroupCourseMapG (
 	id int NOT NULL,
   group_id int NOT NULL,
   course_id int NOT NULL,
@@ -118,4 +118,4 @@ CREATE TABLE Groups (
 	group_id int NOT NULL,
   group_capacity int NOT NULL,
   PRIMARY KEY(group_id)
-);
+);*/

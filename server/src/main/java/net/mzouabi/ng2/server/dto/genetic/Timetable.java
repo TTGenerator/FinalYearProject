@@ -280,7 +280,8 @@ public class Timetable {
      */
     public TimeslotDTO getRandomTimeslot() {
         Object[] timeslotArray = this.timeslots.values().toArray();
-        TimeslotDTO timeslot = (TimeslotDTO) timeslotArray[(int) (timeslotArray.length * Math.random())];
+        double rand = timeslotArray.length * Math.random();
+        TimeslotDTO timeslot = (TimeslotDTO) timeslotArray[(int) (rand)];
         return timeslot;
     }
 
