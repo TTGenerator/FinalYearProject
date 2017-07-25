@@ -61,7 +61,7 @@ CREATE TABLE courses (
     course_code     VARCHAR(10)NOT NULL,
 	course_name     VARCHAR(25),
 	duration        NUMERIC(10) ,
-	is_deleted      BOOLEAN,
+	deleted      BOOLEAN,
 	lecturer_id     VARCHAR(50),
 	max_students    INTEGER(10),
     PRIMARY KEY(course_code),
@@ -69,12 +69,12 @@ CREATE TABLE courses (
 );
 
 CREATE TABLE classroom (
-    room_id         VARCHAR(50)NOT NULL,
-	room_name       VARCHAR(50),
-	room_category   VARCHAR(50),
+    roomId         VARCHAR(50)NOT NULL,
+	roomName       VARCHAR(50),
+	roomCategory   VARCHAR(50),
 	capacity        NUMERIC(50),
-	is_deleted      BOOLEAN,
-	PRIMARY KEY(room_id)
+	deleted      BOOLEAN,
+	PRIMARY KEY(roomId)
 );
 
 CREATE TABLE lecturer_preferences (
@@ -93,9 +93,9 @@ CREATE TABLE role (
 );
 
 CREATE TABLE room_facility (
-    room_id         VARCHAR(50)NOT NULL,
+    roomId         VARCHAR(50)NOT NULL,
 	is_ac           BOOLEAN,
 	has_multimedia  BOOLEAN,
 	has_whiteboard  BOOLEAN,
-	PRIMARY KEY(room_id)
+	PRIMARY KEY(roomId)
 );

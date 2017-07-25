@@ -33,7 +33,7 @@ export class RoomsService extends HTTPAppService {
 
   deleteClassRoomByID(roomID:string){
     let data = new URLSearchParams();
-    data.append('room_id', roomID);
+    data.append('roomId', roomID);
     this._http
       .post('http://localhost:8080/api/classroom/deleteClassRoomByID', data)
       .subscribe(data => {
@@ -45,14 +45,14 @@ export class RoomsService extends HTTPAppService {
 
   addClassRoom(room:Room){
     let data = new URLSearchParams();
-    data.append('room_id', room.room_id);
-    data.append('room_name', room.room_name);
-    data.append('room_category', room.room_category);
+    data.append('roomId', room.roomId);
+    data.append('roomName', room.roomName);
+    data.append('roomCategory', room.roomCategory);
     data.append('capacity', (room.capacity).toString());
-    if(room.is_deleted){
-      data.append('is_deleted', "T");
+    if(room.deleted){
+      data.append('deleted', "T");
     }else{
-      data.append('is_deleted', "F");
+      data.append('deleted', "F");
     }
 
     this._http
@@ -67,14 +67,14 @@ export class RoomsService extends HTTPAppService {
   updateClassRoom(room:Room) {
     console.log(room);
     let data = new URLSearchParams();
-    data.append('room_id', room.room_id);
-    data.append('room_name', room.room_name);
-    data.append('room_category', room.room_category);
+    data.append('roomId', room.roomId);
+    data.append('roomName', room.roomName);
+    data.append('roomCategory', room.roomCategory);
     data.append('capacity', (room.capacity).toString());
-    if(room.is_deleted){
-      data.append('is_deleted', "T");
+    if(room.deleted){
+      data.append('deleted', "T");
     }else{
-      data.append('is_deleted', "F");
+      data.append('deleted', "F");
     }
 
     this._http

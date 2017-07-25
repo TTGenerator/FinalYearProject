@@ -16,19 +16,19 @@ import javax.persistence.Table;
 public class Classroom {
 
   @Id
-  @Column(name = "room_id")
+  @Column(name = "roomId")
   public String roomId;
 
-  @Column(name = "room_name")
+  @Column(name = "roomName")
   public String roomName;
 
-  @Column(name = "room_category")
+  @Column(name = "roomCategory")
   public String roomCategory;
 
   @Column(name = "capacity")
   public int capacity;
 
-  @Column(name = "is_deleted")
+  @Column(name = "deleted")
   public boolean deleted;
 
   public Classroom(String roomId, String roomName, String roomCategory, int capacity, boolean deleted) {

@@ -72,22 +72,22 @@ export class Rooms {
     }
 
     return this.roomsList.filter((item:Room) => {
-      return !item.is_deleted;
+      return !item.deleted;
     });
   }
 
   addToDoItem() {
-    this.model.is_deleted=false;
+    this.model.deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    this.model.room_id  = Guid.newGuid();
+    this.model.roomId  = Guid.newGuid();
     if(this.isEdit==true){
       for(let room of this.roomsList){
-        if(room.room_id === this.model.room_id){
-          room.room_name=this.model.room_name;
+        if(room.roomId === this.model.roomId){
+          room.roomName=this.model.roomName;
           room.capacity=this.model.capacity;
-          room.room_category=this.model.room_category;
-          room.is_deleted=this.model.is_deleted;
+          room.roomCategory=this.model.roomCategory;
+          room.deleted=this.model.deleted;
           room.isChecked=this.model.isChecked;
           room.isActive=this.model.isActive;
           this._roomsService.updateClassRoom(room);
@@ -105,8 +105,8 @@ export class Rooms {
   deleteRooms(){
     for(let room of this.roomsList){
       if(room.isChecked == true){
-        room.is_deleted = true;
-        this._roomsService.deleteClassRoomByID(room.room_id);
+        room.deleted = true;
+        this._roomsService.deleteClassRoomByID(room.roomId);
       }
     }
   }
@@ -120,11 +120,11 @@ export class Rooms {
 }
 
 class RoomModal implements Room {
-  room_id:string;
-  room_name:string;
+  roomId:string;
+  roomName:string;
   capacity?:number;
-  room_category:string;
-  is_deleted:boolean;
+  roomCategory:string;
+  deleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }
