@@ -113,6 +113,7 @@ public class Timetable {
      * @param professorIds
      */
     public void addModule(int moduleId, String moduleCode, String module, int professorIds[]) {
+
         this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds));
     }
 
