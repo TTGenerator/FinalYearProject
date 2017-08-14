@@ -111,6 +111,7 @@ public class TimetableGenetic {
         while (ga.isTerminationConditionMet(generation, 1000) == false
                 && ga.isTerminationConditionMet(population) == false) {
 
+            System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
             // Apply crossover
             population = ga.crossoverPopulation(population);
 
@@ -123,6 +124,11 @@ public class TimetableGenetic {
             // Increment the current generation
             generation++;
         }
+
+        System.out.println();
+        System.out.println("Solution found in " + generation + " generations");
+        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
+        //System.out.println("Clashes: " + timetable.calcClashes());
 
         // Print fitness
         timetable.createClasses(population.getFittest(0));
@@ -159,8 +165,8 @@ public class TimetableGenetic {
         //Timetable timetable = new Timetable();
 
         // Set up rooms
-
-        /*timetable.addRoom(1, "A1", 15);
+/*
+        timetable.addRoom(1, "A1", 15);
         timetable.addRoom(2, "B1", 30);
         timetable.addRoom(4, "D1", 20);
         timetable.addRoom(5, "F1", 25);
