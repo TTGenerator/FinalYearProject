@@ -133,6 +133,13 @@ INSERT INTO Lecturers VALUES (46, 'Dr SKS', 'a', 1, true);
 INSERT INTO Lecturers VALUES (47, 'Dr LUB', 'a', 1, true);
 INSERT INTO Lecturers VALUES (48, 'Dr VL', 'a', 1, true);
 INSERT INTO Lecturers VALUES (49, 'Dr KW', 'a', 1, true);
+INSERT INTO Lecturers VALUES (50, 'Dr C.S. Kalpage', 'a', 1, true);
+INSERT INTO Lecturers VALUES (51, 'Prof R. Shanthini', 'a', 1, true);
+INSERT INTO Lecturers VALUES (52, 'Dr D.G.G.P. Karunarathne', 'a', 1, true);
+INSERT INTO Lecturers VALUES (53, 'Ms. S.M.W.T.P.K. Ariyarathne', 'a', 1, true);
+INSERT INTO Lecturers VALUES (54, 'Ms. MA Elangasinghe', 'a', 1, true);
+INSERT INTO Lecturers VALUES (55, 'Ms. AWM Menike', 'a', 1, true);
+INSERT INTO Lecturers VALUES (56, 'Dr S.G.P. Gunawardane', 'a', 1, true);
 
 
 INSERT INTO Courses VALUES (1, 'PR204', 'Production 21', '1', false, 40);
@@ -179,6 +186,11 @@ INSERT INTO Courses VALUES (41, 'ME502', 'Mech t 41', '1', false, 30);
 INSERT INTO Courses VALUES (42, 'ME512', 'Mech Chem', '1', false, 40);
 INSERT INTO Courses VALUES (43, 'ME518', 'Mech t 42', '1', false, 50);
 INSERT INTO Courses VALUES (44, 'ME520', 'Mech Chem Prod', '1', false, 75);
+INSERT INTO Courses VALUES (45, 'CP201', 'Chem 21', '1', false, 25);
+INSERT INTO Courses VALUES (46, 'CP303', 'Chem 31', '1', false, 25);
+INSERT INTO Courses VALUES (47, 'CP502', 'Chem t31', '1', false, 25);
+INSERT INTO Courses VALUES (48, 'CP513', 'Mech Chem', '1', false, 40);
+INSERT INTO Courses VALUES (49, 'CP515', 'Chem t41', '1', false, 25);
 
 
 INSERT INTO CourseLecturerMap VALUES (1,1,1);
@@ -289,7 +301,23 @@ INSERT INTO CourseLecturerMap VALUES (105,43,45);
 INSERT INTO CourseLecturerMap VALUES (106,44,38);
 INSERT INTO CourseLecturerMap VALUES (107,44,49);
 INSERT INTO CourseLecturerMap VALUES (108,44,43);
-
+INSERT INTO CourseLecturerMap VALUES (109,45,50);
+INSERT INTO CourseLecturerMap VALUES (110,45,51);
+INSERT INTO CourseLecturerMap VALUES (111,45,52);
+INSERT INTO CourseLecturerMap VALUES (112,45,53);
+INSERT INTO CourseLecturerMap VALUES (113,46,54);
+INSERT INTO CourseLecturerMap VALUES (114,46,50);
+INSERT INTO CourseLecturerMap VALUES (115,46,51);
+INSERT INTO CourseLecturerMap VALUES (116,46,55);
+INSERT INTO CourseLecturerMap VALUES (117,47,51);
+INSERT INTO CourseLecturerMap VALUES (118,47,52);
+INSERT INTO CourseLecturerMap VALUES (119,47,55);
+INSERT INTO CourseLecturerMap VALUES (120,48,52);
+INSERT INTO CourseLecturerMap VALUES (121,48,50);
+INSERT INTO CourseLecturerMap VALUES (122,48,56);
+INSERT INTO CourseLecturerMap VALUES (123,49,51);
+INSERT INTO CourseLecturerMap VALUES (124,49,52);
+INSERT INTO CourseLecturerMap VALUES (125,49,54);
 
 INSERT INTO Groups VALUES (1,40); --prod 2nd year --PR204 
 INSERT INTO Groups VALUES (2,30); --Prod 3rd year --PR314,PR315
@@ -372,3 +400,9 @@ INSERT INTO GroupCourseMap VALUES (58,17,44);
 INSERT INTO GroupCourseMap VALUES (59,17,44);
 INSERT INTO GroupCourseMap VALUES (60,15,20);
 INSERT INTO GroupCourseMap VALUES (61,7,28);
+INSERT INTO GroupCourseMap VALUES (62,12,45);
+INSERT INTO GroupCourseMap VALUES (63,13,46);
+INSERT INTO GroupCourseMap VALUES (64,13,47);
+INSERT INTO GroupCourseMap VALUES (65,14,48);
+INSERT INTO GroupCourseMap VALUES (66,17,48);
+INSERT INTO GroupCourseMap VALUES (67,14,49);
