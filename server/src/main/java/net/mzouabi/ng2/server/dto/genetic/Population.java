@@ -79,9 +79,9 @@ public class Population {
         Arrays.sort(this.population, new Comparator<Individual>() {
             @Override
             public int compare(Individual o1, Individual o2) {
-                if (o1.getFitness() > o2.getFitness()) {
+                if (o1.getFitness() < o2.getFitness()) {
                     return -1;
-                } else if (o1.getFitness() < o2.getFitness()) {
+                } else if (o1.getFitness() > o2.getFitness()) {
                     return 1;
                 }
                 return 0;

@@ -51,7 +51,7 @@ public class GeneticAlgorithm {
      * @return boolean True if termination condition met, otherwise, false
      */
     public boolean isTerminationConditionMet(Population population) {
-        return population.getFittest(0).getFitness() == 1.0;
+        return population.getFittest(0).getFitness() == 0.0;
     }
 
     /**
@@ -69,10 +69,9 @@ public class GeneticAlgorithm {
 
         // Calculate fitness
         int clashes = threadTimetable.calcClashes();
-        double fitness = 1 / (double) (clashes + 1);
+        double fitness = 100 * (double)(clashes);
 
         individual.setFitness(fitness);
-
         return fitness;
     }
 

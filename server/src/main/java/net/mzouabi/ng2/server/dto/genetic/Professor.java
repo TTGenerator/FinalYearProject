@@ -5,6 +5,7 @@ package net.mzouabi.ng2.server.dto.genetic;
 
 /**
  * Simple Professor abstraction.
+ * TODO: Add other entries, email, dept_id and preferences
  */
 public class Professor {
     private final int professorId;

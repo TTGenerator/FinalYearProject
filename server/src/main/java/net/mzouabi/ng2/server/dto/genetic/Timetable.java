@@ -31,7 +31,7 @@ public class Timetable {
     private final HashMap<Integer, Professor> professors;
     private final HashMap<Integer, Module> modules;
     private final HashMap<Integer, Group> groups;
-    private final HashMap<Integer, Timeslot> timeslots;
+    private final HashMap<Integer, TimeslotDTO> timeslots;
     private ClassType classes[];
 
     private int numClasses = 0;
@@ -44,7 +44,7 @@ public class Timetable {
         this.professors = new HashMap<Integer, Professor>();
         this.modules = new HashMap<Integer, Module>();
         this.groups = new HashMap<Integer, Group>();
-        this.timeslots = new HashMap<Integer, Timeslot>();
+        this.timeslots = new HashMap<Integer, TimeslotDTO>();
     }
 
     /**
@@ -71,7 +71,7 @@ public class Timetable {
         return this.groups;
     }
 
-    private HashMap<Integer, Timeslot> getTimeslots() {
+    private HashMap<Integer, TimeslotDTO> getTimeslots() {
         return this.timeslots;
     }
 
@@ -113,6 +113,7 @@ public class Timetable {
      * @param professorIds
      */
     public void addModule(int moduleId, String moduleCode, String module, int professorIds[]) {
+
         this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds));
     }
 
@@ -135,7 +136,7 @@ public class Timetable {
      * @param timeslot
      */
     public void addTimeslot(int timeslotId, String timeslot) {
-        this.timeslots.put(timeslotId, new Timeslot(timeslotId, timeslot));
+        this.timeslots.put(timeslotId, new TimeslotDTO(timeslotId, timeslot));
     }
 
     /**
@@ -269,8 +270,8 @@ public class Timetable {
      * @param timeslotId
      * @return timeslot
      */
-    public Timeslot getTimeslot(int timeslotId) {
-        return (Timeslot) this.timeslots.get(timeslotId);
+    public TimeslotDTO getTimeslot(int timeslotId) {
+        return (TimeslotDTO) this.timeslots.get(timeslotId);
     }
 
     /**
@@ -278,9 +279,10 @@ public class Timetable {
      *
      * @return timeslot
      */
-    public Timeslot getRandomTimeslot() {
+    public TimeslotDTO getRandomTimeslot() {
         Object[] timeslotArray = this.timeslots.values().toArray();
-        Timeslot timeslot = (Timeslot) timeslotArray[(int) (timeslotArray.length * Math.random())];
+        double rand = timeslotArray.length * Math.random();
+        TimeslotDTO timeslot = (TimeslotDTO) timeslotArray[(int) (rand)];
         return timeslot;
     }
 
