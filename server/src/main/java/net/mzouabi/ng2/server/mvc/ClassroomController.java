@@ -13,62 +13,72 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping(value = "/api/classroom")
 public class ClassroomController {
-  @Autowired
-  private ClassroomRepository classroomRepository;
+    @Autowired
+    private ClassroomRepository classroomRepository;
 
-  @RequestMapping(value = "/getAllClassrooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseBody
-  public Iterable<Classroom> findAllClassroom() {
-    return classroomRepository.findAll();
-  }
-
-  @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseBody
-  public void addClassRoom(
-    @RequestParam("roomId") String roomId,
-    @RequestParam("roomName") String roomName,
-    @RequestParam("roomCategory") String roomCategory,
-    @RequestParam("capacity") String capacity,
-    @RequestParam("deleted") String deleted) {
-
-    System.out.println("get success");
-    boolean is_deleted = false;
-    if (deleted == "T") {
-      is_deleted = true;
+    @RequestMapping(value = "/getAllClassrooms", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Iterable<Classroom> findAllClassroom() {
+        return classroomRepository.findAll();
     }
-    Classroom newClassroom = new Classroom(roomId, roomName, roomCategory, Integer.parseInt(capacity), is_deleted);
-    classroomRepository.save(newClassroom);
-  }
 
-  @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseBody
-  public void deleteClassRoomByID(@RequestParam("roomId") String roomId) {
-    Classroom resultClassroom = null;
-    resultClassroom = classroomRepository.findOne(roomId);
-    if (resultClassroom != null) {
-      classroomRepository.delete(resultClassroom);
-    } else {
-      System.out.println("NULL");
+    @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void addClassRoom(
+            @RequestParam("room_id") String room_id,
+            @RequestParam("room_name") String room_name,
+            @RequestParam("room_category") String room_category,
+            @RequestParam("capacity") String capacity,
+            @RequestParam("is_deleted") String is_deleted) {
+
+        System.out.println("get success");
+        boolean deleted = false;
+        if (is_deleted == "T") {
+            deleted = true;
+        }
+        Classroom newClassroom = new Classroom();
+        newClassroom.setRoom_id(Integer.parseInt(room_id));
+        newClassroom.setRoom_name(room_name);
+        newClassroom.setRoom_category(room_category);
+        newClassroom.setCapacity(Integer.parseInt(capacity));
+        newClassroom.setIs_deleted(deleted);
+        classroomRepository.save(newClassroom);
     }
-  }
 
-  @RequestMapping(value = "/updateClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseBody
-  public void updateClassRoom(@RequestParam("roomId") String roomId,
-                              @RequestParam("roomName") String roomName,
-                              @RequestParam("roomCategory") String roomCategory,
-                              @RequestParam("capacity") String capacity,
-                              @RequestParam("deleted") String deleted) {
-
-    if (classroomRepository.findOne(roomId) != null) {
-      boolean is_deleted = false;
-      if (deleted == "T") {
-        is_deleted = true;
-      }
-      Classroom newClassroom = new Classroom(roomId, roomName, roomCategory, Integer.parseInt(capacity), is_deleted);
-      classroomRepository.save(newClassroom);
-    } else {
-      System.out.println("NULL");
+    @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void deleteClassRoomByID(@RequestParam("room_id") String room_id) {
+        Classroom resultClassroom = null;
+        resultClassroom = classroomRepository.findOne(room_id);
+        if (resultClassroom != null) {
+            classroomRepository.delete(resultClassroom);
+        } else {
+            System.out.println("NULL");
+        }
     }
-  }
+
+    @RequestMapping(value = "/updateClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void updateClassRoom(@RequestParam("room_id") String room_id,
+                                @RequestParam("room_name") String room_name,
+                                @RequestParam("room_category") String room_category,
+                                @RequestParam("capacity") String capacity,
+                                @RequestParam("is_deleted") String is_deleted) {
+
+        if (classroomRepository.findOne(room_id) != null) {
+            boolean deleted = false;
+            if (is_deleted == "T") {
+                deleted = true;
+            }
+            Classroom newClassroom = new Classroom();
+            newClassroom.setRoom_id(Integer.parseInt(room_id));
+            newClassroom.setRoom_name(room_name);
+            newClassroom.setRoom_category(room_category);
+            newClassroom.setCapacity(Integer.parseInt(capacity));
+            newClassroom.setIs_deleted(deleted);
+            classroomRepository.save(newClassroom);
+        } else {
+            System.out.println("NULL");
+        }
+    }
 }

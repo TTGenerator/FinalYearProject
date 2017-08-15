@@ -7,7 +7,7 @@ package net.mzouabi.ng2.server.dto.genetic;
  *
  * @author bkanber
  */
-public class Timeslot {
+public class TimeslotDTO {
     private final int timeslotId;
     private final String timeslot;
 
@@ -17,7 +17,7 @@ public class Timeslot {
      * @param timeslotId The ID for this timeslot
      * @param timeslot   The timeslot being initalized
      */
-    public Timeslot(int timeslotId, String timeslot) {
+    public TimeslotDTO(int timeslotId, String timeslot) {
         this.timeslotId = timeslotId;
         this.timeslot = timeslot;
     }

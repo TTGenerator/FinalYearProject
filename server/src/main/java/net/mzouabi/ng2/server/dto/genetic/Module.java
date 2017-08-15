@@ -60,7 +60,11 @@ public class Module {
      * @return professorId
      */
     public int getRandomProfessorId() {
-        int professorId = professorIds[(int) (professorIds.length * Math.random())];
+        int professorId = 0;
+        if(professorIds.length != 0){
+            professorId = professorIds[(int) (professorIds.length * Math.random())];
+        }
+
         return professorId;
     }
 }
