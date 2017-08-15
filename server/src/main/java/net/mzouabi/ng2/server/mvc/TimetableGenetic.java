@@ -163,7 +163,7 @@ public class TimetableGenetic {
         ObjectMapper mapper = new ObjectMapper();
         try {
             //Object to JSON in file
-            mapper.writeValue(new File("E://FYP/output.txt"), jsonArray);
+            mapper.writeValue(new File("F://FYP/output.txt"), jsonArray);
             // Initialize our objects
         }catch (JsonGenerationException e) {
             e.printStackTrace();
