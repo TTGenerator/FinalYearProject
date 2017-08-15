@@ -43,6 +43,47 @@ INSERT INTO role VALUES ('e12117', 'STUDENT', 'e12117');
 INSERT INTO RoomFacility VALUES (2, false, true, false);
 INSERT INTO RoomFacility VALUES (3, false, true, false);
 
+INSERT INTO timeslots VALUES (1, 'Mon 8:00 - 8:55');
+INSERT INTO timeslots VALUES (2, 'Mon 8:55 - 9:50');
+INSERT INTO timeslots VALUES (3, 'Mon 10:10 - 11:05');
+INSERT INTO timeslots VALUES (4, 'Mon 11:05 - 12:00');
+INSERT INTO timeslots VALUES (5, 'Mon 13:00 - 13:55');
+INSERT INTO timeslots VALUES (6, 'Mon 13:55 - 14:50');
+INSERT INTO timeslots VALUES (7, 'Mon 15:10 - 16:05');
+INSERT INTO timeslots VALUES (8, 'Mon 16:05 - 17:00');
+INSERT INTO timeslots VALUES (9, 'Tue 8:00 - 8:55');
+INSERT INTO timeslots VALUES (10, 'Tue 8:55 - 9:50');
+INSERT INTO timeslots VALUES (11, 'Tue 10:10 - 11:05');
+INSERT INTO timeslots VALUES (12, 'Tue 11:05 - 12:00');
+INSERT INTO timeslots VALUES (13, 'Tue 13:00 - 13:55');
+INSERT INTO timeslots VALUES (14, 'Tue 13:55 - 14:50');
+INSERT INTO timeslots VALUES (15, 'Tue 15:10 - 16:05');
+INSERT INTO timeslots VALUES (16, 'Tue 16:05 - 17:00');
+INSERT INTO timeslots VALUES (17, 'Wed 8:00 - 8:55');
+INSERT INTO timeslots VALUES (18, 'Wed 8:55 - 9:50');
+INSERT INTO timeslots VALUES (19, 'Wed 10:10 - 11:05');
+INSERT INTO timeslots VALUES (20, 'Wed 11:05 - 12:00');
+INSERT INTO timeslots VALUES (21, 'Wed 13:00 - 13:55');
+INSERT INTO timeslots VALUES (22, 'Wed 13:55 - 14:50');
+INSERT INTO timeslots VALUES (23, 'Wed 15:10 - 16:05');
+INSERT INTO timeslots VALUES (24, 'Wed 16:05 - 17:00');
+INSERT INTO timeslots VALUES (25, 'Thur 8:00 - 8:55');
+INSERT INTO timeslots VALUES (26, 'Thur 8:55 - 9:50');
+INSERT INTO timeslots VALUES (27, 'Thur 10:10 - 11:05');
+INSERT INTO timeslots VALUES (28, 'Thur 11:05 - 12:00');
+INSERT INTO timeslots VALUES (29, 'Thur 13:00 - 13:55');
+INSERT INTO timeslots VALUES (30, 'Thur 13:55 - 14:50');
+INSERT INTO timeslots VALUES (31, 'Thur 15:10 - 16:05');
+INSERT INTO timeslots VALUES (32, 'Thur 16:05 - 17:00');
+INSERT INTO timeslots VALUES (33, 'Fri 8:00 - 8:55');
+INSERT INTO timeslots VALUES (34, 'Fri 8:55 - 9:50');
+INSERT INTO timeslots VALUES (35, 'Fri 10:10 - 11:05');
+INSERT INTO timeslots VALUES (36, 'Fri 11:05 - 12:00');
+INSERT INTO timeslots VALUES (37, 'Fri 13:00 - 13:55');
+INSERT INTO timeslots VALUES (38, 'Fri 13:55 - 14:50');
+INSERT INTO timeslots VALUES (39, 'Fri 15:10 - 16:05');
+INSERT INTO timeslots VALUES (40, 'Fri 16:05 - 17:00');
+
 INSERT INTO Lecturers VALUES (1, 'Mr M Dharmawardane', 'a', 1, true);
 INSERT INTO Lecturers VALUES (2, 'Mr D Athawuda', 'a', 1, true);
 INSERT INTO Lecturers VALUES (3, 'Dr A K Kulathunga', 'a', 1, true);
@@ -79,40 +120,65 @@ INSERT INTO Lecturers VALUES (33, 'Dr RMF', 'a', 1, true);
 INSERT INTO Lecturers VALUES (34, 'Dr WAL', 'a', 1, true);
 INSERT INTO Lecturers VALUES (35, 'Dr KML', 'a', 1, true);
 INSERT INTO Lecturers VALUES (36, 'Dr RIG', 'a', 1, true);
+INSERT INTO Lecturers VALUES (37, 'Dr JR', 'a', 1, true);
+INSERT INTO Lecturers VALUES (38, 'Dr AR', 'a', 1, true);
+INSERT INTO Lecturers VALUES (39, 'Dr WPD', 'a', 1, true);
+INSERT INTO Lecturers VALUES (40, 'Dr SPG', 'a', 1, true);
+INSERT INTO Lecturers VALUES (41, 'Dr VG', 'a', 1, true);
+INSERT INTO Lecturers VALUES (42, 'Dr PBB', 'a', 1, true);
+INSERT INTO Lecturers VALUES (43, 'Dr TL', 'a', 1, true);
+INSERT INTO Lecturers VALUES (44, 'Dr LR', 'a', 1, true);
+INSERT INTO Lecturers VALUES (45, 'Dr DHSM', 'a', 1, true);
+INSERT INTO Lecturers VALUES (46, 'Dr SKS', 'a', 1, true);
+INSERT INTO Lecturers VALUES (47, 'Dr LUB', 'a', 1, true);
+INSERT INTO Lecturers VALUES (48, 'Dr VL', 'a', 1, true);
+INSERT INTO Lecturers VALUES (49, 'Dr KW', 'a', 1, true);
 
-INSERT INTO Courses VALUES (1, 'PR204', 'Production 21', '1', false, 25);
-INSERT INTO Courses VALUES (2, 'PR314', 'Production 31', '1', false, 25);
-INSERT INTO Courses VALUES (3, 'PR315', 'Production 32', '1', false, 25);
-INSERT INTO Courses VALUES (4, 'CO221', 'Computer 21', '1', false, 25);
-INSERT INTO Courses VALUES (5, 'CO222', 'Computer 22', '1', false, 25);
-INSERT INTO Courses VALUES (6, 'CO223', 'Computer 23', '1', false, 25);
-INSERT INTO Courses VALUES (7, 'CO321', 'Computer 31', '1', false, 25);
-INSERT INTO Courses VALUES (8, 'CO322', 'Computer 32', '1', false, 25);
-INSERT INTO Courses VALUES (9, 'CO323', 'Computer 33', '1', false, 25);
-INSERT INTO Courses VALUES (10, 'CO324', 'Computer 34', '1', false, 25);
-INSERT INTO Courses VALUES (11, 'CO325', 'Computer 35', '1', false, 25);
-INSERT INTO Courses VALUES (12, 'CO421', 'Computer 41', '1', false, 25);
-INSERT INTO Courses VALUES (13, 'CO422', 'Computer 42', '1', false, 25);
-INSERT INTO Courses VALUES (14, 'CO423', 'Computer 43', '1', false, 25);
-INSERT INTO Courses VALUES (15, 'CO424', 'Computer 44', '1', false, 25);
-INSERT INTO Courses VALUES (16, 'EE201', 'Elec 21', '1', false, 25);
-INSERT INTO Courses VALUES (17, 'EE251', 'Elec 22', '1', false, 25);
-INSERT INTO Courses VALUES (18, 'EE252', 'Elec 23', '1', false, 25);
-INSERT INTO Courses VALUES (19, 'EE253', 'Elec 24', '1', false, 25);
-INSERT INTO Courses VALUES (20, 'EE280', 'Elec Mech Prod', '1', false, 25);
-INSERT INTO Courses VALUES (21, 'EE282', 'Elec Com 21', '1', false, 25);
-INSERT INTO Courses VALUES (22, 'EE320', 'Elec 31', '1', false, 25);
-INSERT INTO Courses VALUES (23, 'EE351', 'Elec 32', '1', false, 25);
-INSERT INTO Courses VALUES (24, 'EE322', 'Elec 33', '1', false, 25);
-INSERT INTO Courses VALUES (25, 'EE325', 'Elec 34', '1', false, 25);
-INSERT INTO Courses VALUES (26, 'EE326', 'Elec 35', '1', false, 25);
-INSERT INTO Courses VALUES (27, 'EE352', 'Elec 36', '1', false, 25);
-INSERT INTO Courses VALUES (28, 'EE380', 'Elec Mech Prod', '1', false, 25);
-INSERT INTO Courses VALUES (29, 'EE386', 'COM 31', '1', false, 25);
-INSERT INTO Courses VALUES (30, 'EE401', 'Elec 41', '1', false, 25);
-INSERT INTO Courses VALUES (31, 'EE402', 'Elec 42', '1', false, 25);
+
+INSERT INTO Courses VALUES (1, 'PR204', 'Production 21', '1', false, 40);
+INSERT INTO Courses VALUES (2, 'PR314', 'Production 31', '1', false, 30);
+INSERT INTO Courses VALUES (3, 'PR315', 'Production 32', '1', false, 30);
+INSERT INTO Courses VALUES (4, 'CO221', 'Computer 21', '1', false, 60);
+INSERT INTO Courses VALUES (5, 'CO222', 'Computer 22', '1', false, 60);
+INSERT INTO Courses VALUES (6, 'CO223', 'Computer 23', '1', false, 60);
+INSERT INTO Courses VALUES (7, 'CO321', 'Computer 31', '1', false, 60);
+INSERT INTO Courses VALUES (8, 'CO322', 'Computer 32', '1', false, 60);
+INSERT INTO Courses VALUES (9, 'CO323', 'Computer 33', '1', false, 60);
+INSERT INTO Courses VALUES (10, 'CO324', 'Computer 34', '1', false, 60);
+INSERT INTO Courses VALUES (11, 'CO325', 'Computer 35', '1', false, 60);
+INSERT INTO Courses VALUES (12, 'CO421', 'Computer 41', '1', false, 60);
+INSERT INTO Courses VALUES (13, 'CO422', 'Computer 42', '1', false, 60);
+INSERT INTO Courses VALUES (14, 'CO423', 'Computer 43', '1', false, 60);
+INSERT INTO Courses VALUES (15, 'CO424', 'Computer 44', '1', false, 60);
+INSERT INTO Courses VALUES (16, 'EE201', 'Elec 21', '1', false, 100);
+INSERT INTO Courses VALUES (17, 'EE251', 'Elec 22', '1', false, 100);
+INSERT INTO Courses VALUES (18, 'EE252', 'Elec 23', '1', false, 100);
+INSERT INTO Courses VALUES (19, 'EE253', 'Elec 24', '1', false, 100);
+INSERT INTO Courses VALUES (20, 'EE280', 'Elec Mech Prod', '1', false, 260);
+INSERT INTO Courses VALUES (21, 'EE282', 'Elec Com 21', '1', false, 75);
+INSERT INTO Courses VALUES (22, 'EE320', 'Elec 31', '1', false, 100);
+INSERT INTO Courses VALUES (23, 'EE351', 'Elec 32', '1', false, 100);
+INSERT INTO Courses VALUES (24, 'EE322', 'Elec 33', '1', false, 100);
+INSERT INTO Courses VALUES (25, 'EE325', 'Elec 34', '1', false, 100);
+INSERT INTO Courses VALUES (26, 'EE326', 'Elec 35', '1', false, 100);
+INSERT INTO Courses VALUES (27, 'EE352', 'Elec 36', '1', false, 100);
+INSERT INTO Courses VALUES (28, 'EE380', 'Elec Mech Prod', '1', false, 90);
+INSERT INTO Courses VALUES (29, 'EE386', 'COM 31', '1', false, 75);
+INSERT INTO Courses VALUES (30, 'EE401', 'Elec 41', '1', false, 100);
+INSERT INTO Courses VALUES (31, 'EE402', 'Elec 42', '1', false, 100);
 INSERT INTO Courses VALUES (32, 'EE403', 'Elec 43', '1', false, 25);
-INSERT INTO Courses VALUES (33, 'EE404', 'Elec 44', '1', false, 25);
+INSERT INTO Courses VALUES (33, 'EE404', 'Elec 44', '1', false, 100);
+INSERT INTO Courses VALUES (34, 'ME202', 'Civil 21', '1', false, 150);
+INSERT INTO Courses VALUES (35, 'ME211', 'Mech Chem Prod Elec', '1', false, 240);
+INSERT INTO Courses VALUES (36, 'ME213', 'Mech prod', '1', false, 100);
+INSERT INTO Courses VALUES (37, 'ME301', 'Mech Prod', '1', false, 90);
+INSERT INTO Courses VALUES (38, 'ME303', 'Mech Chem', '1', false, 75);
+INSERT INTO Courses VALUES (39, 'ME306', 'Mech Chem Prod', '1', false, 90);
+INSERT INTO Courses VALUES (40, 'ME406', 'Mech 41', '1', false, 50);
+INSERT INTO Courses VALUES (41, 'ME502', 'Mech t 41', '1', false, 30);
+INSERT INTO Courses VALUES (42, 'ME512', 'Mech Chem', '1', false, 40);
+INSERT INTO Courses VALUES (43, 'ME518', 'Mech t 42', '1', false, 50);
+INSERT INTO Courses VALUES (44, 'ME520', 'Mech Chem Prod', '1', false, 75);
 
 
 INSERT INTO CourseLecturerMap VALUES (1,1,1);
@@ -190,56 +256,60 @@ INSERT INTO CourseLecturerMap VALUES (72,32,21);
 INSERT INTO CourseLecturerMap VALUES (73,32,18);
 INSERT INTO CourseLecturerMap VALUES (74,33,33);
 INSERT INTO CourseLecturerMap VALUES (75,33,20);
+INSERT INTO CourseLecturerMap VALUES (76,34,37);
+INSERT INTO CourseLecturerMap VALUES (77,34,38);
+INSERT INTO CourseLecturerMap VALUES (78,34,39);
+INSERT INTO CourseLecturerMap VALUES (79,34,40);
+INSERT INTO CourseLecturerMap VALUES (80,34,41);
+INSERT INTO CourseLecturerMap VALUES (81,35,38);
+INSERT INTO CourseLecturerMap VALUES (82,35,40);
+INSERT INTO CourseLecturerMap VALUES (83,35,42);
+INSERT INTO CourseLecturerMap VALUES (84,36,38);
+INSERT INTO CourseLecturerMap VALUES (85,36,42);
+INSERT INTO CourseLecturerMap VALUES (86,37,40);
+INSERT INTO CourseLecturerMap VALUES (87,37,42);
+INSERT INTO CourseLecturerMap VALUES (88,37,38);
+INSERT INTO CourseLecturerMap VALUES (89,37,43);
+INSERT INTO CourseLecturerMap VALUES (90,38,39);
+INSERT INTO CourseLecturerMap VALUES (91,38,44);
+INSERT INTO CourseLecturerMap VALUES (92,38,40);
+INSERT INTO CourseLecturerMap VALUES (93,38,43);
+INSERT INTO CourseLecturerMap VALUES (94,39,42);
+INSERT INTO CourseLecturerMap VALUES (95,39,38);
+INSERT INTO CourseLecturerMap VALUES (96,40,45);
+INSERT INTO CourseLecturerMap VALUES (97,40,42);
+INSERT INTO CourseLecturerMap VALUES (98,41,37);
+INSERT INTO CourseLecturerMap VALUES (99,41,46);
+INSERT INTO CourseLecturerMap VALUES (100,42,40);
+INSERT INTO CourseLecturerMap VALUES (101,42,44);
+INSERT INTO CourseLecturerMap VALUES (102,42,47);
+INSERT INTO CourseLecturerMap VALUES (103,42,48);
+INSERT INTO CourseLecturerMap VALUES (104,42,38);
+INSERT INTO CourseLecturerMap VALUES (105,43,45);
+INSERT INTO CourseLecturerMap VALUES (106,44,38);
+INSERT INTO CourseLecturerMap VALUES (107,44,49);
+INSERT INTO CourseLecturerMap VALUES (108,44,43);
 
-INSERT INTO timeslots VALUES (1, 'Mon 8:00 - 8:55');
-INSERT INTO timeslots VALUES (2, 'Mon 8:55 - 9:50');
-INSERT INTO timeslots VALUES (3, 'Mon 10:10 - 11:05');
-INSERT INTO timeslots VALUES (4, 'Mon 11:05 - 12:00');
-INSERT INTO timeslots VALUES (5, 'Mon 13:00 - 13:55');
-INSERT INTO timeslots VALUES (6, 'Mon 13:55 - 14:50');
-INSERT INTO timeslots VALUES (7, 'Mon 15:10 - 16:05');
-INSERT INTO timeslots VALUES (8, 'Mon 16:05 - 17:00');
-INSERT INTO timeslots VALUES (9, 'Tue 8:00 - 8:55');
-INSERT INTO timeslots VALUES (10, 'Tue 8:55 - 9:50');
-INSERT INTO timeslots VALUES (11, 'Tue 10:10 - 11:05');
-INSERT INTO timeslots VALUES (12, 'Tue 11:05 - 12:00');
-INSERT INTO timeslots VALUES (13, 'Tue 13:00 - 13:55');
-INSERT INTO timeslots VALUES (14, 'Tue 13:55 - 14:50');
-INSERT INTO timeslots VALUES (15, 'Tue 15:10 - 16:05');
-INSERT INTO timeslots VALUES (16, 'Tue 16:05 - 17:00');
-INSERT INTO timeslots VALUES (17, 'Wed 8:00 - 8:55');
-INSERT INTO timeslots VALUES (18, 'Wed 8:55 - 9:50');
-INSERT INTO timeslots VALUES (19, 'Wed 10:10 - 11:05');
-INSERT INTO timeslots VALUES (20, 'Wed 11:05 - 12:00');
-INSERT INTO timeslots VALUES (21, 'Wed 13:00 - 13:55');
-INSERT INTO timeslots VALUES (22, 'Wed 13:55 - 14:50');
-INSERT INTO timeslots VALUES (23, 'Wed 15:10 - 16:05');
-INSERT INTO timeslots VALUES (24, 'Wed 16:05 - 17:00');
-INSERT INTO timeslots VALUES (25, 'Thur 8:00 - 8:55');
-INSERT INTO timeslots VALUES (26, 'Thur 8:55 - 9:50');
-INSERT INTO timeslots VALUES (27, 'Thur 10:10 - 11:05');
-INSERT INTO timeslots VALUES (28, 'Thur 11:05 - 12:00');
-INSERT INTO timeslots VALUES (29, 'Thur 13:00 - 13:55');
-INSERT INTO timeslots VALUES (30, 'Thur 13:55 - 14:50');
-INSERT INTO timeslots VALUES (31, 'Thur 15:10 - 16:05');
-INSERT INTO timeslots VALUES (32, 'Thur 16:05 - 17:00');
-INSERT INTO timeslots VALUES (33, 'Fri 8:00 - 8:55');
-INSERT INTO timeslots VALUES (34, 'Fri 8:55 - 9:50');
-INSERT INTO timeslots VALUES (35, 'Fri 10:10 - 11:05');
-INSERT INTO timeslots VALUES (36, 'Fri 11:05 - 12:00');
-INSERT INTO timeslots VALUES (37, 'Fri 13:00 - 13:55');
-INSERT INTO timeslots VALUES (38, 'Fri 13:55 - 14:50');
-INSERT INTO timeslots VALUES (39, 'Fri 15:10 - 16:05');
-INSERT INTO timeslots VALUES (40, 'Fri 16:05 - 17:00');
 
-INSERT INTO Groups VALUES (1,40);
-INSERT INTO Groups VALUES (2,30);
-INSERT INTO Groups VALUES (3,60);
-INSERT INTO Groups VALUES (4,60);
-INSERT INTO Groups VALUES (5,60);
-INSERT INTO Groups VALUES (6,100);
-INSERT INTO Groups VALUES (7,100);
-INSERT INTO Groups VALUES (8,100);
+INSERT INTO Groups VALUES (1,40); --prod 2nd year --PR204 
+INSERT INTO Groups VALUES (2,30); --Prod 3rd year --PR314,PR315
+INSERT INTO Groups VALUES (3,60); --Com 2nd year --CO221,CO222,CO223
+INSERT INTO Groups VALUES (4,60); --Com 3rd year --CO321, CO322, CO323, CO324, CO325
+INSERT INTO Groups VALUES (5,60); --Com 4th year --CO421, CO422, CO423, CO424
+INSERT INTO Groups VALUES (6,100); -- Elec 2nd year
+INSERT INTO Groups VALUES (7,100); -- Elec 3rd year
+INSERT INTO Groups VALUES (8,100); -- Elec 4th year
+INSERT INTO Groups VALUES (9,150); -- Civil 2nd year
+INSERT INTO Groups VALUES (10,150); -- Civil 3rd year
+INSERT INTO Groups VALUES (11,150); -- Civil 4th year
+INSERT INTO Groups VALUES (12,25); -- Chem 2nd year
+INSERT INTO Groups VALUES (13,25); -- Chem 3rd year
+INSERT INTO Groups VALUES (14,25); -- Chem 4th year
+INSERT INTO Groups VALUES (15,40); -- Mech 2nd year
+INSERT INTO Groups VALUES (16,40); -- Mech 3rd year
+INSERT INTO Groups VALUES (17,40); -- Mech 4th year
+INSERT INTO Groups VALUES (18, 30); -- Prod 4th year 
+
 
 INSERT INTO GroupCourseMap VALUES (1,1,1);
 INSERT INTO GroupCourseMap VALUES (2,1,20);
@@ -277,3 +347,28 @@ INSERT INTO GroupCourseMap VALUES (33,8,30);
 INSERT INTO GroupCourseMap VALUES (34,8,31);
 INSERT INTO GroupCourseMap VALUES (35,8,32);
 INSERT INTO GroupCourseMap VALUES (36,8,33);
+INSERT INTO GroupCourseMap VALUES (37,9,34);
+INSERT INTO GroupCourseMap VALUES (38,12,34);
+INSERT INTO GroupCourseMap VALUES (39,6,34);
+INSERT INTO GroupCourseMap VALUES (40,15,34);
+INSERT INTO GroupCourseMap VALUES (41,1,34);
+INSERT INTO GroupCourseMap VALUES (42,1,36);
+INSERT INTO GroupCourseMap VALUES (43,15,36);
+INSERT INTO GroupCourseMap VALUES (44,2,37);
+INSERT INTO GroupCourseMap VALUES (45,16,37);
+INSERT INTO GroupCourseMap VALUES (46,13,38);
+INSERT INTO GroupCourseMap VALUES (47,16,38);
+INSERT INTO GroupCourseMap VALUES (48,13,39);
+INSERT INTO GroupCourseMap VALUES (49,2,39);
+INSERT INTO GroupCourseMap VALUES (50,16,39);
+INSERT INTO GroupCourseMap VALUES (51,17,40);
+INSERT INTO GroupCourseMap VALUES (52,17,41);
+INSERT INTO GroupCourseMap VALUES (53,14,42);
+INSERT INTO GroupCourseMap VALUES (54,17,42);
+INSERT INTO GroupCourseMap VALUES (55,16,43);
+INSERT INTO GroupCourseMap VALUES (56,17,43);
+INSERT INTO GroupCourseMap VALUES (57,16,44);
+INSERT INTO GroupCourseMap VALUES (58,17,44);
+INSERT INTO GroupCourseMap VALUES (59,17,44);
+INSERT INTO GroupCourseMap VALUES (60,15,20);
+INSERT INTO GroupCourseMap VALUES (61,7,28);
