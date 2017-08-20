@@ -17,7 +17,7 @@ public interface LecturePreferencesController {
 
 	@ResponseBody
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
-	Response getAllLecturePreferences();
+	Iterable<LecturePreferences> getAllLecturePreferences();
 
 	@ResponseBody
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -25,5 +25,5 @@ public interface LecturePreferencesController {
 
 	@ResponseBody
 	@RequestMapping(value = "/getPreferencesByLecture/{" + Constances.LECTURE_ID + "}", method = RequestMethod.GET)
-	Response getPreferencesByLecture(String lectureId);
+	Iterable<LecturePreferences> getPreferencesByLecture(String lectureId);
 }

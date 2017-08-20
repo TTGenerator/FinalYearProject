@@ -1,19 +1,19 @@
---  DROP DATABASE TTGenerator;
---  CREATE DATABASE TTGenerator;
---  drop user admin@localhost;
---  flush privileges;
---  create user admin@localhost identified by 'admin123';
---  grant all on TTGenerator.* to 'admin'@'localhost';
---  flush privileges;
+-- DROP DATABASE TTGenerator;
+-- CREATE DATABASE TTGenerator;
+-- drop user admin@localhost;
+-- flush privileges;
+-- create user admin@localhost identified by 'admin123';
+-- grant all on TTGenerator.* to 'admin'@'localhost';
+-- flush privileges;
 
-DROP TABLE IF EXISTS LecturerPreferences ;
+DROP TABLE IF EXISTS lecturer_preferences ;
 DROP TABLE IF EXISTS role ;
 DROP TABLE IF EXISTS RoomFacility ;
 DROP TABLE IF EXISTS Students ;
 DROP TABLE IF EXISTS Admin ;
 DROP TABLE IF EXISTS Courses ;
 DROP TABLE IF EXISTS Lecturers ;
-DROP TABLE IF EXISTS Classroom ;
+DROP TABLE IF EXISTS classroom ;
 DROP TABLE IF EXISTS Departments ;
 DROP TABLE IF EXISTS timeslots ;
 DROP TABLE IF EXISTS CourseLecturerMap ;
@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS Groups ;
 DROP TABLE IF EXISTS GroupCourseMap ; 
 
 CREATE TABLE Departments (
-  	dept_id int NOT NULL,
+  dept_id int NOT NULL,
 	dept_name VARCHAR(50),
 	PRIMARY KEY(dept_id)
 );
@@ -30,10 +30,10 @@ CREATE TABLE Students (
   student_id int NOT NULL,
   student_name VARCHAR(50),
   batch_id VARCHAR(10),
-  dept_id int,
+  dept_id_std int,
 	student_email VARCHAR(40),
 	PRIMARY KEY(student_id),
-	FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
+	FOREIGN KEY (dept_id_std) REFERENCES Departments(dept_id)
 );
 
 CREATE TABLE Admin (
@@ -46,10 +46,10 @@ CREATE TABLE Lecturers (
   lecturer_id int NOT NULL,
 	lecturer_name VARCHAR(100),
 	lecturer_email VARCHAR(40),
-	dept_id int,
+	dept_id_lct int,
 	has_preferences BOOLEAN,
 	PRIMARY KEY(lecturer_id),
-	FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
+	FOREIGN KEY (dept_id_lct) REFERENCES Departments(dept_id)
 );
 
 CREATE TABLE Courses (
@@ -62,7 +62,7 @@ CREATE TABLE Courses (
   PRIMARY KEY(course_id)
 );
 
-CREATE TABLE Classroom (
+CREATE TABLE classroom (
   room_id int NOT NULL,
 	room_name VARCHAR(50),
 	room_category VARCHAR(50),
@@ -71,7 +71,7 @@ CREATE TABLE Classroom (
 	PRIMARY KEY(room_id)
 );
 
-CREATE TABLE LecturerPreferences (
+CREATE TABLE lecturer_preferences (
   lecturer_id int NOT NULL,
 	is_ac BOOLEAN,
 	has_multimedia BOOLEAN,

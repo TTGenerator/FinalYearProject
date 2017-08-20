@@ -23,8 +23,8 @@ public class RoleControllerImpl implements RoleController {
   @Autowired
   private RoleService roleService;
 
-  public Response findAllUsers() {
-    return ResponseBuilder.create().withData(roleService.findAll()).withMessage("get All Data from DB").get();
+  public Iterable<Role> findAllUsers() {
+    return roleService.findAll();
 //    return roleService.findAll();
   }
 

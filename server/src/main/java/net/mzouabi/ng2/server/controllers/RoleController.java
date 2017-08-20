@@ -20,7 +20,7 @@ public interface RoleController {
   @RequestMapping(value = "/getAllUsers",
     method = RequestMethod.GET,
     produces = MediaType.APPLICATION_JSON_VALUE)
-  Response findAllUsers();
+  Iterable<Role> findAllUsers();
 
   @ResponseBody
   @RequestMapping(value = "/checkUser/{" + Constants.NAME + "}/{" + Constants.PASSWORD + "}",

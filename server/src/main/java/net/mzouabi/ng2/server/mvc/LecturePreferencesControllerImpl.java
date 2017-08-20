@@ -18,10 +18,8 @@ public class LecturePreferencesControllerImpl implements LecturePreferencesContr
 	@Autowired
 	LecturePreferencesService lecturePreferencesService;
 
-	public Response getAllLecturePreferences() {
-		return ResponseBuilder.create()
-			.withData(lecturePreferencesService.fineAll())
-			.withMessage("All Data Retrieved").get();
+	public Iterable<LecturePreferences> getAllLecturePreferences() {
+		return lecturePreferencesService.fineAll();
 	}
 
 	public void addLectuerPreferences(
@@ -29,11 +27,9 @@ public class LecturePreferencesControllerImpl implements LecturePreferencesContr
 		lecturePreferencesService.addPreference(lecturePreferences);
 	}
 
-	public Response getPreferencesByLecture(
+	public Iterable<LecturePreferences> getPreferencesByLecture(
 		@PathVariable(Constances.LECTURE_ID) String lectureId) {
 		Iterable<LecturePreferences> lecturePreferences = lecturePreferencesService.findByLectureId(lectureId);
-		return ResponseBuilder.create()
-			.withData(lecturePreferences)
-			.withMessage("Data Retrieved").get();
+		return lecturePreferences;
 	}
 }
