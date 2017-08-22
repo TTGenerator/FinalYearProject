@@ -46,10 +46,10 @@ CREATE TABLE Lecturers (
   lecturer_id int NOT NULL,
 	lecturer_name VARCHAR(100),
 	lecturer_email VARCHAR(40),
-	dept_id_lct int,
+	dept_id int,
 	has_preferences BOOLEAN,
 	PRIMARY KEY(lecturer_id),
-	FOREIGN KEY (dept_id_lct) REFERENCES Departments(dept_id)
+	FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
 );
 
 CREATE TABLE Courses (
