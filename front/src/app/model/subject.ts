@@ -8,7 +8,7 @@ export interface Subject {
   teacher?:string;
   duration?:string;
   maxStudents:number;
-  deleted:boolean;
+  is_deleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }

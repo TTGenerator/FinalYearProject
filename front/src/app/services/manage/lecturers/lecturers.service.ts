@@ -12,7 +12,7 @@ export class LecturersService {
       deptID:'CO',
       coursesCodes:'CO221 CO222',
       email:'roshanr@pdn.ac.lk',
-      deleted:false,
+      is_deleted:false,
       isChecked:false,
       isActive: false
     },
@@ -22,7 +22,7 @@ export class LecturersService {
       deptID:'CO',
       coursesCodes:'CO223 CO224',
       email:'dhammika@ce.pdn.ac.lk',
-      deleted:false,
+      is_deleted:false,
       isChecked:false,
       isActive: false
     },
@@ -32,7 +32,7 @@ export class LecturersService {
       deptID:'CO',
       coursesCodes:'CO322 CO225',
       email:'dsdeegalla@pdn.ac.lk',
-      deleted:false,
+      is_deleted:false,
       isChecked:false,
       isActive: false
     },
@@ -42,7 +42,7 @@ export class LecturersService {
       deptID:'CO',
       coursesCodes:'CO226 CO421',
       email:'namal@ce.pdn.ac.lk',
-      deleted:false,
+      is_deleted:false,
       isChecked:false,
       isActive: false
     }

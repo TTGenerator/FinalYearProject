@@ -58,12 +58,12 @@ export class Lecturers {
 
   getNotDeleted() {
     return this.LecturersList.filter((item:Lecturer) => {
-      return !item.deleted
+      return !item.is_deleted
     })
   }
 
   addToDoItem() {
-    this.model.deleted=false;
+    this.model.is_deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
     this.model.id=new Date();
@@ -75,10 +75,10 @@ export class Lecturers {
           subject.deptID=this.model.deptID;
           subject.coursesCodes=this.model.coursesCodes;
           subject.email=this.model.email;
-          subject.deleted=this.model.deleted;
+          subject.is_deleted=this.model.is_deleted;
           subject.isChecked=this.model.isChecked;
           subject.isActive=this.model.isActive;
-          subject.deleted=this.model.deleted;
+          subject.is_deleted=this.model.is_deleted;
           subject.isChecked=this.model.isChecked;
           subject.isActive=this.model.isActive;
           this.dismissed();
@@ -97,7 +97,7 @@ export class Lecturers {
   deleteLecturers(){
     for(let Lecturer of this.LecturersList){
       if(Lecturer.isChecked == true){
-        Lecturer.deleted = true;
+        Lecturer.is_deleted = true;
       }
     }
   }
@@ -116,7 +116,7 @@ class LecturerModal implements Lecturer {
   deptID:string;
   coursesCodes:string;
   email:string;
-  deleted?:boolean;
+  is_deleted?:boolean;
   isChecked:boolean;
   isActive:boolean;
 }

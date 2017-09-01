@@ -8,7 +8,7 @@ export interface Lecturer {
   deptID:string;
   coursesCodes:string;
   email:string;
-  deleted?:boolean;
+  is_deleted?:boolean;
   isChecked:boolean;
   isActive:boolean;
 }

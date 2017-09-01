@@ -13,7 +13,7 @@ export class SubjectsService {
       teacher: '',
       duration: '2 hrs',
       maxStudents: 60,
-      deleted: false,
+      is_deleted: false,
       isChecked: false,
       isActive: false
     },
@@ -24,7 +24,7 @@ export class SubjectsService {
       teacher: '',
       duration: '3 hrs',
       maxStudents: 64,
-      deleted: false,
+      is_deleted: false,
       isChecked: false,
       isActive: false
     },
@@ -35,7 +35,7 @@ export class SubjectsService {
       teacher: '',
       duration: '2.5 hrs',
       maxStudents: 57,
-      deleted: false,
+      is_deleted: false,
       isChecked: false,
       isActive: false
     },
@@ -46,7 +46,7 @@ export class SubjectsService {
       teacher: '',
       duration: '1 hrs',
       maxStudents: 65,
-      deleted: false,
+      is_deleted: false,
       isChecked: false,
       isActive: false
     }

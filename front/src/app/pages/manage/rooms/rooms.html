@@ -53,10 +53,10 @@
     </modal-header>
     <modal-body>
       <div class="form-group row">
-        <label style="color:#000000" for="roomName" class="col-sm-3 control-label">Room Name</label>
+        <label style="color:#000000" for="room_name" class="col-sm-3 control-label">Room Name</label>
         <div class="col-sm-8">
-          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="roomName" required
-                 [(ngModel)]="model.roomName" name="roomName" #roomName="ngModel">
+          <input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="room_name" required
+                 [(ngModel)]="model.room_name" name="room_name" #room_name="ngModel">
         </div>
       </div>
       <div class="form-group row">
@@ -67,16 +67,16 @@
         </div>
       </div>
       <div class="form-group row">
-        <label style="color:#000000" for="roomCategory" class="col-sm-3 control-label">Room Category</label>
+        <label style="color:#000000" for="room_category" class="col-sm-3 control-label">Room Category</label>
         <div class="col-sm-7">
-          <!--<input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="roomCategory"-->
-                 <!--required [(ngModel)]="model.roomCategory" name="roomCategory" #roomCategory="ngModel">-->
+          <!--<input style="border: 1px solid #000000; color: #222222;" type="text" class="form-control" id="room_category"-->
+                 <!--required [(ngModel)]="model.room_category" name="room_category" #room_category="ngModel">-->
           <!--<select (change)="parseValue($event.target.value)">-->
-            <!--<option *ngFor="let name of options" id="roomCategory"-->
+            <!--<option *ngFor="let name of options" id="room_category"-->
                     <!--[value]="name">{{name}}</option>-->
           <!--</select>-->
-          <select style="border: 1px solid #000000; color: #222222;" [(ngModel)]="model.roomCategory" name="roomCategory" #roomCategory="ngModel" id="roomCategory" >
-          <option *ngFor="let option of options" [value]="option" [selected]="model.roomCategory == option">{{option}}</option>
+          <select style="border: 1px solid #000000; color: #222222;" [(ngModel)]="model.room_category" name="room_category" #room_category="ngModel" id="room_category" >
+          <option *ngFor="let option of options" [value]="option" [selected]="model.room_category == option">{{option}}</option>
           </select>
         </div>
       </div>

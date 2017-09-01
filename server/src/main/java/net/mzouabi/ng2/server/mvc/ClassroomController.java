@@ -48,8 +48,10 @@ public class ClassroomController {
     @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void deleteClassRoomByID(@RequestParam("room_id") String room_id) {
-        Classroom resultClassroom = null;
+//        int room_id = Integer.parseInt(data);
+//        Classroom resultClassroom = null;
         resultClassroom = classroomRepository.findOne(room_id);
+        System.out.println(resultClassroom);
         if (resultClassroom != null) {
             classroomRepository.delete(resultClassroom);
         } else {

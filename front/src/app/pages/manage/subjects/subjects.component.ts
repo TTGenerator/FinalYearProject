@@ -56,12 +56,12 @@ export class Subjects {
 
   getNotDeleted() {
     return this.subjectsList.filter((item:Subject) => {
-      return !item.deleted
+      return !item.is_deleted
     })
   }
 
   addToDoItem() {
-    this.model.deleted=false;
+    this.model.is_deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
     this.model.sub_id=new Date();
@@ -75,7 +75,7 @@ export class Subjects {
           subject.teacher=this.model.teacher;
           subject.duration=this.model.duration;
           subject.maxStudents=this.model.maxStudents;
-          subject.deleted=this.model.deleted;
+          subject.is_deleted=this.model.is_deleted;
           subject.isChecked=this.model.isChecked;
           subject.isActive=this.model.isActive;
           this.dismissed();
@@ -91,7 +91,7 @@ export class Subjects {
   deleteSubjects(){
     for(let subject of this.subjectsList){
       if(subject.isChecked == true){
-        subject.deleted = true;
+        subject.is_deleted = true;
       }
     }
   }
@@ -111,7 +111,7 @@ class SubjectModal implements Subject {
   teacher:string;
   duration:string;
   maxStudents:number;
-  deleted:boolean;
+  is_deleted:boolean;
   isChecked:boolean;
   isActive:boolean;
 }
