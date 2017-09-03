@@ -67,7 +67,7 @@ public class TimetableGenetic {
         classrooms.forEach(classroomList::add);
 
         for(Classroom room : classroomList){
-            timetable.addRoom(room.getRoom_id(), room.getRoom_name(), room.getCapacity());
+            timetable.addRoom(room.getRoomid(), room.getRoomname(), room.getCapacity());
         }
 
         Iterable<Timeslot> timeslots = timeslotRepository.findAll();

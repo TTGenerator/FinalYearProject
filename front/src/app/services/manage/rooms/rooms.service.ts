@@ -33,7 +33,7 @@ export class RoomsService extends HTTPAppService {
 
   deleteClassRoomByID(roomID:string){
     let data = new URLSearchParams();
-    data.append('room_id', roomID);
+    data.append('roomid', roomID);
     this._http
       .post('http://localhost:8080/api/classroom/deleteClassRoomByID', data)
       .subscribe(data => {
@@ -44,9 +44,10 @@ export class RoomsService extends HTTPAppService {
   }
 
   addClassRoom(room:Room){
+    console.log(room);
     let data = new URLSearchParams();
-    data.append('room_id', room.room_id);
-    data.append('room_name', room.room_name);
+    data.append('roomid', room.roomid);
+    data.append('roomname', room.roomname);
     data.append('room_category', room.room_category);
     data.append('capacity', (room.capacity).toString());
     if(room.is_deleted){
@@ -67,8 +68,8 @@ export class RoomsService extends HTTPAppService {
   updateClassRoom(room:Room) {
     console.log(room);
     let data = new URLSearchParams();
-    data.append('room_id', room.room_id);
-    data.append('room_name', room.room_name);
+    data.append('roomid', room.roomid);
+    data.append('roomname', room.roomname);
     data.append('room_category', room.room_category);
     data.append('capacity', (room.capacity).toString());
     if(room.is_deleted){

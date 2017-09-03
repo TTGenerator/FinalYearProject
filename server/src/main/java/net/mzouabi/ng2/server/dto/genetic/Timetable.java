@@ -86,12 +86,12 @@ public class Timetable {
     /**
      * Add new room
      *
-     * @param roomId
+     * @param roomid
      * @param roomName
      * @param capacity
      */
-    public void addRoom(int roomId, String roomName, int capacity) {
-        this.rooms.put(roomId, new Room(roomId, roomName, capacity));
+    public void addRoom(int roomid, String roomName, int capacity) {
+        this.rooms.put(roomid, new Room(roomid, roomName, capacity));
     }
 
     /**
@@ -172,7 +172,7 @@ public class Timetable {
                 chromosomePos++;
 
                 // Add room
-                classes[classIndex].setRoomId(chromosome[chromosomePos]);
+                classes[classIndex].setRoomid(chromosome[chromosomePos]);
                 chromosomePos++;
 
                 // Add professor
@@ -187,16 +187,16 @@ public class Timetable {
     }
 
     /**
-     * Get room from roomId
+     * Get room from roomid
      *
-     * @param roomId
+     * @param roomid
      * @return room
      */
-    public Room getRoom(int roomId) {
-        if (!this.rooms.containsKey(roomId)) {
-            System.out.println("Rooms doesn't contain key " + roomId);
+    public Room getRoom(int roomid) {
+        if (!this.rooms.containsKey(roomid)) {
+            System.out.println("Rooms doesn't contain key " + roomid);
         }
-        return (Room) this.rooms.get(roomId);
+        return (Room) this.rooms.get(roomid);
     }
 
     public HashMap<Integer, Room> getRooms() {
@@ -342,7 +342,7 @@ public class Timetable {
 
         for (ClassType classA : this.classes) {
             // Check room capacity
-            int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
+            int roomCapacity = this.getRoom(classA.getRoomid()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
 
             if (roomCapacity < groupSize) {
@@ -351,7 +351,7 @@ public class Timetable {
 
             // Check if room is taken
             for (ClassType classB : this.classes) {
-                if (classA.getRoomId() == classB.getRoomId() && classA.getTimeslotId() == classB.getTimeslotId()
+                if (classA.getRoomid() == classB.getRoomid() && classA.getTimeslotId() == classB.getTimeslotId()
                         && classA.getClassTypeId() != classB.getClassTypeId()) {
                     clashes++;
                     break;

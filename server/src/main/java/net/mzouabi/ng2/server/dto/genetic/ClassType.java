@@ -11,7 +11,7 @@ public class ClassType {
     private final int moduleId;
     private int professorId;
     private int timeslotId;
-    private int roomId;
+    private int roomid;
 
     /**
      * Initialize new ClassType
@@ -47,10 +47,10 @@ public class ClassType {
     /**
      * Add room to class
      *
-     * @param roomId
+     * @param roomid
      */
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setRoomid(int roomid) {
+        this.roomid = roomid;
     }
 
     /**
@@ -99,12 +99,12 @@ public class ClassType {
     }
 
     /**
-     * Get roomId
+     * Get roomid
      *
-     * @return roomId
+     * @return roomid
      */
-    public int getRoomId() {
-        return this.roomId;
+    public int getRoomid() {
+        return this.roomid;
     }
 }
 

@@ -8,5 +8,5 @@ import net.mzouabi.ng2.server.model.Classroom;
 
 
 public interface ClassroomRepository extends CrudRepository<Classroom, String> {
-
+    Classroom findByRoomid(int roomid);
 }

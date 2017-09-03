@@ -46,8 +46,8 @@ public class Individual {
                 chromosomeIndex++;
 
                 // Add random room
-                int roomId = timetable.getRandomRoom().getRoomId();
-                newChromosome[chromosomeIndex] = roomId;
+                int roomid = timetable.getRandomRoom().getRoomid();
+                newChromosome[chromosomeIndex] = roomid;
                 chromosomeIndex++;
 
                 // Add random professor

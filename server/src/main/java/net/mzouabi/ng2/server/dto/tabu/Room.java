@@ -6,30 +6,30 @@ package net.mzouabi.ng2.server.dto.tabu;
  * Simple Room abstraction -- used to store the room capacity and compare against the student Group's size.
  */
 public class Room {
-    private final int roomId;
+    private final int roomid;
     private final String roomNumber;
     private final int capacity;
 
     /**
      * Initialize new Room
      *
-     * @param roomId     The ID for this classroom
+     * @param roomid     The ID for this classroom
      * @param roomNumber The room number
      * @param capacity   The room capacity
      */
-    public Room(int roomId, String roomNumber, int capacity) {
-        this.roomId = roomId;
+    public Room(int roomid, String roomNumber, int capacity) {
+        this.roomid = roomid;
         this.roomNumber = roomNumber;
         this.capacity = capacity;
     }
 
     /**
-     * Return roomId
+     * Return roomid
      *
-     * @return roomId
+     * @return roomid
      */
-    public int getRoomId() {
-        return this.roomId;
+    public int getRoomid() {
+        return this.roomid;
     }
 
     /**

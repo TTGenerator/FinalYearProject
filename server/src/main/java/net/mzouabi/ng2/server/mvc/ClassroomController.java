@@ -25,8 +25,8 @@ public class ClassroomController {
     @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void addClassRoom(
-            @RequestParam("room_id") String room_id,
-            @RequestParam("room_name") String room_name,
+            @RequestParam("roomid") String roomid,
+            @RequestParam("roomname") String roomname,
             @RequestParam("room_category") String room_category,
             @RequestParam("capacity") String capacity,
             @RequestParam("is_deleted") String is_deleted) {
@@ -37,8 +37,8 @@ public class ClassroomController {
             deleted = true;
         }
         Classroom newClassroom = new Classroom();
-        newClassroom.setRoom_id(Integer.parseInt(room_id));
-        newClassroom.setRoom_name(room_name);
+        newClassroom.setRoomid(Integer.parseInt(roomid));
+        newClassroom.setRoomname(roomname);
         newClassroom.setRoom_category(room_category);
         newClassroom.setCapacity(Integer.parseInt(capacity));
         newClassroom.setIs_deleted(deleted);
@@ -47,10 +47,10 @@ public class ClassroomController {
 
     @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void deleteClassRoomByID(@RequestParam("room_id") String room_id) {
-//        int room_id = Integer.parseInt(data);
-//        Classroom resultClassroom = null;
-        resultClassroom = classroomRepository.findOne(room_id);
+    public void deleteClassRoomByID(@RequestParam("roomid") String data) {
+        int roomid = Integer.parseInt(data);
+        Classroom resultClassroom = null;
+        resultClassroom = classroomRepository.findByRoomid(roomid);
         System.out.println(resultClassroom);
         if (resultClassroom != null) {
             classroomRepository.delete(resultClassroom);
@@ -61,20 +61,20 @@ public class ClassroomController {
 
     @RequestMapping(value = "/updateClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void updateClassRoom(@RequestParam("room_id") String room_id,
-                                @RequestParam("room_name") String room_name,
+    public void updateClassRoom(@RequestParam("roomid") String roomid,
+                                @RequestParam("roomname") String roomname,
                                 @RequestParam("room_category") String room_category,
                                 @RequestParam("capacity") String capacity,
                                 @RequestParam("is_deleted") String is_deleted) {
 
-        if (classroomRepository.findOne(room_id) != null) {
+        if (classroomRepository.findOne(roomid) != null) {
             boolean deleted = false;
             if (is_deleted == "T") {
                 deleted = true;
             }
             Classroom newClassroom = new Classroom();
-            newClassroom.setRoom_id(Integer.parseInt(room_id));
-            newClassroom.setRoom_name(room_name);
+            newClassroom.setRoomid(Integer.parseInt(roomid));
+            newClassroom.setRoomname(roomname);
             newClassroom.setRoom_category(room_category);
             newClassroom.setCapacity(Integer.parseInt(capacity));
             newClassroom.setIs_deleted(deleted);

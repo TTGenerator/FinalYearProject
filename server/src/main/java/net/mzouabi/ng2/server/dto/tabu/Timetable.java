@@ -68,12 +68,12 @@ public class Timetable {
     /**
      * Add new room
      *
-     * @param roomId
+     * @param roomid
      * @param roomName
      * @param capacity
      */
-    public void addRoom(int roomId, String roomName, int capacity) {
-        this.rooms.put(roomId, new Room(roomId, roomName, capacity));
+    public void addRoom(int roomid, String roomName, int capacity) {
+        this.rooms.put(roomid, new Room(roomid, roomName, capacity));
     }
 
     /**
@@ -121,16 +121,16 @@ public class Timetable {
     }
 
     /**
-     * Get room from roomId
+     * Get room from roomid
      *
-     * @param roomId
+     * @param roomid
      * @return room
      */
-    public Room getRoom(int roomId) {
-        if (!this.rooms.containsKey(roomId)) {
-            System.out.println("Rooms doesn't contain key " + roomId);
+    public Room getRoom(int roomid) {
+        if (!this.rooms.containsKey(roomid)) {
+            System.out.println("Rooms doesn't contain key " + roomid);
         }
-        return (Room) this.rooms.get(roomId);
+        return (Room) this.rooms.get(roomid);
     }
 
 

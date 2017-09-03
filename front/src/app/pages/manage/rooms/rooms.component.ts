@@ -80,11 +80,11 @@ export class Rooms {
     this.model.is_deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    this.model.room_id  = Guid.newGuid();
+    this.model.roomid  = Guid.newGuid();
     if(this.isEdit==true){
       for(let room of this.roomsList){
-        if(room.room_id === this.model.room_id){
-          room.room_name=this.model.room_name;
+        if(room.roomid === this.model.roomid){
+          room.roomname=this.model.roomname;
           room.capacity=this.model.capacity;
           room.room_category=this.model.room_category;
           room.is_deleted=this.model.is_deleted;
@@ -106,8 +106,8 @@ export class Rooms {
     for(let room of this.roomsList){
       if(room.isChecked == true){
         room.is_deleted = true;
-        console.log(room.room_id);
-        this._roomsService.deleteClassRoomByID(room.room_id);
+        console.log(room.roomid);
+        this._roomsService.deleteClassRoomByID(room.roomid);
       }
     }
   }
@@ -121,8 +121,8 @@ export class Rooms {
 }
 
 class RoomModal implements Room {
-  room_id:string;
-  room_name:string;
+  roomid:string;
+  roomname:string;
   capacity?:number;
   room_category:string;
   is_deleted:boolean;

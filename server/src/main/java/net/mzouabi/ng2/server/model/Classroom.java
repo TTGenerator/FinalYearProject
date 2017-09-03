@@ -14,11 +14,11 @@ import javax.persistence.Table;
 public class Classroom {
 
     @Id
-    @Column(name = "room_id")
-    public int room_id;
+    @Column(name = "roomid")
+    public int roomid;
 
-    @Column(name = "room_name")
-    public String room_name;
+    @Column(name = "roomname")
+    public String roomname;
 
     @Column(name = "room_category")
     public String room_category;
@@ -29,13 +29,13 @@ public class Classroom {
     @Column(name = "is_deleted")
     public boolean is_deleted;
 
-    public int getRoom_id() { return room_id; }
+    public int getRoomid() { return roomid; }
 
-    public void setRoom_id(int room_id) { this.room_id = room_id; }
+    public void setRoomid(int roomid) { this.roomid = roomid; }
 
-    public String getRoom_name() { return room_name; }
+    public String getRoomname() { return roomname; }
 
-    public void setRoom_name(String room_name) { this.room_name = room_name; }
+    public void setRoomname(String roomname) { this.roomname = roomname; }
 
     public String getRoom_category() { return room_category; }
 

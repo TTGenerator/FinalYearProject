@@ -1,10 +1,10 @@
--- DROP DATABASE TTGenerator;
--- CREATE DATABASE TTGenerator;
--- drop user admin@localhost;
--- flush privileges;
--- create user admin@localhost identified by 'admin123';
--- grant all on TTGenerator.* to 'admin'@'localhost';
--- flush privileges;
+# DROP DATABASE TTGenerator;
+# CREATE DATABASE TTGenerator;
+# drop user admin@localhost;
+# flush privileges;
+# create user admin@localhost identified by 'admin123';
+# grant all on TTGenerator.* to 'admin'@'localhost';
+# flush privileges;
 
 DROP TABLE IF EXISTS lecturer_preferences ;
 DROP TABLE IF EXISTS role ;
@@ -63,12 +63,12 @@ CREATE TABLE Courses (
 );
 
 CREATE TABLE classroom (
-  room_id int NOT NULL,
-	room_name VARCHAR(50),
+  roomid int NOT NULL,
+	roomname VARCHAR(50),
 	room_category VARCHAR(50),
 	capacity NUMERIC(50),
 	is_deleted BOOLEAN,
-	PRIMARY KEY(room_id)
+	PRIMARY KEY(roomid)
 );
 
 CREATE TABLE lecturer_preferences (
@@ -87,11 +87,11 @@ CREATE TABLE role (
 );
 
 CREATE TABLE RoomFacility (
-  room_id int NOT NULL,
+  roomid int NOT NULL,
 	is_ac BOOLEAN,
 	has_multimedia BOOLEAN,
 	has_whiteboard BOOLEAN,
-	PRIMARY KEY(room_id)
+	PRIMARY KEY(roomid)
 );
 
 CREATE TABLE timeslots (
