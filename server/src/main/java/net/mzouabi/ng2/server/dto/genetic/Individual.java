@@ -31,32 +31,35 @@ public class Individual {
     public Individual(Timetable timetable) {
         int numClasses = timetable.getNumClasses();
 
+        int numberOfTimeslots = timetable.getNumberofTimeslos();
+        int numberOfRooms = timetable.getNumberOfClassrooms();
+        int numberOfModules = timetable.getNumberOfModules();
 
         // 1 gene for room, 1 for time, 1 for professor
-        int chromosomeLength = numClasses * 3;
+        int chromosomeLength = numberOfTimeslots * numberOfRooms * 3;
         // Create random individual
         int newChromosome[] = new int[chromosomeLength];
         int chromosomeIndex = 0;
-        // Loop through groups
-        for (Group group : timetable.getGroupsAsArray()) {
-            // Loop through modules
-            for (int moduleId : group.getModuleIds()) {
-                // Add random time
-                int timeslotId = timetable.getRandomTimeslot().getTimeslotId();
-                newChromosome[chromosomeIndex] = timeslotId;
+        int timeslotsId = 1;
+
+        // Creating chromosome using timeslot + room + module
+        while(timeslotsId<=numberOfTimeslots){
+            int roomId = 1;
+            while(roomId<=numberOfRooms){
+                newChromosome[chromosomeIndex] = timeslotsId;
                 chromosomeIndex++;
 
-                // Add random room
-                int roomId = timetable.getRandomRoom().getRoomId();
                 newChromosome[chromosomeIndex] = roomId;
                 chromosomeIndex++;
 
-                // Add random professor
-                Module module = timetable.getModule(moduleId);
-                newChromosome[chromosomeIndex] = module.getRandomProfessorId();
+                newChromosome[chromosomeIndex] = (int) (numberOfModules * Math.random());
                 chromosomeIndex++;
+
+                roomId++;
             }
+            timeslotsId++;
         }
+
 
         this.chromosome = newChromosome;
     }
