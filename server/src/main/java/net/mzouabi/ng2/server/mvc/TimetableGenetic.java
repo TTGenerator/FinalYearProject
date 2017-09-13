@@ -60,7 +60,7 @@ public class TimetableGenetic {
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
 
-        Timetable timetable = new Timetable();
+        Timetable timetable = new Timetable(groupCourseMapRepository,courseLecturerMapRepository);
 
         Iterable<Classroom> classrooms = classroomRepository.findAll();
         List<Classroom> classroomList = new ArrayList<>();
@@ -96,7 +96,13 @@ public class TimetableGenetic {
             for(int i= 0 ; i<courseLecturerMapArrayList.size() ; i++){
                 lectureArray[i] = courseLecturerMapArrayList.get(i).getLecturer_id();
             }
-            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), lectureArray);
+
+            ArrayList<GroupCourseMap> courseGroupMapArrayList = groupCourseMapRepository.findByCourseId(course.getCourse_id());
+            int[] groupArray = new int[courseGroupMapArrayList.size()];
+            for(int i= 0 ; i<courseGroupMapArrayList.size() ; i++){
+                groupArray[i] = courseGroupMapArrayList.get(i).getGroupId();
+            }
+            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), lectureArray, groupArray);
         }
 
         Iterable<GroupModel> groups =groupRepository.findAll();
@@ -110,7 +116,7 @@ public class TimetableGenetic {
             ArrayList<GroupCourseMap> groupCourseMapArrayList = groupCourseMapRepository.findByGroupId(grp.getGroupId());
             int[] coursesArray = new int[groupCourseMapArrayList.size()];
             for(int i= 0 ; i<groupCourseMapArrayList.size() ; i++){
-                coursesArray[i] = groupCourseMapArrayList.get(i).getCourse_id();
+                coursesArray[i] = groupCourseMapArrayList.get(i).getCourseId();
             }
             timetable.addGroup(grp.getGroupId(),grp.getGroup_size(),coursesArray);
         }
@@ -130,7 +136,7 @@ public class TimetableGenetic {
         int generation = 1;
 
         // Start evolution loop
-        while (ga.isTerminationConditionMet(generation, 1000) == false
+        while (ga.isTerminationConditionMet(generation, 100) == false
                 && ga.isTerminationConditionMet(population) == false) {
 
             System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());

@@ -2,14 +2,17 @@
  * Created by jayani on 5/14/2017.
  */
 package net.mzouabi.ng2.server.dto.genetic;
+
+import java.util.Arrays;
+
 /**
  * A simple class abstraction -- basically a container for class, group, module, professor, timeslot, and room IDs
  */
 public class ClassType {
     private final int classId;
-    private final int groupId;
-    private final int moduleId;
-    private int professorId;
+    private int[] groupId;
+    private int moduleId;
+    private int[] professorId;
     private int timeslotId;
     private int roomId;
 
@@ -17,94 +20,65 @@ public class ClassType {
      * Initialize new ClassType
      *
      * @param classId
-     * @param groupId
-     * @param moduleId
      */
-    public ClassType(int classId, int groupId, int moduleId) {
+    public ClassType(int classId) {
         this.classId = classId;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public int getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(int moduleId) {
         this.moduleId = moduleId;
-        this.groupId = groupId;
     }
 
-    /**
-     * Add professor to class
-     *
-     * @param professorId
-     */
-    public void addProfessor(int professorId) {
-        this.professorId = professorId;
+    public int getTimeslotId() {
+        return timeslotId;
     }
 
-    /**
-     * Add timeslot to class
-     *
-     * @param timeslotId
-     */
-    public void addTimeslot(int timeslotId) {
+    public void setTimeslotId(int timeslotId) {
         this.timeslotId = timeslotId;
     }
 
-    /**
-     * Add room to class
-     *
-     * @param roomId
-     */
+    public int getRoomId() {
+        return roomId;
+    }
+
     public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 
-    /**
-     * Get classId
-     *
-     * @return classId
-     */
-    public int getClassTypeId() {
-        return this.classId;
+    public int[] getProfessorId() {
+        return professorId;
     }
 
-    /**
-     * Get groupId
-     *
-     * @return groupId
-     */
-    public int getGroupId() {
-        return this.groupId;
+    public void setProfessorId(int[] professorId) {
+        this.professorId = professorId;
     }
 
-    /**
-     * Get moduleId
-     *
-     * @return moduleId
-     */
-    public int getModuleId() {
-        return this.moduleId;
+    public int[] getGroupId() {
+        return groupId;
     }
 
-    /**
-     * Get professorId
-     *
-     * @return professorId
-     */
-    public int getProfessorId() {
-        return this.professorId;
+    public void setGroupId(int[] groupId) {
+        this.groupId = groupId;
     }
 
-    /**
-     * Get timeslotId
-     *
-     * @return timeslotId
-     */
-    public int getTimeslotId() {
-        return this.timeslotId;
-    }
-
-    /**
-     * Get roomId
-     *
-     * @return roomId
-     */
-    public int getRoomId() {
-        return this.roomId;
+    @Override
+    public String toString() {
+        return "ClassType{" +
+                "classId=" + classId +
+                ", groupId=" + Arrays.toString(groupId) +
+                ", moduleId=" + moduleId +
+                ", professorId=" + Arrays.toString(professorId) +
+                ", timeslotId=" + timeslotId +
+                ", roomId=" + roomId +
+                '}';
     }
 }
 

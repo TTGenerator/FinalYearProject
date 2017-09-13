@@ -2,7 +2,12 @@
  * Created by jayani on 5/14/2017.
  */
 package net.mzouabi.ng2.server.dto.genetic;
+import java.util.ArrayList;
 import java.util.HashMap;
+import net.mzouabi.ng2.server.repository.*;
+import net.mzouabi.ng2.server.model.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Timetable is the main evaluation class for the class scheduler GA.
@@ -34,17 +39,23 @@ public class Timetable {
     private final HashMap<Integer, TimeslotDTO> timeslots;
     private ClassType classes[];
 
+
+    private GroupCourseMapRepository groupCourseMapRepository;
+    private CourseLecturerMapRepository courseLecturerMapRepository;
+
     private int numClasses = 0;
 
     /**
      * Initialize new Timetable
      */
-    public Timetable() {
+    public Timetable(GroupCourseMapRepository groupCourseMapRepository, CourseLecturerMapRepository courseLecturerMapRepository) {
         this.rooms = new HashMap<Integer, Room>();
         this.professors = new HashMap<Integer, Professor>();
         this.modules = new HashMap<Integer, Module>();
         this.groups = new HashMap<Integer, Group>();
         this.timeslots = new HashMap<Integer, TimeslotDTO>();
+        this.groupCourseMapRepository = groupCourseMapRepository;
+        this.courseLecturerMapRepository = courseLecturerMapRepository;
     }
 
     /**
@@ -112,9 +123,9 @@ public class Timetable {
      * @param module
      * @param professorIds
      */
-    public void addModule(int moduleId, String moduleCode, String module, int professorIds[]) {
+    public void addModule(int moduleId, String moduleCode, String module, int professorIds[], int groups[]) {
 
-        this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds));
+        this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds, groups));
     }
 
     /**
@@ -155,32 +166,31 @@ public class Timetable {
      */
     public void createClasses(Individual individual) {
         // Init classes
-        ClassType classes[] = new ClassType[this.getNumClasses()];
+        ClassType classes[] = new ClassType[this.getNumberofTimeslos()*this.getNumberOfClassrooms()];
 
         // Get individual's chromosome
         int chromosome[] = individual.getChromosome();
-        int chromosomePos = 0;
         int classIndex = 0;
+        int chromosomePos = 0;
+        while (chromosomePos < chromosome.length){
+            classes[classIndex] = new ClassType(classIndex);
 
-        for (Group group : this.getGroupsAsArray()) {
-            int moduleIds[] = group.getModuleIds();
-            for (int moduleId : moduleIds) {
-                classes[classIndex] = new ClassType(classIndex, group.getGroupId(), moduleId);
+            classes[classIndex].setTimeslotId(chromosome[chromosomePos]);
+            chromosomePos++;
 
-                // Add timeslot
-                classes[classIndex].addTimeslot(chromosome[chromosomePos]);
-                chromosomePos++;
+            classes[classIndex].setRoomId(chromosome[chromosomePos]);
+            chromosomePos++;
 
-                // Add room
-                classes[classIndex].setRoomId(chromosome[chromosomePos]);
-                chromosomePos++;
+            classes[classIndex].setModuleId(chromosome[chromosomePos]);
 
-                // Add professor
-                classes[classIndex].addProfessor(chromosome[chromosomePos]);
-                chromosomePos++;
+            int groups[] = this.modules.get(chromosome[chromosomePos]).getGroupIds();
+            classes[classIndex].setGroupId(groups);
 
-                classIndex++;
-            }
+            int lecturers[] = this.modules.get(chromosome[chromosomePos]).getProfessorIds();
+            classes[classIndex].setProfessorId(lecturers);
+
+            chromosomePos++;
+            classIndex++;
         }
 
         this.classes = classes;
@@ -353,20 +363,24 @@ public class Timetable {
      */
     public int calcClashes() {
         int clashes = 0;
-
         for (ClassType classA : this.classes) {
             // Check room capacity
-            int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
-            int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
+            //System.out.println("Room is : " + getRoom(classA.getRoomId()).getRoomCapacity());
+            int roomCapacity = this.rooms.get(classA.getRoomId()).getRoomCapacity();
+            int groupIds[] = classA.getGroupId();
+            int groupSize = 0;
+            for (int count=0; count<groupIds.length; count++) {
+                groupSize += this.getGroup(groupIds[count]).getGroupSize();
+            }
 
             if (roomCapacity < groupSize) {
                 clashes++;
             }
 
             // Check if room is taken
-            for (ClassType classB : this.classes) {
+            /*for (ClassType classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId() && classA.getTimeslotId() == classB.getTimeslotId()
-                        && classA.getClassTypeId() != classB.getClassTypeId()) {
+                        && classA.getClassId() != classB.getClassId()) {
                     clashes++;
                     break;
                 }
@@ -375,13 +389,13 @@ public class Timetable {
             // Check if professor is available
             for (ClassType classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId()
-                        && classA.getClassTypeId() != classB.getClassTypeId()) {
+                        && classA.getClassId() != classB.getClassId()) {
                     clashes++;
                     break;
                 }
-            }
-        }
+            }*/
 
+        }
         return clashes;
     }
 }

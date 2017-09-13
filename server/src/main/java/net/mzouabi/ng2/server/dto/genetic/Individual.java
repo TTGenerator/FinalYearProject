@@ -52,7 +52,10 @@ public class Individual {
                 newChromosome[chromosomeIndex] = roomId;
                 chromosomeIndex++;
 
-                newChromosome[chromosomeIndex] = (int) (numberOfModules * Math.random());
+                int courseId = (int) (numberOfModules * Math.random());
+                if(courseId==0)
+                    courseId=1;
+                newChromosome[chromosomeIndex] = courseId;
                 chromosomeIndex++;
 
                 roomId++;
