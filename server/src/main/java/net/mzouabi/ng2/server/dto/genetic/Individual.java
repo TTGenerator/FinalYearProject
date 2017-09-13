@@ -31,6 +31,7 @@ public class Individual {
     public Individual(Timetable timetable) {
         int numClasses = timetable.getNumClasses();
 
+
         // 1 gene for room, 1 for time, 1 for professor
         int chromosomeLength = numClasses * 3;
         // Create random individual
