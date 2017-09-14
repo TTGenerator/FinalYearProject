@@ -1,32 +1,56 @@
 <div class="row">
   <div class="col-md-12">
       <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <ba-card title="Time Table" baCardClass="with-scroll">
-            <div class="horizontal-scroll">
-              <table class="table table-bordered">
-                <thead>
-                <tr>
-                  <th>Time</th>
-                  <th class="align-right">8.00-8.55</th>
-                  <th class="align-right">8.55-9.50</th>
-                  <th class="align-right">10.10-11.05</th>
-                  <th class="align-right">11.05-12.00</th>
-                  <th class="align-right">13.00-13.55</th>
-                  <th class="align-right">13.55-14.50</th>
-                  <th class="align-right">15.10-16.05</th>
-                  <th class="align-right">16.05-17.00</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of TimetableDay">
-                    <th class="align-right">{{item}}</th>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+        <div class="col-lg-6 col-md-12" *ngIf="matrix != null">
+          <!--<ba-card title="Time Table" style="width: 800px;">-->
+            <!--<div >-->
+              <!--<table class="table table-bordered">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                  <!--<th>Time</th>-->
+                  <!--<th class="align-right">8.00-8.55</th>-->
+                  <!--<th class="align-right">8.55-9.50</th>-->
+                  <!--<th class="align-right">10.10-11.05</th>-->
+                  <!--<th class="align-right">11.05-12.00</th>-->
+                  <!--<th class="align-right">13.00-13.55</th>-->
+                  <!--<th class="align-right">13.55-14.50</th>-->
+                  <!--<th class="align-right">15.10-16.05</th>-->
+                  <!--<th class="align-right">16.05-17.00</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr *ngFor="let item of TimetableDay">-->
+                    <!--<th class="align-right">{{item}}</th>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+              <!--</table>-->
+              <div style="width: 900px;height: 100px" *ngFor="let dayItem of weekDays">
+                <div style="width: 100px;height: 100px;float: left;border: solid 1px gray;color: #1C2B36" *ngFor="let timeItem of timeSlot">
+                  <span *ngIf="dayItem === 0 && timeItem !== 0">
+                    <div *ngIf="dayItem === 0 && timeItem == 1" style="width: 100%;height: 100%;float: left;background: gainsboro" >time1</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 2" style="width: 100%;height: 100%;float: left;background: gainsboro" >time2</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 3" style="width: 100%;height: 100%;float: left;background: gainsboro" >time3</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 4" style="width: 100%;height: 100%;float: left;background: gainsboro" >time4</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 5" style="width: 100%;height: 100%;float: left;background: gainsboro" >time5</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 6" style="width: 100%;height: 100%;float: left;background: gainsboro" >time6</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 7" style="width: 100%;height: 100%;float: left;background: gainsboro" >time7</div>
+                    <div *ngIf="dayItem === 0 && timeItem == 8" style="width: 100%;height: 100%;float: left;background: gainsboro" >time8</div>
+                  </span>
+                  <span *ngIf="dayItem !== 0 && timeItem === 0">
+                    <div *ngIf="dayItem == 1 && timeItem === 0" style="width: 100%;height: 100%;float: left;background: gainsboro" >MONDAY</div>
+                    <div *ngIf="dayItem == 2 && timeItem === 0" style="width: 100%;height: 100%;float: left;background: gainsboro" >TUESDAY</div>
+                    <div *ngIf="dayItem == 3 && timeItem === 0" style="width: 100%;height: 100%;float: left;background: gainsboro" >WEDNESDAY</div>
+                    <div *ngIf="dayItem == 4 && timeItem === 0" style="width: 100%;height: 100%;float: left;background: gainsboro" >THURSEDAY</div>
+                    <div *ngIf="dayItem == 5 && timeItem === 0" style="width: 100%;height: 100%;float: left;background: gainsboro" >FRIDAY</div>
+                  </span>
+                  <span *ngIf="dayItem !== 0 && timeItem !== 0">
+                    <div style="width: 100px;height: 20px;float: left;color: #1C2B36" *ngFor="let ttItem of matrix[dayItem-1][timeItem-1]">{{ttItem.moduleId}}-{{ttItem.groupId}}</div>
+                  </span>
+                </div>
+              </div>
+            <!--</div>-->
 
-          </ba-card>
+          <!--</ba-card>-->
         </div>
       </div>
   </div>

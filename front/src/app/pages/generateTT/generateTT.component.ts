@@ -15,8 +15,10 @@ export class GenerateTT {
 
   Timetable:ClassType[];
   Timetable_new:ClassType[];
-  private matrix: ClassType[][];
+  public matrix: ClassType[][][];
   TimetableDay:string[] = ["Monday" , "Tuesday" , "Wednsday" , "Thursday" , "Friday"];
+  weekDays = [0,1,2,3,4,5];
+  timeSlot = [0,1,2,3,4,5,6,7,8];
 
   constructor( private _httpService : HTTPAppService, private _geneticTimetableService: GeneticTimetableService) {
     this.loadTimetable();
@@ -43,10 +45,10 @@ export class GenerateTT {
           for(let i: number = 0; i < 5; i++){
             this.matrix[i] = [];
             for (let j: number = 0; j <8; j++){
+              this.matrix[i][j] = [];
               for (let item of this.Timetable) {
                 if(item.timeslotId == count){
-                  this.matrix[i][j]= this.Timetable[count];
-
+                  this.matrix[i][j].push(item);
                 }
               }
 
@@ -57,6 +59,7 @@ export class GenerateTT {
       }
     );
   }
+
 }
 
 class ClassTypeModal implements ClassType {
@@ -67,3 +70,4 @@ class ClassTypeModal implements ClassType {
   timeslotId:number;
   roomid:number;
 }
+

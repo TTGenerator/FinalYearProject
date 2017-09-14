@@ -173,7 +173,8 @@ a {
 }
 
 .align-right {
-  text-align: right
+  text-align: right;
+  border: solid 1px gray !important;
 }
 
 .amcharts-chart-div > a {
