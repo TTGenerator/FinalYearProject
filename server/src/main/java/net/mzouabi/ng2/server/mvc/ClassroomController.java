@@ -24,8 +24,8 @@ public class ClassroomController {
 
     @RequestMapping(value = "/addClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void addClassRoom(
-            @RequestParam("roomid") String roomid,
+    public int addClassRoom(
+//            @RequestParam("roomid") String roomid,
             @RequestParam("roomname") String roomname,
             @RequestParam("room_category") String room_category,
             @RequestParam("capacity") String capacity,
@@ -37,12 +37,13 @@ public class ClassroomController {
             deleted = true;
         }
         Classroom newClassroom = new Classroom();
-        newClassroom.setRoomid(Integer.parseInt(roomid));
+        newClassroom.setRoomid(0);
         newClassroom.setRoomname(roomname);
         newClassroom.setRoom_category(room_category);
         newClassroom.setCapacity(Integer.parseInt(capacity));
         newClassroom.setIs_deleted(deleted);
         classroomRepository.save(newClassroom);
+        return newClassroom.getRoomid();
     }
 
     @RequestMapping(value = "/deleteClassRoomByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,19 +62,19 @@ public class ClassroomController {
 
     @RequestMapping(value = "/updateClassRoom", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void updateClassRoom(@RequestParam("roomid") String roomid,
+    public void updateClassRoom(@RequestParam("roomid") String data,
                                 @RequestParam("roomname") String roomname,
                                 @RequestParam("room_category") String room_category,
                                 @RequestParam("capacity") String capacity,
                                 @RequestParam("is_deleted") String is_deleted) {
-
-        if (classroomRepository.findOne(roomid) != null) {
+        int roomid = Integer.parseInt(data);
+        if (classroomRepository.findByRoomid(roomid) != null) {
             boolean deleted = false;
             if (is_deleted == "T") {
                 deleted = true;
             }
             Classroom newClassroom = new Classroom();
-            newClassroom.setRoomid(Integer.parseInt(roomid));
+            newClassroom.setRoomid(roomid);
             newClassroom.setRoomname(roomname);
             newClassroom.setRoom_category(room_category);
             newClassroom.setCapacity(Integer.parseInt(capacity));

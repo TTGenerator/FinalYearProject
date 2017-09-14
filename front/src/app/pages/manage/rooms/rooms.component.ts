@@ -80,7 +80,7 @@ export class Rooms {
     this.model.is_deleted=false;
     this.model.isChecked=false;
     this.model.isActive=false;
-    this.model.roomid  = Guid.newGuid();
+    // this.model.roomid  = Guid.newGuid();
     if(this.isEdit==true){
       for(let room of this.roomsList){
         if(room.roomid === this.model.roomid){
@@ -95,8 +95,9 @@ export class Rooms {
         }
       }
     }else {
+      let roomid: string = this._roomsService.addClassRoom(this.model);
+      this.model.roomid = roomid;
       this.roomsList.push(this.model);
-      this._roomsService.addClassRoom(this.model);
       this.model= new RoomModal();
     }
 

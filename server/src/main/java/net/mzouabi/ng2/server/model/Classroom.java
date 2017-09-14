@@ -2,11 +2,8 @@ package net.mzouabi.ng2.server.model;
 /**
  * Created by Jayani on 06/05/17.
  */
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 
 @Entity
@@ -14,6 +11,7 @@ import javax.persistence.Table;
 public class Classroom {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "roomid")
     public int roomid;
 
@@ -31,7 +29,9 @@ public class Classroom {
 
     public int getRoomid() { return roomid; }
 
-    public void setRoomid(int roomid) { this.roomid = roomid; }
+    public void setRoomid(int roomid) {
+        this.roomid = roomid;
+    }
 
     public String getRoomname() { return roomname; }
 

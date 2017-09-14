@@ -63,12 +63,12 @@ CREATE TABLE Courses (
 );
 
 CREATE TABLE classroom (
-  roomid int NOT NULL,
+  roomid INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	roomname VARCHAR(50),
 	room_category VARCHAR(50),
 	capacity NUMERIC(50),
-	is_deleted BOOLEAN,
-	PRIMARY KEY(roomid)
+	is_deleted BOOLEAN
+
 );
 
 CREATE TABLE lecturer_preferences (

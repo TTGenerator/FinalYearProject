@@ -43,10 +43,10 @@ export class RoomsService extends HTTPAppService {
       });
   }
 
-  addClassRoom(room:Room){
-    console.log(room);
+  addClassRoom(room:Room):string{
+    let roomid: string = null;
     let data = new URLSearchParams();
-    data.append('roomid', room.roomid);
+    // data.append('roomid', room.roomid);
     data.append('roomname', room.roomname);
     data.append('room_category', room.room_category);
     data.append('capacity', (room.capacity).toString());
@@ -56,13 +56,16 @@ export class RoomsService extends HTTPAppService {
       data.append('is_deleted', "F");
     }
 
+
     this._http
       .post('http://localhost:8080/api/classroom/addClassRoom', data)
       .subscribe(data => {
+        roomid = data.text();
         alert('added successfully');
       }, error => {
         console.log(error.json());
       });
+    return roomid;
   }
 
   updateClassRoom(room:Room) {

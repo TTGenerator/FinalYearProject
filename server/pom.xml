@@ -120,6 +120,16 @@
         <version>1.16.16</version>
         <scope>provided</scope>
     </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>3.0.0.ga</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-annotations</artifactId>-->
+            <!--<version>3.3.0.ga</version>-->
+        <!--</dependency>-->
     </dependencies>
     <dependencyManagement>
         <dependencies>

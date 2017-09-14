@@ -8,21 +8,19 @@
                 <thead>
                 <tr>
                   <th>Time</th>
-                  <th class="align-right">Monday</th>
-                  <th class="align-right">Tuesday</th>
-                  <th class="align-right">Wednesday</th>
-                  <th class="align-right">Thursday</th>
-                  <th class="align-right">Friday</th>
+                  <th class="align-right">8.00-8.55</th>
+                  <th class="align-right">8.55-9.50</th>
+                  <th class="align-right">10.10-11.05</th>
+                  <th class="align-right">11.05-12.00</th>
+                  <th class="align-right">13.00-13.55</th>
+                  <th class="align-right">13.55-14.50</th>
+                  <th class="align-right">15.10-16.05</th>
+                  <th class="align-right">16.05-17.00</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of metricsTableData">
-                  <!--<td><img src="{{ ( item.image | baAppPicture )}}" width="20" height="20"></td>-->
-                  <!--<td ngClass="nowrap">{{ item.browser }}</td>-->
-                  <!--<td class="align-right">{{ item.visits }}</td>-->
-                  <!--<td class="align-right">{{ item.purchases }}</td>-->
-                  <!--<td class="align-right">{{ item.percent }}</td>-->
-                  <td class="align-right">8.00-8.55</td>
+                <tr *ngFor="let item of TimetableDay">
+                    <th class="align-right">{{item}}</th>
                 </tr>
                 </tbody>
               </table>
