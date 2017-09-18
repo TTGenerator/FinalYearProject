@@ -2,6 +2,7 @@
  * Created by jayani on 5/14/2017.
  */
 package net.mzouabi.ng2.server.dto.genetic;
+import java.util.stream.*;
 public class Individual {
 
     /**
@@ -34,16 +35,43 @@ public class Individual {
         int numberOfTimeslots = timetable.getNumberofTimeslos();
         int numberOfRooms = timetable.getNumberOfClassrooms();
         int numberOfModules = timetable.getNumberOfModules();
-
+        int courseDurationArray[] = timetable.getDurationArray();
+        int sum = IntStream.of(courseDurationArray).sum();
+        //System.out.println("Sum of courses : " + sum);
         // 1 gene for room, 1 for time, 1 for professor
-        int chromosomeLength = numberOfTimeslots * numberOfRooms * 3;
+        int chromosomeLength = sum * 3;
         // Create random individual
         int newChromosome[] = new int[chromosomeLength];
         int chromosomeIndex = 0;
-        int timeslotsId = 1;
+        int timeslotsId, roomId;
+        int moduleId=1;
+
+
+        while(chromosomeIndex<chromosomeLength){
+            timeslotsId = (int) (numberOfTimeslots * Math.random());
+            if ( timeslotsId==0 ) timeslotsId=1;
+            newChromosome[chromosomeIndex] = timeslotsId;
+            chromosomeIndex++;
+
+            roomId = (int) (numberOfRooms * Math.random());
+            if( roomId==0 ) roomId=1;
+            newChromosome[chromosomeIndex] = roomId;
+            chromosomeIndex++;
+
+            moduleId = (int) (numberOfModules * Math.random());
+            if ( moduleId==0 ) moduleId=1;
+            if(courseDurationArray[moduleId]>0){
+                newChromosome[chromosomeIndex] = moduleId;
+                courseDurationArray[moduleId]--;
+            } else {
+                newChromosome[chromosomeIndex] = -1;
+            }
+            chromosomeIndex++;
+
+        }
 
         // Creating chromosome using timeslot + room + module
-        while(timeslotsId<=numberOfTimeslots){
+        /*while(timeslotsId<=numberOfTimeslots){
             int roomId = 1;
             while(roomId<=numberOfRooms){
                 newChromosome[chromosomeIndex] = timeslotsId;
@@ -55,13 +83,17 @@ public class Individual {
                 int courseId = (int) (numberOfModules * Math.random());
                 if(courseId==0)
                     courseId=1;
-                newChromosome[chromosomeIndex] = courseId;
+                if(courseDurationArray[courseId]>0) {
+                    //System.out.println(courseDurationArray[courseId]);
+                    newChromosome[chromosomeIndex] = courseId;
+                    courseDurationArray[courseId]--;
+                }
                 chromosomeIndex++;
 
                 roomId++;
             }
             timeslotsId++;
-        }
+        }*/
 
 
         this.chromosome = newChromosome;

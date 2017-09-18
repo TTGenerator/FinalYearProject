@@ -102,7 +102,8 @@ public class TimetableGenetic {
             for(int i= 0 ; i<courseGroupMapArrayList.size() ; i++){
                 groupArray[i] = courseGroupMapArrayList.get(i).getGroupId();
             }
-            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), lectureArray, groupArray);
+
+            timetable.addModule(course.getCourse_id(), course.getCourse_code(), course.getCourse_name(), lectureArray, groupArray , course.getDuration());
         }
 
         Iterable<GroupModel> groups =groupRepository.findAll();
@@ -124,7 +125,7 @@ public class TimetableGenetic {
 
 
         // Initialize GA
-        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.1, 0.9, 2, 5);
+        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.99, 2, 5);
 
         // Initialize population
         Population population = ga.initPopulation(timetable);

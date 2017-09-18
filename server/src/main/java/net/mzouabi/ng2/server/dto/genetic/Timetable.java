@@ -4,6 +4,8 @@
 package net.mzouabi.ng2.server.dto.genetic;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.IntStream;
+
 import net.mzouabi.ng2.server.repository.*;
 import net.mzouabi.ng2.server.model.*;
 
@@ -123,9 +125,9 @@ public class Timetable {
      * @param module
      * @param professorIds
      */
-    public void addModule(int moduleId, String moduleCode, String module, int professorIds[], int groups[]) {
+    public void addModule(int moduleId, String moduleCode, String module, int professorIds[], int groups[], int duration) {
 
-        this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds, groups));
+        this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds, groups, duration));
     }
 
     /**
@@ -150,6 +152,14 @@ public class Timetable {
         this.timeslots.put(timeslotId, new TimeslotDTO(timeslotId, timeslot));
     }
 
+    public int [] getDurationArray(){
+        int durationArray[] = new int[this.modules.size()+1];
+        for (int i=1; i<=this.modules.size(); i++){
+            durationArray[i] = this.modules.get(i).getDuration();
+        }
+        return durationArray;
+    }
+
     /**
      * Create classes using individual's chromosome
      * <p>
@@ -166,8 +176,9 @@ public class Timetable {
      */
     public void createClasses(Individual individual) {
         // Init classes
-        ClassType classes[] = new ClassType[this.getNumberofTimeslos()*this.getNumberOfClassrooms()];
-
+        int courseDurationArray[] = this.getDurationArray();
+        int sum = IntStream.of(courseDurationArray).sum();
+        ClassType classes[] = new ClassType[sum];
         // Get individual's chromosome
         int chromosome[] = individual.getChromosome();
         int classIndex = 0;
@@ -181,13 +192,17 @@ public class Timetable {
             classes[classIndex].setRoomId(chromosome[chromosomePos]);
             chromosomePos++;
 
-            classes[classIndex].setModuleId(chromosome[chromosomePos]);
+            if(chromosome[chromosomePos]!=-1){
+                classes[classIndex].setModuleId(chromosome[chromosomePos]);
 
-            int groups[] = this.modules.get(chromosome[chromosomePos]).getGroupIds();
-            classes[classIndex].setGroupId(groups);
+                int groups[] = this.modules.get(chromosome[chromosomePos]).getGroupIds();
+                classes[classIndex].setGroupId(groups);
 
-            int lecturers[] = this.modules.get(chromosome[chromosomePos]).getProfessorIds();
-            classes[classIndex].setProfessorId(lecturers);
+                int lecturers[] = this.modules.get(chromosome[chromosomePos]).getProfessorIds();
+                classes[classIndex].setProfessorId(lecturers);
+            } else {
+                classes[classIndex].setModuleId(-1);
+            }
 
             chromosomePos++;
             classIndex++;
@@ -366,15 +381,17 @@ public class Timetable {
         for (ClassType classA : this.classes) {
             // Check room capacity
             //System.out.println("Room is : " + getRoom(classA.getRoomId()).getRoomCapacity());
-            int roomCapacity = this.rooms.get(classA.getRoomId()).getRoomCapacity();
-            int groupIds[] = classA.getGroupId();
-            int groupSize = 0;
-            for (int count=0; count<groupIds.length; count++) {
-                groupSize += this.getGroup(groupIds[count]).getGroupSize();
-            }
+            if(classA.getModuleId()!=-1) {
+                int roomCapacity = this.rooms.get(classA.getRoomId()).getRoomCapacity();
+                int groupIds[] = classA.getGroupId();
+                int groupSize = 0;
+                for (int count = 0; count < groupIds.length; count++) {
+                    groupSize += this.getGroup(groupIds[count]).getGroupSize();
+                }
 
-            if (roomCapacity < groupSize) {
-                clashes++;
+                if (roomCapacity < groupSize) {
+                    clashes++;
+                }
             }
 
             // Check if room is taken
