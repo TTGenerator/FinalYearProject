@@ -21,8 +21,8 @@ public class GroupCourseMap {
     @Column(name = "group_id")
     public int groupId;
 
-    @Column(name = "course_id")
-    public int course_id;
+    @Column(name = "courseid")
+    public int courseid;
 
     public int getGroupId() { return groupId; }
 
@@ -30,9 +30,9 @@ public class GroupCourseMap {
         this.groupId = groupId;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public int getCourseid() {
+        return courseid;
     }
 
-    public void setCourse_id(int course_id) { this.course_id = course_id; }
+    public void setCourseid(int courseid) { this.courseid = courseid; }
 }

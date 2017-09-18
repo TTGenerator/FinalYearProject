@@ -17,7 +17,7 @@ public class CourseLecturerMap {
     @Column(name = "id")
     public int id;
 
-    @Column(name = "course_id")
+    @Column(name = "courseid")
     public int courseId;
 
     @Column(name = "lecturer_id")
@@ -27,7 +27,7 @@ public class CourseLecturerMap {
         return courseId;
     }
 
-    public void setCourseId(int course_id) {
+    public void setCourseId(int courseid) {
         this.courseId = courseId;
     }
 

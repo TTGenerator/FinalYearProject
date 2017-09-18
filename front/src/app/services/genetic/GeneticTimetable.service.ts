@@ -28,4 +28,17 @@ export class GeneticTimetableService extends HTTPAppService {
         return this._http.get("http://localhost:8080/api/genetic/getTimetable");
     }
 
+    findModuleById(moduleId){
+      let data = new URLSearchParams();
+      data.append('courseid', moduleId);
+      // console.log(data);
+      return this._http.post('http://localhost:8080/api/genetic/findModuleById',data);
+    }
+
+    findRoomnameById(roomid){
+      let data = new URLSearchParams();
+      data.append('roomid', roomid);
+      // console.log(data);
+      return this._http.post('http://localhost:8080/api/genetic/findRoomnameById',data);
+    }
 }

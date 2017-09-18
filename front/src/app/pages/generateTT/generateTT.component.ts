@@ -14,11 +14,11 @@ import {ClassType} from "../../model/classType";
 export class GenerateTT {
 
   Timetable:ClassType[];
-  Timetable_new:ClassType[];
   public matrix: ClassType[][][];
   TimetableDay:string[] = ["Monday" , "Tuesday" , "Wednsday" , "Thursday" , "Friday"];
   weekDays = [0,1,2,3,4,5];
   timeSlot = [0,1,2,3,4,5,6,7,8];
+  returnValue:string;
 
   constructor( private _httpService : HTTPAppService, private _geneticTimetableService: GeneticTimetableService) {
     this.loadTimetable();
@@ -40,6 +40,23 @@ export class GenerateTT {
           });
 
           console.log(this.Timetable);
+
+          // Replace moduleId by name
+          for(let item of this.Timetable){
+
+            this._geneticTimetableService.findModuleById(item.moduleId).subscribe(
+              data => {
+                item.courseCode = data.text();
+                // console.log(item.courseCode);
+              });
+
+            this._geneticTimetableService.findRoomnameById(item.roomid).subscribe(
+              data => {
+                item.roomname = data.text();
+                // console.log(item.courseCode);
+              });
+          }
+
           let count:number =1 ;
           this.matrix = [];
           for(let i: number = 0; i < 5; i++){
@@ -59,6 +76,10 @@ export class GenerateTT {
       }
     );
   }
+  //
+  // findModuleById(moduleId):any{
+  //
+  // }
 
 }
 
@@ -69,5 +90,7 @@ class ClassTypeModal implements ClassType {
   professorId:number;
   timeslotId:number;
   roomid:number;
+  courseCode:string;
+  roomname:string;
 }
 

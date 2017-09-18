@@ -53,13 +53,13 @@ CREATE TABLE Lecturers (
 );
 
 CREATE TABLE Courses (
-  course_id int NOT NULL,
+  courseid int NOT NULL,
   course_code VARCHAR(10)NOT NULL,
 	course_name VARCHAR(25),
 	duration NUMERIC(10) ,
 	is_deleted BOOLEAN,
 	max_students INTEGER(10),
-  PRIMARY KEY(course_id)
+  PRIMARY KEY(courseid)
 );
 
 CREATE TABLE classroom (
@@ -102,7 +102,7 @@ CREATE TABLE timeslots (
 
 CREATE TABLE CourseLecturerMap (
 	id int NOT NULL,
-  course_id int NOT NULL,
+  courseid int NOT NULL,
   lecturer_id int NOT NULL,
   PRIMARY KEY(id)
 );
@@ -110,7 +110,7 @@ CREATE TABLE CourseLecturerMap (
 CREATE TABLE GroupCourseMap (
 	id int NOT NULL,
   group_id int NOT NULL,
-  course_id int NOT NULL,
+  courseid int NOT NULL,
   PRIMARY KEY(id)
 );
 

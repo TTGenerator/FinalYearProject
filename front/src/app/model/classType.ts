@@ -9,5 +9,7 @@ export interface ClassType {
   professorId:number;
   timeslotId:number;
   roomid:number;
+  courseCode:string;
+  roomname:string;
 
 }
