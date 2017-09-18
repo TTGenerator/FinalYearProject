@@ -18,17 +18,17 @@ public class CourseLecturerMap {
     public int id;
 
     @Column(name = "courseid")
-    public int courseId;
+    public int courseid;
 
     @Column(name = "lecturer_id")
     public int lecturer_id;
 
-    public int getCourseId() {
-        return courseId;
+    public int getCourseid() {
+        return courseid;
     }
 
-    public void setCourseId(int courseid) {
-        this.courseId = courseId;
+    public void setCourseid(int courseid) {
+        this.courseid = courseid;
     }
 
     public int getLecturer_id() {

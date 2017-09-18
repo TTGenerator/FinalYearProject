@@ -89,13 +89,13 @@ public class Timetable {
     /**
      * Add new course
      *
-     * @param courseId
+     * @param courseid
      * @param courseCode
      * @param course
      * @param professorIds
      */
-    public void addCourse(int courseId, String courseCode, String course, int professorIds[]) {
-        this.courses.put(courseId, new Course(courseId, courseCode, course, professorIds));
+    public void addCourse(int courseid, String courseCode, String course, int professorIds[]) {
+        this.courses.put(courseid, new Course(courseid, courseCode, course, professorIds));
     }
 
     /**
@@ -103,10 +103,10 @@ public class Timetable {
      *
      * @param groupId
      * @param groupSize
-     * @param courseIds
+     * @param courseids
      */
-    public void addGroup(int groupId, int groupSize, int courseIds[]) {
-        this.groups.put(groupId, new Group(groupId, groupSize, courseIds));
+    public void addGroup(int groupId, int groupSize, int courseids[]) {
+        this.groups.put(groupId, new Group(groupId, groupSize, courseids));
         this.numClasses = 0;
     }
 
@@ -156,24 +156,24 @@ public class Timetable {
     }
 
     /**
-     * Get course from courseId
+     * Get course from courseid
      *
-     * @param courseId
+     * @param courseid
      * @return course
      */
-    public Course getCourse(int courseId) {
-        return (Course) this.courses.get(courseId);
+    public Course getCourse(int courseid) {
+        return (Course) this.courses.get(courseid);
     }
 
     /**
-     * Get courseIds of student group
+     * Get courseids of student group
      *
      * @param groupId
-     * @return courseId array
+     * @return courseid array
      */
     public int[] getGroupCourses(int groupId) {
         Group group = (Group) this.groups.get(groupId);
-        return group.getCourseIds();
+        return group.getCourseids();
     }
 
     /**
@@ -238,7 +238,7 @@ public class Timetable {
         int numClasses = 0;
         Group groups[] = (Group[]) this.groups.values().toArray(new Group[this.groups.size()]);
         for (Group group : groups) {
-            numClasses += group.getCourseIds().length;
+            numClasses += group.getCourseids().length;
         }
         this.numClasses = numClasses;
         return this.numClasses;

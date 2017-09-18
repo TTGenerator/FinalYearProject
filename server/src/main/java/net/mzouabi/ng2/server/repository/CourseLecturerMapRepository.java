@@ -10,5 +10,5 @@ import java.util.*;
 
 
 public interface CourseLecturerMapRepository extends Repository<CourseLecturerMap, String> {
-    ArrayList<CourseLecturerMap> findByCourseId(int courseId);
+    ArrayList<CourseLecturerMap> findByCourseid(int courseid);
 }

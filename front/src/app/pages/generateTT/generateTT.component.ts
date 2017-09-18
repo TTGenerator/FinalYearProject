@@ -43,12 +43,13 @@ export class GenerateTT {
 
           // Replace moduleId by name
           for(let item of this.Timetable){
-
-            this._geneticTimetableService.findModuleById(item.moduleId).subscribe(
-              data => {
-                item.courseCode = data.text();
-                // console.log(item.courseCode);
-              });
+            if(item.moduleId != -1){
+              this._geneticTimetableService.findModuleById(item.moduleId).subscribe(
+                data => {
+                  item.courseCode = data.text();
+                  // console.log(item.courseCode);
+                });
+            }
 
             this._geneticTimetableService.findRoomnameById(item.roomid).subscribe(
               data => {
@@ -72,7 +73,7 @@ export class GenerateTT {
               count = count + 1;
             }
           }
-          console.log(this.matrix);
+          // console.log(this.matrix);
       }
     );
   }

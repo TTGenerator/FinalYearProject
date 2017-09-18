@@ -24,7 +24,7 @@ public class Course {
     public String course_name;
 
     @Column(name = "duration")
-    public String duration;
+    public int duration;
 
     @Column(name = "is_deleted")
     public int deleted;
@@ -56,11 +56,11 @@ public class Course {
         this.course_name = course_name;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 

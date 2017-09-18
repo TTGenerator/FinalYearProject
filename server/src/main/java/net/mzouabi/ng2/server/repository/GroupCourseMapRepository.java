@@ -11,4 +11,5 @@ import java.util.*;
 
 public interface GroupCourseMapRepository extends Repository<GroupCourseMap, String> {
     ArrayList<GroupCourseMap> findByGroupId(int groupId);
+    ArrayList<GroupCourseMap> findByCourseid(int courseid);
 }

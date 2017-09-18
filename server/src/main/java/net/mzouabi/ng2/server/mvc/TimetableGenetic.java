@@ -60,7 +60,7 @@ public class TimetableGenetic {
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void mainmethod() {
 
-        Timetable timetable = new Timetable();
+        Timetable timetable = new Timetable(groupCourseMapRepository,courseLecturerMapRepository);
 
         Iterable<Classroom> classrooms = classroomRepository.findAll();
         List<Classroom> classroomList = new ArrayList<>();
@@ -91,12 +91,19 @@ public class TimetableGenetic {
         courses.forEach(courseList::add);
 
         for(Course course : courseList){
-            ArrayList<CourseLecturerMap> courseLecturerMapArrayList = courseLecturerMapRepository.findByCourseId(course.getCourseid());
+            ArrayList<CourseLecturerMap> courseLecturerMapArrayList = courseLecturerMapRepository.findByCourseid(course.getCourseid());
             int[] lectureArray = new int[courseLecturerMapArrayList.size()];
             for(int i= 0 ; i<courseLecturerMapArrayList.size() ; i++){
                 lectureArray[i] = courseLecturerMapArrayList.get(i).getLecturer_id();
             }
-            timetable.addModule(course.getCourseid(), course.getCourse_code(), course.getCourse_name(), lectureArray);
+
+            ArrayList<GroupCourseMap> courseGroupMapArrayList = groupCourseMapRepository.findByCourseid(course.getCourseid());
+            int[] groupArray = new int[courseGroupMapArrayList.size()];
+            for(int i= 0 ; i<courseGroupMapArrayList.size() ; i++){
+                groupArray[i] = courseGroupMapArrayList.get(i).getGroupId();
+            }
+
+            timetable.addModule(course.getCourseid(), course.getCourse_code(), course.getCourse_name(), lectureArray, groupArray , course.getDuration());
         }
 
         Iterable<GroupModel> groups =groupRepository.findAll();
@@ -118,7 +125,7 @@ public class TimetableGenetic {
 
 
         // Initialize GA
-        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.1, 0.9, 2, 5);
+        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.99, 2, 5);
 
         // Initialize population
         Population population = ga.initPopulation(timetable);
@@ -130,7 +137,7 @@ public class TimetableGenetic {
         int generation = 1;
 
         // Start evolution loop
-        while (ga.isTerminationConditionMet(generation, 1000) == false
+        while (ga.isTerminationConditionMet(generation, 100) == false
                 && ga.isTerminationConditionMet(population) == false) {
 
             System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());

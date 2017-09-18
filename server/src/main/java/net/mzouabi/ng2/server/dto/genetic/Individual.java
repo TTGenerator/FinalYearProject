@@ -2,6 +2,7 @@
  * Created by jayani on 5/14/2017.
  */
 package net.mzouabi.ng2.server.dto.genetic;
+import java.util.stream.*;
 public class Individual {
 
     /**
@@ -31,31 +32,69 @@ public class Individual {
     public Individual(Timetable timetable) {
         int numClasses = timetable.getNumClasses();
 
+        int numberOfTimeslots = timetable.getNumberofTimeslos();
+        int numberOfRooms = timetable.getNumberOfClassrooms();
+        int numberOfModules = timetable.getNumberOfModules();
+        int courseDurationArray[] = timetable.getDurationArray();
+        int sum = IntStream.of(courseDurationArray).sum();
+        //System.out.println("Sum of courses : " + sum);
         // 1 gene for room, 1 for time, 1 for professor
-        int chromosomeLength = numClasses * 3;
+        int chromosomeLength = sum * 3;
         // Create random individual
         int newChromosome[] = new int[chromosomeLength];
         int chromosomeIndex = 0;
-        // Loop through groups
-        for (Group group : timetable.getGroupsAsArray()) {
-            // Loop through modules
-            for (int moduleId : group.getModuleIds()) {
-                // Add random time
-                int timeslotId = timetable.getRandomTimeslot().getTimeslotId();
-                newChromosome[chromosomeIndex] = timeslotId;
+        int timeslotsId, roomid;
+        int moduleId=1;
+
+
+        while(chromosomeIndex<chromosomeLength){
+            timeslotsId = (int) (numberOfTimeslots * Math.random());
+            if ( timeslotsId==0 ) timeslotsId=1;
+            newChromosome[chromosomeIndex] = timeslotsId;
+            chromosomeIndex++;
+
+            roomid = (int) (numberOfRooms * Math.random());
+            if( roomid==0 ) roomid=1;
+            newChromosome[chromosomeIndex] = roomid;
+            chromosomeIndex++;
+
+            moduleId = (int) (numberOfModules * Math.random());
+            if ( moduleId==0 ) moduleId=1;
+            if(courseDurationArray[moduleId]>0){
+                newChromosome[chromosomeIndex] = moduleId;
+                courseDurationArray[moduleId]--;
+            } else {
+                newChromosome[chromosomeIndex] = -1;
+            }
+            chromosomeIndex++;
+
+        }
+
+        // Creating chromosome using timeslot + room + module
+        /*while(timeslotsId<=numberOfTimeslots){
+            int roomid = 1;
+            while(roomid<=numberOfRooms){
+                newChromosome[chromosomeIndex] = timeslotsId;
                 chromosomeIndex++;
 
-                // Add random room
-                int roomid = timetable.getRandomRoom().getRoomid();
                 newChromosome[chromosomeIndex] = roomid;
                 chromosomeIndex++;
 
-                // Add random professor
-                Module module = timetable.getModule(moduleId);
-                newChromosome[chromosomeIndex] = module.getRandomProfessorId();
+                int courseid = (int) (numberOfModules * Math.random());
+                if(courseid==0)
+                    courseid=1;
+                if(courseDurationArray[courseid]>0) {
+                    //System.out.println(courseDurationArray[courseid]);
+                    newChromosome[chromosomeIndex] = courseid;
+                    courseDurationArray[courseid]--;
+                }
                 chromosomeIndex++;
+
+                roomid++;
             }
-        }
+            timeslotsId++;
+        }*/
+
 
         this.chromosome = newChromosome;
     }

@@ -9,19 +9,19 @@ package net.mzouabi.ng2.server.dto.tabu;
 public class Group {
     private final int groupId;
     private final int groupSize;
-    private final int courseIds[];
+    private final int courseids[];
 
     /**
      * Initialize Group
      *
      * @param groupId
      * @param groupSize
-     * @param courseIds
+     * @param courseids
      */
-    public Group(int groupId, int groupSize, int courseIds[]) {
+    public Group(int groupId, int groupSize, int courseids[]) {
         this.groupId = groupId;
         this.groupSize = groupSize;
-        this.courseIds = courseIds;
+        this.courseids = courseids;
     }
 
     /**
@@ -43,11 +43,11 @@ public class Group {
     }
 
     /**
-     * Get array of group's courseIds
+     * Get array of group's courseids
      *
-     * @return courseIds
+     * @return courseids
      */
-    public int[] getCourseIds() {
-        return this.courseIds;
+    public int[] getCourseids() {
+        return this.courseids;
     }
 }
