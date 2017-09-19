@@ -16,6 +16,8 @@ public class ClassType {
     private int timeslotId;
     private int roomId;
 
+
+
     /**
      * Initialize new ClassType
      *
@@ -68,7 +70,15 @@ public class ClassType {
     public void setGroupId(int[] groupId) {
         this.groupId = groupId;
     }
+    public boolean isConsecutiveClasses(ClassType classA){
+        return isSameDay(classA) && Math.abs(classA.getTimeslotId()-this.getTimeslotId())==1.0;
 
+    }
+
+    public boolean isSameDay(ClassType classA){
+        return Math.ceil(classA.getTimeslotId()/8) == Math.ceil(this.getTimeslotId()/8);
+
+    }
     @Override
     public String toString() {
         return "ClassType{" +

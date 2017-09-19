@@ -68,8 +68,7 @@ public class GeneticAlgorithm {
         threadTimetable.createClasses(individual);
 
         // Calculate fitness
-        int clashes = threadTimetable.calcClashes();
-        double fitness = 100 * (double)(clashes);
+        double fitness = threadTimetable.calcClashes();
 
         individual.setFitness(fitness);
         return fitness;

@@ -137,7 +137,7 @@ public class TimetableGenetic {
         int generation = 1;
 
         // Start evolution loop
-        while (ga.isTerminationConditionMet(generation, 100) == false
+        while (ga.isTerminationConditionMet(generation, 1000) == false
                 && ga.isTerminationConditionMet(population) == false) {
 
             System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
