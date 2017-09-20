@@ -78,9 +78,9 @@ export class GenerateTT {
     );
   }
   //
-  // findModuleById(moduleId):any{
-  //
-  // }
+  newGenerate(){
+    this.loadTimetable();
+  }
 
 }
 
