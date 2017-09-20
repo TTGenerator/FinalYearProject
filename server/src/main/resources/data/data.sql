@@ -406,3 +406,116 @@ INSERT INTO GroupCourseMap VALUES (64,13,47);
 INSERT INTO GroupCourseMap VALUES (65,14,48);
 INSERT INTO GroupCourseMap VALUES (66,17,48);
 INSERT INTO GroupCourseMap VALUES (67,14,49);
+
+
+
+
+
+
+
+INSERT INTO Lecturers VALUES (57, 'Prof PBR Dissanayake', 'a', 2, true);
+INSERT INTO Lecturers VALUES (58, 'Dr UI Dissanayake', 'a', 2, true);
+INSERT INTO Lecturers VALUES (59, 'Dr MCM Nasvi', 'a', 2, true);
+INSERT INTO Lecturers VALUES (60, 'Dr SR Herath', 'a', 2, true);
+INSERT INTO Lecturers VALUES (61, 'Prof JJ Wijethunga', 'a', 2, true);
+INSERT INTO Lecturers VALUES (62, 'Dr KK Nandalal', 'a', 2, true);
+INSERT INTO Lecturers VALUES (63, 'Dr AJ Dhammika', 'a', 2, true);
+INSERT INTO Lecturers VALUES (64, 'Dr ALM Mauroof', 'a', 2, true);
+INSERT INTO Lecturers VALUES (65, 'Dr CK Pathirana', 'a', 2, true);
+INSERT INTO Lecturers VALUES (66, 'Dr GBB Herath', 'a', 2, true);
+INSERT INTO Lecturers VALUES (67, 'Prof KPP Pathirana', 'a', 2, true);
+INSERT INTO Lecturers VALUES (68, 'Dr WMVSK Wickramasinghe', 'a', 2, true);
+INSERT INTO Lecturers VALUES (69, 'Prof UdeS Jayawardena', 'a', 2, true);
+INSERT INTO Lecturers VALUES (70, 'Mrs GMPR Weerakoon', 'a', 2, true);
+INSERT INTO Lecturers VALUES (71, 'Dr PBG Dissanayake', 'a', 2, true);
+INSERT INTO Lecturers VALUES (72, 'Dr IMS Sathyaprasad', 'a', 2, true);
+INSERT INTO Lecturers VALUES (73, 'Dr DD Dias', 'a', 2, true);
+INSERT INTO Lecturers VALUES (74, 'Dr LC Kurukulasuriya', 'a', 2, true);
+INSERT INTO Lecturers VALUES (75, 'Prof WMSB Weerakoon', 'a', 2, true);
+INSERT INTO Lecturers VALUES (76, 'Dr KBSN Jinadasa', 'a', 2, true);
+INSERT INTO Lecturers VALUES (77, 'Mr H Abeyruwan', 'a', 2, true);
+INSERT INTO Lecturers VALUES (78, 'Dr KK Wijesundara', 'a', 2, true);
+INSERT INTO Lecturers VALUES (79, 'Dr HK Nandalal', 'a', 2, true);
+
+
+
+INSERT INTO Courses VALUES (50, 'GP109', 'Material Science', '1', false, 210);
+INSERT INTO Courses VALUES (51, 'GP110', 'Engineering mechanics', '1', false, 210);
+INSERT INTO Courses VALUES (52, 'GP112', 'Engineering Measurements', '1', false, 210);
+INSERT INTO Courses VALUES (53, 'CE201', 'Mechanics of Materials', '1', false, 160);
+INSERT INTO Courses VALUES (54, 'CE202', 'Fluid Mechanics I', '1', false, 160);
+INSERT INTO Courses VALUES (55, 'CE203', 'Fluid Mechanics II', '1', false, 150);
+INSERT INTO Courses VALUES (56, 'CE301', 'Mechanics of Materials II', '1', false, 100);
+INSERT INTO Courses VALUES (57, 'CE302', 'Environmental Engineering', '1', false, 150);
+INSERT INTO Courses VALUES (58, 'CE303', 'Transportation Engineering', '1', false, 150);
+INSERT INTO Courses VALUES (59, 'CE305', 'Hydraulics', '1', false, 150);
+INSERT INTO Courses VALUES (60, 'CE306', 'Design of Structures I', '1', false, 150);
+INSERT INTO Courses VALUES (61, 'CE309', 'Materials Science II', '1', false, 50);
+INSERT INTO Courses VALUES (62, 'CE314', 'Civil Engineering Laboratory I', '1', false, 150);
+INSERT INTO Courses VALUES (63, 'CE403', 'Construction Management', '1', false, 150);
+INSERT INTO Courses VALUES (64, 'CE405', 'Civil Engineering Project I', '1', false, 150);
+INSERT INTO Courses VALUES (65, 'CE512', 'Foundation Engineering', '1', false, 25);
+INSERT INTO Courses VALUES (66, 'CE541', 'Hydraulic Structures', '1', false, 25);
+INSERT INTO Courses VALUES (67, 'CE552', 'Irrigation and Drainage Engineering', '1', false, 25);
+INSERT INTO Courses VALUES (68, 'CE559', 'GIS in Water Resourses Engineering', '1', false, 25);
+INSERT INTO Courses VALUES (69, 'CE567', 'Industrial Pollution Control', '1', false, 30);
+INSERT INTO Courses VALUES (70, 'CE582', 'Concrete Technology', '1', false, 25);
+INSERT INTO Courses VALUES (71, 'CE584', 'Computer Aided Structural Design', '1', false, 25);
+
+
+
+INSERT INTO CourseLecturerMap VALUES (126,50,57);
+INSERT INTO CourseLecturerMap VALUES (127,51,58);
+INSERT INTO CourseLecturerMap VALUES (128,52,59);
+INSERT INTO CourseLecturerMap VALUES (129,53,60);
+INSERT INTO CourseLecturerMap VALUES (130,54,61);
+INSERT INTO CourseLecturerMap VALUES (131,55,62);
+INSERT INTO CourseLecturerMap VALUES (132,56,63);
+INSERT INTO CourseLecturerMap VALUES (133,57,66);
+INSERT INTO CourseLecturerMap VALUES (134,58,68);
+INSERT INTO CourseLecturerMap VALUES (135,59,67);
+INSERT INTO CourseLecturerMap VALUES (136,60,64);
+INSERT INTO CourseLecturerMap VALUES (137,61,65);
+INSERT INTO CourseLecturerMap VALUES (138,62,69);
+INSERT INTO CourseLecturerMap VALUES (139,62,70);
+INSERT INTO CourseLecturerMap VALUES (140,62,63);
+INSERT INTO CourseLecturerMap VALUES (141,63,71);
+INSERT INTO CourseLecturerMap VALUES (142,64,72);
+INSERT INTO CourseLecturerMap VALUES (143,65,74);
+INSERT INTO CourseLecturerMap VALUES (144,66,75);
+INSERT INTO CourseLecturerMap VALUES (145,67,73);
+INSERT INTO CourseLecturerMap VALUES (146,68,79);
+INSERT INTO CourseLecturerMap VALUES (147,69,76);
+INSERT INTO CourseLecturerMap VALUES (148,70,77);
+INSERT INTO CourseLecturerMap VALUES (149,71,78);
+
+INSERT INTO GroupCourseMap VALUES (68,18,50);
+INSERT INTO GroupCourseMap VALUES (69,18,51);
+INSERT INTO GroupCourseMap VALUES (70,18,52);
+INSERT INTO GroupCourseMap VALUES (71,9,53);
+INSERT INTO GroupCourseMap VALUES (72,15,53);
+INSERT INTO GroupCourseMap VALUES (73,1,53);
+INSERT INTO GroupCourseMap VALUES (74,12,53);
+INSERT INTO GroupCourseMap VALUES (75,9,54);
+INSERT INTO GroupCourseMap VALUES (76,15,54);
+INSERT INTO GroupCourseMap VALUES (77,1,54);
+INSERT INTO GroupCourseMap VALUES (78,12,54);
+INSERT INTO GroupCourseMap VALUES (79,9,55);
+INSERT INTO GroupCourseMap VALUES (80,16,56);
+INSERT INTO GroupCourseMap VALUES (81,2,56);
+INSERT INTO GroupCourseMap VALUES (82,10,57);
+INSERT INTO GroupCourseMap VALUES (83,10,58);
+INSERT INTO GroupCourseMap VALUES (84,10,59);
+INSERT INTO GroupCourseMap VALUES (85,10,60);
+INSERT INTO GroupCourseMap VALUES (86,16,61);
+INSERT INTO GroupCourseMap VALUES (87,10,62);
+INSERT INTO GroupCourseMap VALUES (88,11,63);
+INSERT INTO GroupCourseMap VALUES (89,11,64);
+INSERT INTO GroupCourseMap VALUES (90,11,65);
+INSERT INTO GroupCourseMap VALUES (91,11,66);
+INSERT INTO GroupCourseMap VALUES (92,11,67);
+INSERT INTO GroupCourseMap VALUES (93,11,68);
+INSERT INTO GroupCourseMap VALUES (94,11,69);
+INSERT INTO GroupCourseMap VALUES (95,14,69);
+INSERT INTO GroupCourseMap VALUES (96,11,70);
+INSERT INTO GroupCourseMap VALUES (97,11,71);

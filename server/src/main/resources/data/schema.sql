@@ -55,7 +55,7 @@ CREATE TABLE Lecturers (
 CREATE TABLE Courses (
   courseid int NOT NULL,
   course_code VARCHAR(10)NOT NULL,
-	course_name VARCHAR(25),
+	course_name VARCHAR(100),
 	duration NUMERIC(10) ,
 	is_deleted BOOLEAN,
 	max_students INTEGER(10),
