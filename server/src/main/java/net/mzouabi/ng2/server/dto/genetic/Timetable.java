@@ -3,6 +3,7 @@
  */
 package net.mzouabi.ng2.server.dto.genetic;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.IntStream;
 
@@ -380,7 +381,7 @@ public class Timetable {
         int clashes = 0;
         for (ClassType classA : this.classes) {
             // Check room capacity
-            //System.out.println("Room is : " + getRoom(classA.getRoomid()).getRoomCapacity());
+            //System.out.println("Room is : " + getRoom(classA.getRoomId()).getRoomCapacity());
             if(classA.getModuleId()!=-1) {
                 int roomCapacity = this.rooms.get(classA.getRoomid()).getRoomCapacity();
                 int groupIds[] = classA.getGroupId();
@@ -390,29 +391,54 @@ public class Timetable {
                 }
 
                 if (roomCapacity < groupSize) {
-                    clashes++;
+                    clashes+=100;
                 }
             }
 
-            // Check if room is taken
-            /*for (ClassType classB : this.classes) {
-                if (classA.getRoomid() == classB.getRoomid() && classA.getTimeslotId() == classB.getTimeslotId()
-                        && classA.getClassId() != classB.getClassId()) {
-                    clashes++;
-                    break;
+            //Check if room is taken
+            for (ClassType classB : this.classes) {
+                if(classB.getModuleId() != -1) {
+                    if (classA.getRoomid() == classB.getRoomid() && classA.getTimeslotId() == classB.getTimeslotId()
+                            && classA.getClassId() != classB.getClassId()) {
+                        clashes+=100;
+                        //break;
+                    }
                 }
             }
 
             // Check if professor is available
             for (ClassType classB : this.classes) {
-                if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId()
-                        && classA.getClassId() != classB.getClassId()) {
-                    clashes++;
-                    break;
+                if (classB.getModuleId() != -1) {
+                    if ( Arrays.asList(classA.getProfessorId()).contains(Arrays.asList(classB.getProfessorId())) &&
+                            classA.getTimeslotId() == classB.getTimeslotId() &&
+                            classA.getClassId() != classB.getClassId()) {
+                        clashes+=100;
+                        //break;
+                    }
                 }
-            }*/
+            }
 
+            for (ClassType classB : this.classes){
+                if (classB.getModuleId() != -1 ){
+                    if ( Arrays.asList(classA.getGroupId()).contains(Arrays.asList(classB.getGroupId())) &&
+                            classA.getTimeslotId() == classB.getTimeslotId() &&
+                            classA.getClassId() == classB.getClassId()){
+                        clashes+=100;
+                        //break;
+                    }
+                }
+            }
+
+            for (ClassType classB: this.classes){
+                if(classB.getModuleId() != -1 && classB.getModuleId()==classA.getModuleId() &&
+                    classB.isConsecutiveClasses(classA) && classB.getRoomid() != classA.getRoomid()){
+                    clashes+=90;
+                }
+            }
         }
+
+
+
         return clashes;
     }
 }

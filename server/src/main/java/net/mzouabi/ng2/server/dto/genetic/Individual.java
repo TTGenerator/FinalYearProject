@@ -67,6 +67,8 @@ public class Individual {
                 newChromosome[chromosomeIndex] = -1;
             }
             chromosomeIndex++;
+            //TODO
+            //some courses may not added to class. Need reccursion
 
         }
 
