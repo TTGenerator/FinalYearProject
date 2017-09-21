@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
 import {GeneticTimetableService} from "../../services/genetic/GeneticTimetable.service";
 import {HTTPAppService} from "../../services/HttpApp.service";
 import {ClassType} from "../../model/classType";
-
+import jsPDF from 'jspdf'
 @Component({
   selector: 'generateTT',
   templateUrl: './generateTT.html',
@@ -81,17 +81,17 @@ export class GenerateTT {
   newGenerate(){
     this.loadTimetable();
   }
-  // download() {
-  //
-  //   let pdf = new jsPDF();
-  //   let options = {
-  //     pagesplit: true,
-  //     background:"#418423"
-  //   };
-  //   pdf.addHTML(this.el.nativeElement, 0, 0, options, () => {
-  //     pdf.save("test.pdf");
-  //   });
-  // }
+  download() {
+
+    let pdf = new jsPDF();
+    let options = {
+      pagesplit: true,
+      background:"#418423"
+    };
+    pdf.addHTML(this.el.nativeElement, 0, 0, options, () => {
+      pdf.save("test.pdf");
+    });
+  }
 
 }
 
