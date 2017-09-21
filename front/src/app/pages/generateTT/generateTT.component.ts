@@ -81,17 +81,17 @@ export class GenerateTT {
   newGenerate(){
     this.loadTimetable();
   }
-  download() {
-
-    let pdf = new jsPDF();
-    let options = {
-      pagesplit: true,
-      background:"#418423"
-    };
-    pdf.addHTML(this.el.nativeElement, 0, 0, options, () => {
-      pdf.save("test.pdf");
-    });
-  }
+  // download() {
+  //
+  //   let pdf = new jsPDF();
+  //   let options = {
+  //     pagesplit: true,
+  //     background:"#418423"
+  //   };
+  //   pdf.addHTML(this.el.nativeElement, 0, 0, options, () => {
+  //     pdf.save("test.pdf");
+  //   });
+  // }
 
 }
 
