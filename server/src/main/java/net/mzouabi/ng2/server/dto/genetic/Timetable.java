@@ -401,8 +401,18 @@ public class Timetable {
                     clashes++;
                     break;
                 }
-            }
+            }*/
 
+            for (ClassType classB : this.classes) {
+                if(classB.getModuleId() != -1) {
+                    if (classA.getRoomid() == classB.getRoomid() && classA.getTimeslotId() == classB.getTimeslotId()
+                            && classA.getClassId() != classB.getClassId()) {
+                        clashes+=100;
+                        //break;
+                    }
+                }
+            }
+/*
             // Check if professor is available
             for (ClassType classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId()
