@@ -1,10 +1,10 @@
-# DROP DATABASE TTGenerator;
-# CREATE DATABASE TTGenerator;
-# drop user admin@localhost;
-# flush privileges;
-# create user admin@localhost identified by 'admin123';
-# grant all on TTGenerator.* to 'admin'@'localhost';
-# flush privileges;
+#DROP DATABASE TTGenerator;
+#CREATE DATABASE TTGenerator;
+#drop user admin@localhost;
+#flush privileges;
+#create user admin@localhost identified by 'admin123';
+#grant all on TTGenerator.* to 'admin'@'localhost';
+#flush privileges;
 
 DROP TABLE IF EXISTS lecturer_preferences ;
 DROP TABLE IF EXISTS role ;

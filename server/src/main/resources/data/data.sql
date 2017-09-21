@@ -439,28 +439,28 @@ INSERT INTO Lecturers VALUES (79, 'Dr HK Nandalal', 'a', 2, true);
 
 
 
-INSERT INTO Courses VALUES (50, 'GP109', 'Material Science', '1', false, 210);
-INSERT INTO Courses VALUES (51, 'GP110', 'Engineering mechanics', '1', false, 210);
-INSERT INTO Courses VALUES (52, 'GP112', 'Engineering Measurements', '1', false, 210);
-INSERT INTO Courses VALUES (53, 'CE201', 'Mechanics of Materials', '1', false, 160);
-INSERT INTO Courses VALUES (54, 'CE202', 'Fluid Mechanics I', '1', false, 160);
-INSERT INTO Courses VALUES (55, 'CE203', 'Fluid Mechanics II', '1', false, 150);
-INSERT INTO Courses VALUES (56, 'CE301', 'Mechanics of Materials II', '1', false, 100);
-INSERT INTO Courses VALUES (57, 'CE302', 'Environmental Engineering', '1', false, 150);
-INSERT INTO Courses VALUES (58, 'CE303', 'Transportation Engineering', '1', false, 150);
-INSERT INTO Courses VALUES (59, 'CE305', 'Hydraulics', '1', false, 150);
-INSERT INTO Courses VALUES (60, 'CE306', 'Design of Structures I', '1', false, 150);
-INSERT INTO Courses VALUES (61, 'CE309', 'Materials Science II', '1', false, 50);
-INSERT INTO Courses VALUES (62, 'CE314', 'Civil Engineering Laboratory I', '1', false, 150);
-INSERT INTO Courses VALUES (63, 'CE403', 'Construction Management', '1', false, 150);
-INSERT INTO Courses VALUES (64, 'CE405', 'Civil Engineering Project I', '1', false, 150);
-INSERT INTO Courses VALUES (65, 'CE512', 'Foundation Engineering', '1', false, 25);
-INSERT INTO Courses VALUES (66, 'CE541', 'Hydraulic Structures', '1', false, 25);
-INSERT INTO Courses VALUES (67, 'CE552', 'Irrigation and Drainage Engineering', '1', false, 25);
-INSERT INTO Courses VALUES (68, 'CE559', 'GIS in Water Resourses Engineering', '1', false, 25);
-INSERT INTO Courses VALUES (69, 'CE567', 'Industrial Pollution Control', '1', false, 30);
-INSERT INTO Courses VALUES (70, 'CE582', 'Concrete Technology', '1', false, 25);
-INSERT INTO Courses VALUES (71, 'CE584', 'Computer Aided Structural Design', '1', false, 25);
+INSERT INTO Courses VALUES (50, 'GP109', 'Material Science', '3', false, 210);
+INSERT INTO Courses VALUES (51, 'GP110', 'Engineering mechanics', '3', false, 210);
+INSERT INTO Courses VALUES (52, 'GP112', 'Engineering Measurements', '3', false, 210);
+INSERT INTO Courses VALUES (53, 'CE201', 'Mechanics of Materials', '3', false, 160);
+INSERT INTO Courses VALUES (54, 'CE202', 'Fluid Mechanics I', '3', false, 160);
+INSERT INTO Courses VALUES (55, 'CE203', 'Fluid Mechanics II', '3', false, 150);
+INSERT INTO Courses VALUES (56, 'CE301', 'Mechanics of Materials II', '3', false, 100);
+INSERT INTO Courses VALUES (57, 'CE302', 'Environmental Engineering', '3', false, 150);
+INSERT INTO Courses VALUES (58, 'CE303', 'Transportation Engineering', '3', false, 150);
+INSERT INTO Courses VALUES (59, 'CE305', 'Hydraulics', '3', false, 150);
+INSERT INTO Courses VALUES (60, 'CE306', 'Design of Structures I', '3', false, 150);
+INSERT INTO Courses VALUES (61, 'CE309', 'Materials Science II', '3', false, 50);
+INSERT INTO Courses VALUES (62, 'CE314', 'Civil Engineering Laboratory I', '3', false, 150);
+INSERT INTO Courses VALUES (63, 'CE403', 'Construction Management', '3', false, 150);
+INSERT INTO Courses VALUES (64, 'CE405', 'Civil Engineering Project I', '3', false, 150);
+INSERT INTO Courses VALUES (65, 'CE512', 'Foundation Engineering', '3', false, 25);
+INSERT INTO Courses VALUES (66, 'CE541', 'Hydraulic Structures', '3', false, 25);
+INSERT INTO Courses VALUES (67, 'CE552', 'Irrigation and Drainage Engineering', '3', false, 25);
+INSERT INTO Courses VALUES (68, 'CE559', 'GIS in Water Resourses Engineering', '3', false, 25);
+INSERT INTO Courses VALUES (69, 'CE567', 'Industrial Pollution Control', '3', false, 30);
+INSERT INTO Courses VALUES (70, 'CE582', 'Concrete Technology', '3', false, 25);
+INSERT INTO Courses VALUES (71, 'CE584', 'Computer Aided Structural Design', '3', false, 25);
 
 
 

@@ -126,9 +126,9 @@ public class Timetable {
      * @param module
      * @param professorIds
      */
-    public void addModule(int moduleId, String moduleCode, String module, int professorIds[], int groups[], int duration) {
+    public void addModule(int moduleId, String moduleCode, String module, int professorIds[], int groups[], int duration, int maxStudents) {
 
-        this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds, groups, duration));
+        this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds, groups, duration, maxStudents));
     }
 
     /**
@@ -181,9 +181,11 @@ public class Timetable {
         int sum = IntStream.of(courseDurationArray).sum();
         ClassType classes[] = new ClassType[sum];
         // Get individual's chromosome
+        //System.out.println(individual);
         int chromosome[] = individual.getChromosome();
         int classIndex = 0;
         int chromosomePos = 0;
+
         while (chromosomePos < chromosome.length){
             classes[classIndex] = new ClassType(classIndex);
 
@@ -193,16 +195,21 @@ public class Timetable {
             classes[classIndex].setRoomid(chromosome[chromosomePos]);
             chromosomePos++;
 
-            if(chromosome[chromosomePos]!=-1){
-                classes[classIndex].setModuleId(chromosome[chromosomePos]);
+            try{
+                if(chromosome[chromosomePos]!=-1){
+                    classes[classIndex].setModuleId(chromosome[chromosomePos]);
 
-                int groups[] = this.modules.get(chromosome[chromosomePos]).getGroupIds();
-                classes[classIndex].setGroupId(groups);
+                    int groups[] = this.modules.get(chromosome[chromosomePos]).getGroupIds();
+                    classes[classIndex].setGroupId(groups);
 
-                int lecturers[] = this.modules.get(chromosome[chromosomePos]).getProfessorIds();
-                classes[classIndex].setProfessorId(lecturers);
-            } else {
-                classes[classIndex].setModuleId(-1);
+                    int lecturers[] = this.modules.get(chromosome[chromosomePos]).getProfessorIds();
+                    classes[classIndex].setProfessorId(lecturers);
+                } else {
+                    System.out.println("Entered");
+                    classes[classIndex].setModuleId(-1);
+                }
+            } catch (Exception e){
+
             }
 
             chromosomePos++;
@@ -379,62 +386,55 @@ public class Timetable {
      */
     public int calcClashes() {
         int clashes = 0;
-        for (ClassType classA : this.classes) {
-            // Check room capacity
-            //System.out.println("Room is : " + getRoom(classA.getRoomId()).getRoomCapacity());
-            if(classA.getModuleId()!=-1) {
+        try{
+            for (ClassType classA : this.classes) {
+                // Check room capacity
+                //System.out.println("Room is : " + getRoom(classA.getRoomId()).getRoomCapacity());
                 int roomCapacity = this.rooms.get(classA.getRoomid()).getRoomCapacity();
-                int groupIds[] = classA.getGroupId();
-                int groupSize = 0;
-                for (int count = 0; count < groupIds.length; count++) {
-                    groupSize += this.getGroup(groupIds[count]).getGroupSize();
+                int moduleId = classA.getModuleId();
+                Module module = getModule(moduleId);
+
+                if (roomCapacity < module.getMaxStudents()) {
+                    clashes += 100;
                 }
 
-                if (roomCapacity < groupSize) {
-                    clashes+=100;
-                }
-            }
-
-            //Check if room is taken
-            for (ClassType classB : this.classes) {
-                if(classB.getModuleId() != -1) {
+                /*//Check if room is taken
+                for (ClassType classB : this.classes) {
                     if (classA.getRoomid() == classB.getRoomid() && classA.getTimeslotId() == classB.getTimeslotId()
                             && classA.getClassId() != classB.getClassId()) {
-                        clashes+=100;
+                        clashes += 100;
                         //break;
                     }
-                }
-            }
+                }*/
 
-            // Check if professor is available
-            for (ClassType classB : this.classes) {
-                if (classB.getModuleId() != -1) {
-                    if ( Arrays.asList(classA.getProfessorId()).contains(Arrays.asList(classB.getProfessorId())) &&
+                // Check if professor is available
+                /*for (ClassType classB : this.classes) {
+                    if (Arrays.asList(classA.getProfessorId()).contains(Arrays.asList(classB.getProfessorId())) &&
                             classA.getTimeslotId() == classB.getTimeslotId() &&
                             classA.getClassId() != classB.getClassId()) {
-                        clashes+=100;
+                        clashes += 100;
                         //break;
                     }
                 }
-            }
 
-            for (ClassType classB : this.classes){
-                if (classB.getModuleId() != -1 ){
-                    if ( Arrays.asList(classA.getGroupId()).contains(Arrays.asList(classB.getGroupId())) &&
+                for (ClassType classB : this.classes) {
+                    if (Arrays.asList(classA.getGroupId()).contains(Arrays.asList(classB.getGroupId())) &&
                             classA.getTimeslotId() == classB.getTimeslotId() &&
-                            classA.getClassId() == classB.getClassId()){
-                        clashes+=100;
+                            classA.getClassId() == classB.getClassId()) {
+                        clashes += 100;
                         //break;
                     }
                 }
-            }
 
-            for (ClassType classB: this.classes){
-                if(classB.getModuleId() != -1 && classB.getModuleId()==classA.getModuleId() &&
-                    classB.isConsecutiveClasses(classA) && classB.getRoomid() != classA.getRoomid()){
-                    clashes+=90;
-                }
+                for (ClassType classB : this.classes) {
+                    if (classB.getModuleId() == classA.getModuleId() &&
+                            classB.isConsecutiveClasses(classA) && classB.getRoomid() != classA.getRoomid()) {
+                        clashes += 90;
+                    }
+                }*/
             }
+        }  catch(Exception e) {
+
         }
 
 

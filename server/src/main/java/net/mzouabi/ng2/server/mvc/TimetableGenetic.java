@@ -103,7 +103,7 @@ public class TimetableGenetic {
                 groupArray[i] = courseGroupMapArrayList.get(i).getGroupId();
             }
 
-            timetable.addModule(course.getCourseid(), course.getCourse_code(), course.getCourse_name(), lectureArray, groupArray , course.getDuration());
+            timetable.addModule(course.getCourseid(), course.getCourse_code(), course.getCourse_name(), lectureArray, groupArray , course.getDuration(), course.getMax_students());
         }
 
         Iterable<GroupModel> groups =groupRepository.findAll();
@@ -125,7 +125,7 @@ public class TimetableGenetic {
 
 
         // Initialize GA
-        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.99, 2, 5);
+        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.1, 0.95, 2, 5);
 
         // Initialize population
         Population population = ga.initPopulation(timetable);
@@ -170,7 +170,7 @@ public class TimetableGenetic {
         ObjectMapper mapper = new ObjectMapper();
         try {
             //Object to JSON in file
-            mapper.writeValue(new File("D://FYP/output.txt"), jsonArray);
+            mapper.writeValue(new File("F://FYP/output.txt"), jsonArray);
             // Initialize our objects
         }catch (JsonGenerationException e) {
             e.printStackTrace();

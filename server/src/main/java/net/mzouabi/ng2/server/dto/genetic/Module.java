@@ -13,6 +13,7 @@ public class Module {
     private final int professorIds[];
     private final int groupIds[];
     private int duration;
+    private int maxStudents;
 
     /**
      * Initialize new Module
@@ -22,13 +23,14 @@ public class Module {
      * @param module
      * @param professorIds
      */
-    public Module(int moduleId, String moduleCode, String module, int professorIds[], int groupsIds[],int duration) {
+    public Module(int moduleId, String moduleCode, String module, int professorIds[], int groupsIds[],int duration, int maxStudents) {
         this.moduleId = moduleId;
         this.moduleCode = moduleCode;
         this.module = module;
         this.professorIds = professorIds;
         this.groupIds = groupsIds;
         this.duration = duration;
+        this.maxStudents = maxStudents;
     }
 
     /**
@@ -86,5 +88,13 @@ public class Module {
 
     public void setDuration(int duration){
         this.duration = duration;
+    }
+
+    public int getMaxStudents() {
+        return maxStudents;
+    }
+
+    public void setMaxStudents(int maxStudents) {
+        this.maxStudents = maxStudents;
     }
 }
