@@ -8,12 +8,12 @@
 </div>
 <br/>
 
-<div class="row">
+<div #Timetable class="row">
   <div class="col-md-12">
       <div class="row">
         <div class="col-lg-6 col-md-12" *ngIf="matrix != null">
-              <div style="width: 900px;height: 210px" *ngFor="let dayItem of weekDays">
-                <div style="width: 100px;height: 210px;float: left;border: solid 1px gray;color: #1C2B36" *ngFor="let timeItem of timeSlot">
+              <div style="width: 900px;height: 270px" *ngFor="let dayItem of weekDays">
+                <div style="width: 100px;height: 270px;float: left;border: solid 1px gray;color: #1C2B36" *ngFor="let timeItem of timeSlot">
                   <span *ngIf="dayItem === 0 && timeItem !== 0">
                     <div *ngIf="dayItem === 0 && timeItem == 1" style="width: 100%;height: 100%;float: left;background: gainsboro" >8.00-8.55</div>
                     <div *ngIf="dayItem === 0 && timeItem == 2" style="width: 100%;height: 100%;float: left;background: gainsboro" >8.55-9.50</div>
@@ -32,7 +32,7 @@
                     <div *ngIf="dayItem == 5 && timeItem === 0" style="width: 100%;height: 100%;float: left;background: gainsboro" >FRIDAY</div>
                   </span>
                   <span *ngIf="dayItem !== 0 && timeItem !== 0">
-                    <div *ngFor="let ttItem of matrix[dayItem-1][timeItem-1]">
+                    <div *ngFor="let ttItem of matrix[dayItem-1][timeItem-1]" style="background: white">
                      <div *ngIf="ttItem.courseCode != null">
                       <div style="width: 100px;height: 30px;float: left;color: #1C2B36"  >
                         {{ttItem.courseCode}}[{{ttItem.roomname}}]

@@ -1,18 +1,18 @@
 /**
  * Created by jayani on 5/15/2017.
  */
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {GeneticTimetableService} from "../../services/genetic/GeneticTimetable.service";
 import {HTTPAppService} from "../../services/HttpApp.service";
 import {ClassType} from "../../model/classType";
-import jsPDF from 'jspdf'
+import jsPDF from 'jspdf';
 @Component({
   selector: 'generateTT',
   templateUrl: './generateTT.html',
 
 })
 export class GenerateTT {
-
+  @ViewChild('Timetable') el:ElementRef;
   Timetable:ClassType[];
   public matrix: ClassType[][][];
   TimetableDay:string[] = ["Monday" , "Tuesday" , "Wednsday" , "Thursday" , "Friday"];
@@ -89,7 +89,7 @@ export class GenerateTT {
       background:"#418423"
     };
     pdf.addHTML(this.el.nativeElement, 0, 0, options, () => {
-      pdf.save("test.pdf");
+      pdf.save("Timetable.pdf");
     });
   }
 

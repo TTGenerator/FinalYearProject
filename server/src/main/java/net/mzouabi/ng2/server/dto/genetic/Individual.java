@@ -65,13 +65,13 @@ public class Individual {
     }
 
     public void addTimeslot(int [] newChromosome, int chromosomeIndex, int numberOfTimeslots){
-        int timeslotsId = (int) (numberOfTimeslots * Math.random());
+        int timeslotsId = (int) ((numberOfTimeslots +1)* Math.random());
         if ( timeslotsId==0 ) timeslotsId=1;
         newChromosome[chromosomeIndex] = timeslotsId;
     }
 
     public void addRoom(int [] newChromosome, int chromosomeIndex, int numberOfRooms){
-        int roomid = (int) (numberOfRooms * Math.random());
+        int roomid = (int) ((numberOfRooms+1) * Math.random());
         if( roomid==0 ) roomid=1;
         newChromosome[chromosomeIndex] = roomid;
     }

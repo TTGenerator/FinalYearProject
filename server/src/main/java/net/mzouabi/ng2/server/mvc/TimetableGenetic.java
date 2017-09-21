@@ -125,7 +125,7 @@ public class TimetableGenetic {
 
 
         // Initialize GA
-        GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.1, 0.95, 2, 5);
+        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.1, 0.95, 2, 5);
 
         // Initialize population
         Population population = ga.initPopulation(timetable);
@@ -137,7 +137,7 @@ public class TimetableGenetic {
         int generation = 1;
 
         // Start evolution loop
-        while (ga.isTerminationConditionMet(generation, 1000) == false
+        while (ga.isTerminationConditionMet(generation, 100) == false
                 && ga.isTerminationConditionMet(population) == false) {
 
             System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
@@ -170,7 +170,7 @@ public class TimetableGenetic {
         ObjectMapper mapper = new ObjectMapper();
         try {
             //Object to JSON in file
-            mapper.writeValue(new File("F://FYP/output.txt"), jsonArray);
+            mapper.writeValue(new File("D://FYP/output.txt"), jsonArray);
             // Initialize our objects
         }catch (JsonGenerationException e) {
             e.printStackTrace();
