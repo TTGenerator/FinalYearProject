@@ -398,17 +398,17 @@ public class Timetable {
                     clashes += 100;
                 }
 
-                /*//Check if room is taken
+                //Check if room is taken
                 for (ClassType classB : this.classes) {
                     if (classA.getRoomid() == classB.getRoomid() && classA.getTimeslotId() == classB.getTimeslotId()
                             && classA.getClassId() != classB.getClassId()) {
                         clashes += 100;
                         //break;
                     }
-                }*/
+                }
 
                 // Check if professor is available
-                /*for (ClassType classB : this.classes) {
+                for (ClassType classB : this.classes) {
                     if (Arrays.asList(classA.getProfessorId()).contains(Arrays.asList(classB.getProfessorId())) &&
                             classA.getTimeslotId() == classB.getTimeslotId() &&
                             classA.getClassId() != classB.getClassId()) {
@@ -431,7 +431,7 @@ public class Timetable {
                             classB.isConsecutiveClasses(classA) && classB.getRoomid() != classA.getRoomid()) {
                         clashes += 90;
                     }
-                }*/
+                }
             }
         }  catch(Exception e) {
 
